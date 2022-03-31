@@ -19,3 +19,6 @@ touch src/store/index.js
 
 # add proxy to package.json
 # restart frontend server
+
+touch src/store/csrf.js
+# define csrfFetch function
