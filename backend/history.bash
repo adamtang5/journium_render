@@ -54,3 +54,7 @@ touch index.js
 # bin/www
 mkdir bin
 touch bin/www
+
+
+# Test the server
+# add scripts to package.json
