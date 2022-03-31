@@ -16,3 +16,6 @@ touch src/store/index.js
 # fill in src/index.js
 
 # test Redux store setup
+
+# add proxy to package.json
+# restart frontend server
