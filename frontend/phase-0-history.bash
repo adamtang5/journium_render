@@ -14,3 +14,5 @@ touch src/store/index.js
 
 # Redux Provider and BrowserRouter
 # fill in src/index.js
+
+# test Redux store setup
