@@ -13,6 +13,9 @@ const isProduction = environment === 'production';
 // Initialize Express app
 const app = express();
 
+// Routes
+const routes = require('./routes');
+
 // Use morgan for logging in dev environment
 app.use(morgan('dev'));
 
@@ -43,9 +46,6 @@ app.use(
         }
     })
 );
-
-// Routes
-const routes = require('./routes');
 
 app.use(routes);    // Connect all the routes
 

@@ -48,7 +48,8 @@ npx dotenv sequelize db:create
 touch app.js
 
 # Routes
-touch index.js
+mkdir routes
+touch routes/index.js
 
 
 # bin/www
