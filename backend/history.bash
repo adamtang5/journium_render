@@ -36,3 +36,6 @@ npx dotenv sequelize db:create
 
 # Express Setup
 touch app.js
+
+# Routes
+touch index.js
