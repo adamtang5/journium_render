@@ -562,29 +562,11 @@ You can check out the `Users` table schema created in your PostgreSQL database b
 
 After you migrate the `Users` table with the database-level constraints, you need to add Sequelize model-level constraints. In your `User` model file, `backend/db/models/user.js`, add the following constraints:
 
-column name
-
-data type
-
-constraints
-
-`username`
-
-string
-
-not null, unique, min 4 characters, max 30 characters, isNotEmail
-
-`email`
-
-string
-
-not null, unique, min 3 characters, max 256 characters, isEmail
-
-`hashedPassword`
-
-binary string
-
-not null, min and max 60 characters
+column name | data type | constraints
+--- | --- | ---
+`username` | string | not null, unique, min 4 characters, max 30 characters, isNotEmail
+`email` | string | not null, unique, min 3 characters, max 256 characters, isEmail
+`hashedPassword` | binary string | not null, min and max 60 characters
 
 See the Sequelize docs on [model-level validations](https://sequelize.org/master/manual/validations-and-constraints.html) for a reminder on how to apply these constraints. A custom validator needs to be created for the `isNotEmail` constraint. See here for a refresher on [custom Sequelize validators](https://sequelize.org/master/manual/validations-and-constraints.html). You can use the imported `isEmail` validation from the `sequelize` package's `Validator` to check if the `username` is an email. If it is, throw an error with a message.
 
