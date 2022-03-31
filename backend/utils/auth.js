@@ -25,3 +25,26 @@ const setTokenCookie = (res, user) => {
 
     return token;
 };
+
+// Restores the session user based on JWT Cookie
+const restoreUser = (req, res, next) => {
+    const { token } = req.cookies;
+
+    return jwt.verify(token, secret, null, async (err, jwtPayload) => {
+        if (err) {
+            return next();
+        }
+
+        try {
+            const { id } = jwtPayload.data;
+            req.user = await User.scope('currentUser').findByPk(id);
+        } catch (err) {
+            res.clearCookie('token');
+            return next();
+        }
+
+        if (!req.user) res.clearCookie('token');
+
+        return next();
+    });
+};
