@@ -26,6 +26,16 @@ touch config/index.js
 touch .sequelizerc
 # fill in config
 
+### found typo: fix
+# mkdir bak
+# cp -r config bak/config
+# rm config/database.js
+# rm -rf db/
+# rm -rf models/
+# npx sequelize init
+# cp -f bak/config/database.js config/
+###
+
 npx sequelize init
 # update config/database.js
 
@@ -39,3 +49,8 @@ touch app.js
 
 # Routes
 touch index.js
+
+
+# bin/www
+mkdir bin
+touch bin/www
