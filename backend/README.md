@@ -104,7 +104,7 @@ To do this, create a `.sequelizerc` file in the `backend` folder with the follow
 
     // backend/.sequelizerc
     const path = require('path');
-    
+
     module.exports = {
       config: path.resolve('config', 'database.js'),
       'models-path': path.resolve('db', 'models'),
@@ -120,13 +120,13 @@ Replace the contents of the newly created `backend/config/database.js` file with
 
     // backend/config/database.js
     const config = require('./index');
-    
+
     const db = config.db;
     const username = db.username;
     const password = db.password;
     const database = db.database;
     const host = db.host;
-    
+
     module.exports = {
       development: {
         username,
@@ -209,14 +209,14 @@ Add several security middlewares:
       // enable cors only in development
       app.use(cors());
     }
-    
+
     // helmet helps set a variety of headers to better secure your app
     app.use(
-      helmet.crossOriginResourcePolicy({ 
-        policy: "cross-origin" 
+      helmet.crossOriginResourcePolicy({
+        policy: "cross-origin"
       })
     );
-    
+
     // Set the _csrf token and create req.csrfToken method
     app.use(
       csurf({
@@ -241,12 +241,12 @@ Create an `index.js` file in the `routes` folder. In this file, create an Expres
     // backend/routes/index.js
     const express = require('express');
     const router = express.Router();
-    
+
     router.get('/hello/world', function(req, res) {
       res.cookie('XSRF-TOKEN', req.csrfToken());
       res.send('Hello World!');
     });
-    
+
     module.exports = router;
 
 In this test route, you are setting a cookie on the response with the name of `XSRF-TOKEN` to the value of the `req.csrfToken` method's return. Then, you are sending the text, `Hello World!` as the response's body.
@@ -255,16 +255,16 @@ Add the routes to the Express application by importing with the other imports in
 
     // backend/app.js
     const routes = require('./routes');
-    
+
     // ...
-    
+
     app.use(routes); // Connect all the routes
 
 Finally, at the bottom of the `app.js` file, export `app`.
 
     // backend/app.js
     // ...
-    
+
     module.exports = app;
 
 After setting up the Express application, it's time to create the server.
@@ -276,16 +276,16 @@ Create a folder in `backend` called `bin`. Inside of it, add a file called `www`
     #!/usr/bin/env node
     // backend/bin/www
     const { port } = require('../config');
-    
+
     const app = require('../app');
     const db = require('../db/models');
-    
+
     // Check the database connection before starting the app
     db.sequelize
       .authenticate()
       .then(() => {
         console.log('Database connection success! Sequelize is ready to use...');
-    
+
         // Start listening for connections
         app.listen(port, () => console.log(`Listening on port ${port}...`));
       })
@@ -333,7 +333,7 @@ Get started by nesting an `api` folder in your `routes` folder. Add an `index.js
 
     // backend/routes/api/index.js
     const router = require('express').Router();
-    
+
     module.exports = router;
 
 Import this file into the `routes/index.js` file and connect it to the `router` there.
@@ -341,7 +341,7 @@ Import this file into the `routes/index.js` file and connect it to the `router` 
     // backend/routes/index.js
     // ...
     const apiRouter = require('./api');
-    
+
     router.use('/api', apiRouter);
     // ...
 
@@ -353,11 +353,11 @@ Make sure to test this setup by creating the following test route in the `api` r
 
     // backend/routes/api/index.js
     // ...
-    
+
     router.post('/test', function(req, res) {
       res.json({ requestBody: req.body });
     });
-    
+
     // ...
 
 A router is created and an API test route is added to the router. The API test route is accepting requests with the URL path of `/api/test` with the HTTP verb of `POST`. It sends a JSON response containing whatever is in the body of the request.
@@ -414,9 +414,9 @@ The second error handler is for catching Sequelize errors and formatting them be
     // backend/app.js
     // ...
     const { ValidationError } = require('sequelize');
-    
+
     // ...
-    
+
     // Process sequelize errors
     app.use((err, _req, _res, next) => {
       // check if error is a Sequelize error:
@@ -481,47 +481,14 @@ Now that you have finished setting up both Sequelize and the Express application
 
 With Sequelize, you will create a `Users` table that will have the following schema:
 
-column name
-
-data type
-
-constraints
-
-`id`
-
-integer
-
-not null, primary key
-
-`username`
-
-string
-
-not null, indexed, unique, max 30 characters
-
-`email`
-
-string
-
-not null, indexed, unique, max 256 characters
-
-`hashedPassword`
-
-binary string
-
-not null
-
-`createdAt`
-
-datetime
-
-not null, default value of now()
-
-`updatedAt`
-
-datetime
-
-not null, default value of now()
+column name | data type | constraints
+--- | --- | ---
+`id` | integer | not null, primary key
+`username` | string | not null, indexed, unique, max 30 characters
+`email` | string | not null, indexed, unique, max 256 characters
+`hashedPassword` | binary string | not null
+`createdAt` | datetime | not null, default value of now()
+`updatedAt` | datetime | not null, default value of now()
 
 ### Users Table Migration
 
@@ -569,7 +536,7 @@ In the migration file, apply the constraints in the schema. If completed correct
           }
         });
       },
-    
+
       down: (queryInterface, Sequelize) => {
         return queryInterface.dropTable('Users');
       }
@@ -625,7 +592,7 @@ Your `user.js` file should look like this with the applied constraints:
 
     'use strict';
     const { Validator } = require('sequelize');
-    
+
     module.exports = (sequelize, DataTypes) => {
       const User = sequelize.define('User', {
         username: {
@@ -655,11 +622,11 @@ Your `user.js` file should look like this with the applied constraints:
           }
         }
       }, {});
-    
+
       User.associate = function(models) {
         // associations can be defined here
       };
-    
+
       return User;
     };
 
@@ -675,7 +642,7 @@ Your seeder file should look something like this:
 
     'use strict';
     const bcrypt = require('bcryptjs');
-    
+
     module.exports = {
       up: (queryInterface, Sequelize) => {
         return queryInterface.bulkInsert('Users', [
@@ -696,7 +663,7 @@ Your seeder file should look something like this:
           }
         ], {});
       },
-    
+
       down: (queryInterface, Sequelize) => {
         const Op = Sequelize.Op;
         return queryInterface.bulkDelete('Users', {
@@ -741,7 +708,7 @@ Your `user.js` model file should now look like this:
 
     'use strict';
     const { Validator } = require('sequelize');
-    
+
     module.exports = (sequelize, DataTypes) => {
       const User = sequelize.define('User', {
         username: {
@@ -786,11 +753,11 @@ Your `user.js` model file should now look like this:
           }
         }
       });
-    
+
       User.associate = function(models) {
         // associations can be defined here
       };
-    
+
       return User;
     };
 
@@ -884,7 +851,7 @@ At the top of the file, add the following imports:
     const jwt = require('jsonwebtoken');
     const { jwtConfig } = require('../config');
     const { User } = require('../db/models');
-    
+
     const { secret, expiresIn } = jwtConfig;
 
 #### `setTokenCookie`
@@ -893,7 +860,7 @@ This first function is setting the JWT cookie after a user is logged in or signe
 
     // backend/utils/auth.js
     // ...
-    
+
     // Sends a JWT Cookie
     const setTokenCookie = (res, user) => {
       // Create the token.
@@ -902,9 +869,9 @@ This first function is setting the JWT cookie after a user is logged in or signe
         secret,
         { expiresIn: parseInt(expiresIn) } // 604,800 seconds = 1 week
       );
-    
+
       const isProduction = process.env.NODE_ENV === "production";
-    
+
       // Set the token cookie
       res.cookie('token', token, {
         maxAge: expiresIn * 1000, // maxAge in milliseconds
@@ -912,7 +879,7 @@ This first function is setting the JWT cookie after a user is logged in or signe
         secure: isProduction,
         sameSite: isProduction && "Lax"
       });
-    
+
       return token;
     };
 
@@ -924,16 +891,16 @@ Certain authenticated routes will require the identity of the current session us
 
     // backend/utils/auth.js
     // ...
-    
+
     const restoreUser = (req, res, next) => {
       // token parsed from cookies
       const { token } = req.cookies;
-    
+
       return jwt.verify(token, secret, null, async (err, jwtPayload) => {
         if (err) {
           return next();
         }
-    
+
         try {
           const { id } = jwtPayload.data;
           req.user = await User.scope('currentUser').findByPk(id);
@@ -941,9 +908,9 @@ Certain authenticated routes will require the identity of the current session us
           res.clearCookie('token');
           return next();
         }
-    
+
         if (!req.user) res.clearCookie('token');
-    
+
         return next();
       });
     };
@@ -958,13 +925,13 @@ Create an Express middleware called `requireAuth`. Define this middleware as an 
 
     // backend/utils/auth.js
     // ...
-    
+
     // If there is no current user, return an error
     const requireAuth = [
       restoreUser,
       function (req, _res, next) {
         if (req.user) return next();
-    
+
         const err = new Error('Unauthorized');
         err.title = 'Unauthorized';
         err.errors = ['Unauthorized'];
@@ -979,7 +946,7 @@ Finally, export all the functions at the bottom of the file.
 
     // backend/utils/auth.js
     // ...
-    
+
     module.exports = { setTokenCookie, restoreUser, requireAuth };
 
 #### Test User Auth Middlewares
@@ -990,7 +957,7 @@ Add a test route in your `backend/routes/api/index.js` file that will test the `
 
     // backend/routes/api/index.js
     // ...
-    
+
     // GET /api/set-token-cookie
     const asyncHandler = require('express-async-handler');
     const { setTokenCookie } = require('../../utils/auth.js');
@@ -1004,7 +971,7 @@ Add a test route in your `backend/routes/api/index.js` file that will test the `
       setTokenCookie(res, user);
       return res.json({ user });
     }));
-    
+
     // ...
 
 Go to [http://localhost:5000/api/set-token-cookie](http://localhost:5000/api/set-token-cookie) and see if there is a `token` cookie set in your browser's DevTools. If there isn't, then check your backend server logs in the terminal where you ran `npm start`. Also, check the syntax of your `setTokenCookie` function as well as the test route.
@@ -1013,7 +980,7 @@ Next, add a test route in your `backend/routes/api/index.js` file that will test
 
     // backend/routes/api/index.js
     // ...
-    
+
     // GET /api/restore-user
     const { restoreUser } = require('../../utils/auth.js');
     router.get(
@@ -1023,7 +990,7 @@ Next, add a test route in your `backend/routes/api/index.js` file that will test
         return res.json(req.user);
       }
     );
-    
+
     // ...
 
 Go to [http://localhost:5000/api/restore-user](http://localhost:5000/api/restore-user) and see if the response has the demo user information returned as JSON. Then, remove the `token` cookie manually in your browser's DevTools and refresh. The JSON response should be empty.
@@ -1036,7 +1003,7 @@ Lastly, test your `requireAuth` middleware by adding a test route in your `backe
 
     // backend/routes/api/index.js
     // ...
-    
+
     // GET /api/require-auth
     const { requireAuth } = require('../../utils/auth.js');
     router.get(
@@ -1046,7 +1013,7 @@ Lastly, test your `requireAuth` middleware by adding a test route in your `backe
         return res.json(req.user);
       }
     );
-    
+
     // ...
 
 Set the `token` cookie back by accessing the `GET /api/set-token-cookie` route again: [http://localhost:5000/api/set-token-cookie](http://localhost:5000/api/set-token-cookie).
@@ -1076,7 +1043,7 @@ First, create a file called `session.js` in the `backend/routes/api` folder. Thi
     // backend/routes/api/session.js
     const express = require('express')
     const router = express.Router();
-    
+
     module.exports = router;
 
 Next create a file called `users.js` in the `backend/routes/api` folder. This file will hold the resources for the route paths beginning with `/api/users`. Create and export an Express router from this file.
@@ -1084,7 +1051,7 @@ Next create a file called `users.js` in the `backend/routes/api` folder. This fi
     // backend/routes/api/users.js
     const express = require('express')
     const router = express.Router();
-    
+
     module.exports = router;
 
 Connect all the routes exported from these two files in the `index.js` file nested in the `backend/routes/api` folder.
@@ -1095,15 +1062,15 @@ Your `backend/routes/api/index.js` file should now look like this:
     const router = require('express').Router();
     const sessionRouter = require('./session.js');
     const usersRouter = require('./users.js');
-    
+
     router.use('/session', sessionRouter);
-    
+
     router.use('/users', usersRouter);
-    
+
     router.post('/test', (req, res) => {
       res.json({ requestBody: req.body });
     });
-    
+
     module.exports = router;
 
 ### User Login API Route
@@ -1113,10 +1080,10 @@ In the `backend/routes/api/session.js` file, import the following code at the to
     // backend/routes/api/session.js
     const express = require('express');
     const asyncHandler = require('express-async-handler');
-    
+
     const { setTokenCookie, restoreUser } = require('../../utils/auth');
     const { User } = require('../../db/models');
-    
+
     const router = express.Router();
 
 The `asyncHandler` function from `express-async-handler` will wrap asynchronous route handlers and custom middlewares.
@@ -1125,15 +1092,15 @@ Next, add the `POST /api/session` route to the router using an asynchronous rout
 
     // backend/routes/api/session.js
     // ...
-    
+
     // Log in
     router.post(
       '/',
       asyncHandler(async (req, res, next) => {
         const { credential, password } = req.body;
-    
+
         const user = await User.login({ credential, password });
-    
+
         if (!user) {
           const err = new Error('Login failed');
           err.status = 401;
@@ -1141,9 +1108,9 @@ Next, add the `POST /api/session` route to the router using an asynchronous rout
           err.errors = ['The provided credentials were invalid.'];
           return next(err);
         }
-    
+
         await setTokenCookie(res, user);
-    
+
         return res.json({
           user
         });
@@ -1154,7 +1121,7 @@ Make sure to export the `router` at the bottom of the file.
 
     // backend/routes/api/session.js
     // ...
-    
+
     module.exports = router;
 
 #### Test the Login Route
@@ -1208,7 +1175,7 @@ The `DELETE /api/session` logout route will remove the `token` cookie from the r
 
     // backend/routes/api/session.js
     // ...
-    
+
     // Log out
     router.delete(
       '/',
@@ -1217,7 +1184,7 @@ The `DELETE /api/session` logout route will remove the `token` cookie from the r
         return res.json({ message: 'success' });
       }
     );
-    
+
     // ...
 
 Notice how `asyncHandler` wasn't used to wrap the route handler. This is because the route handler is not `async`.
@@ -1248,26 +1215,26 @@ In the `backend/routes/api/users.js` file, import the following code at the top 
 
     const express = require('express');
     const asyncHandler = require('express-async-handler');
-    
+
     const { setTokenCookie, requireAuth } = require('../../utils/auth');
     const { User } = require('../../db/models');
-    
+
     const router = express.Router();
 
 Next, add the `POST /api/users` route to the router using the asyncHandler function and an asynchronous route handler. In the route handler, call the `signup` static method on the `User` model. If the user is successfully created, then call `setTokenCookie` and return a JSON response with the user information. If the creation of the user is unsuccessful, then a Sequelize Validation error will be passed onto the next error-handling middleware.
 
     // backend/routes/api/users.js
     // ...
-    
+
     // Sign up
     router.post(
       '/',
       asyncHandler(async (req, res) => {
         const { email, password, username } = req.body;
         const user = await User.signup({ email, username, password });
-    
+
         await setTokenCookie(res, user);
-    
+
         return res.json({
           user
         });
@@ -1278,7 +1245,7 @@ Make sure to export the `router` at the bottom of the file.
 
     // backend/routes/api/users.js
     // ...
-    
+
     module.exports = router;
 
 #### Test the Signup Route
@@ -1321,7 +1288,7 @@ Add the route to the `router` in the `backend/routes/api/session.js` file.
 
     // backend/routes/api/session.js
     // ...
-    
+
     // Restore session user
     router.get(
       '/',
@@ -1335,7 +1302,7 @@ Add the route to the `router` in the `backend/routes/api/session.js` file.
         } else return res.json({});
       }
     );
-    
+
     // ...
 
 #### Test the Get Session User Route
@@ -1359,17 +1326,17 @@ In the `backend/utils` folder, add a file called `validation.js`. In this file, 
 
     // backend/utils/validation.js
     const { validationResult } = require('express-validator');
-    
+
     // middleware for formatting errors from express-validator middleware
     // (to customize, see express-validator's documentation)
     const handleValidationErrors = (req, _res, next) => {
       const validationErrors = validationResult(req);
-    
+
       if (!validationErrors.isEmpty()) {
         const errors = validationErrors
           .array()
           .map((error) => `${error.msg}`);
-    
+
         const err = Error('Bad request.');
         err.errors = errors;
         err.status = 400;
@@ -1378,7 +1345,7 @@ In the `backend/utils` folder, add a file called `validation.js`. In this file, 
       }
       next();
     };
-    
+
     module.exports = {
       handleValidationErrors
     };
@@ -1405,7 +1372,7 @@ Make a middleware called `validateLogin` that will check these keys and validate
 
     // backend/routes/api/session.js
     // ...
-    
+
     const validateLogin = [
       check('credential')
         .exists({ checkFalsy: true })
@@ -1423,16 +1390,16 @@ Next, connect the `POST /api/session` route to the `validateLogin` middleware. Y
 
     // backend/routes/api/session.js
     // ...
-    
+
     // Log in
     router.post(
       '/',
       validateLogin,
       asyncHandler(async (req, res, next) => {
         const { credential, password } = req.body;
-    
+
         const user = await User.login({ credential, password });
-    
+
         if (!user) {
           const err = new Error('Login failed');
           err.status = 401;
@@ -1440,9 +1407,9 @@ Next, connect the `POST /api/session` route to the `validateLogin` middleware. Y
           err.errors = ['The provided credentials were invalid.'];
           return next(err);
         }
-    
+
         await setTokenCookie(res, user);
-    
+
         return res.json({
           user
         });
@@ -1523,7 +1490,7 @@ Next, connect the `POST /api/users` route to the `validateSignup` middleware. Yo
 
     // backend/routes/api/users.js
     // ...
-    
+
     // Sign up
     router.post(
       '/',
@@ -1531,9 +1498,9 @@ Next, connect the `POST /api/users` route to the `validateSignup` middleware. Yo
       asyncHandler(async (req, res) => {
         const { email, password, username } = req.body;
         const user = await User.signup({ email, username, password });
-    
+
         await setTokenCookie(res, user);
-    
+
         return res.json({
           user,
         });
