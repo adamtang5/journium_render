@@ -59,3 +59,4 @@ touch bin/www
 
 # Test the server
 # add scripts to package.json
+# tested in both browser and Postman -- noted cookies
