@@ -1,8 +1,6 @@
 const router = require('express').Router();
-
-router.post('/test', (req, res) => {
-    res.json({ requestBody: req.body });
-});
+const sessionRouter = require('./session');
+const usersRouter = require('./users');
 
 /*
 Testing user auth middlewares
@@ -33,7 +31,14 @@ const { requireAuth } = require('../../utils/auth');
 router.get('/require-auth', requireAuth, (req, res) => {
     return res.json(req.user);
 });
-
 */
+
+router.use('/session', sessionRouter);
+
+router.use('/users', usersRouter);
+
+router.post('/test', (req, res) => {
+    res.json({ requestBody: req.body });
+});
 
 module.exports = router;
