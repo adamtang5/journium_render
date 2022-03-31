@@ -11,3 +11,6 @@ mkdir src/store
 touch src/store/index.js
 
 # fill in src/store/index.js
+
+# Redux Provider and BrowserRouter
+# fill in src/index.js
