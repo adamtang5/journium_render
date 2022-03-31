@@ -24,3 +24,6 @@ npx dotenv sequelize db:seed:all
 # define User auth middlewares
 mkdir utils
 touch utils/auth.js
+
+# test user auth middlewares
+# add test route
