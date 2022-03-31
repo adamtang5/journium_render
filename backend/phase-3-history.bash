@@ -18,3 +18,9 @@ npx sequelize seed:generate --name demo-user
 # fill in seeds in seeder file
 
 npx dotenv sequelize db:seed:all
+
+# define methods for auth in User model file
+
+# define User auth middlewares
+mkdir utils
+touch utils/auth.js
