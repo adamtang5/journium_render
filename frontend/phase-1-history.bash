@@ -11,3 +11,5 @@ mkdir src/components/LoginFormPage
 touch src/components/LoginFormPage/index.js
 
 # complete form controls and CSS
+
+# tested form controls and restore session user
