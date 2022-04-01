@@ -5,3 +5,7 @@ touch src/store/session.js
 # added action creators RESTORE and REMOVE
 
 # implemented login thunk action
+
+mkdir src/components
+mkdir src/components/LoginFormPage
+touch src/components/LoginFormPage/index.js
