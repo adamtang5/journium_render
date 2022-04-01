@@ -25,4 +25,6 @@ touch src/store/csrf.js
 
 # Serve csrfToken from backend route
 
-#
+# implement and test custom csrfFetch
+
+# remove POST /api/test route
