@@ -9,3 +9,5 @@ touch src/store/session.js
 mkdir src/components
 mkdir src/components/LoginFormPage
 touch src/components/LoginFormPage/index.js
+
+# complete form controls and CSS
