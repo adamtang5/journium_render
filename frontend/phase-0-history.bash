@@ -24,3 +24,5 @@ touch src/store/csrf.js
 # define csrfFetch function
 
 # Serve csrfToken from backend route
+
+#
