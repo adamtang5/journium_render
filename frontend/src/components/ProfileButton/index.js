@@ -1,14 +1,50 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import * as sessionActions from '../../store/session';
 import './ProfileButton.css';
+import UserSolidIcon from "../utils/icons/UserSolidIcon";
 
-const ProfileButton = () => {
+const ProfileButton = ({ user }) => {
+    const dispatch = useDispatch();
+    const [showMenu, setShowMenu] = useState(false);
+
+    const openMenu = () => {
+        if (showMenu) return;
+        setShowMenu(true);
+    };
+
+    useEffect(() => {
+        if (!showMenu) return;
+
+        const closeMenu = () => {
+            setShowMenu(false);
+        };
+
+        document.addEventListener('click', closeMenu);
+
+        return () => document.removeEventListener('click', closeMenu);
+    }, [showMenu]);
+
+    const logout = e => {
+        e.preventDefault();
+        dispatch(sessionActions.logout());
+    };
+
     return (
-        <div className="icons">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                {/* Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. */}
-                <path d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM256 128c39.77 0 72 32.24 72 72S295.8 272 256 272c-39.76 0-72-32.24-72-72S216.2 128 256 128zM256 448c-52.93 0-100.9-21.53-135.7-56.29C136.5 349.9 176.5 320 224 320h64c47.54 0 87.54 29.88 103.7 71.71C356.9 426.5 308.9 448 256 448z" />
-            </svg>
-        </div>
+        <>
+            <button onClick={openMenu}>
+                <UserSolidIcon fill="#7fffd4" />
+            </button>
+            {showMenu && (
+                <ul className="profile-dropdown">
+                    <li>{user.username}</li>
+                    <li>{user.email}</li>
+                    <li>
+                        <button className="auth-button" onClick={logout}>Log Out</button>
+                    </li>
+                </ul>
+            )}
+        </>
     )
 };
 

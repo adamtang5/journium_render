@@ -1,0 +1,19 @@
+* {
+    font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.centered {
+    margin: 0 auto;
+}
+
+.bordered {
+    border: 1px solid #aaa;
+}
+
+.rounded-corners {
+    border-radius: 10px;
+}
