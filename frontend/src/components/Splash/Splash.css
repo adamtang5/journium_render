@@ -1,0 +1,52 @@
+body {
+    /* font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif; */
+    margin: 0;
+}
+
+.bounded {
+    max-width: 1200px;
+}
+
+.solid-bg {
+    /* background-color: #FFC017; */
+    background-color: lightseagreen;
+}
+
+.white-bg {
+    background-color: white;
+}
+
+.cushioned {
+    margin: 0 40px;
+}
+
+a {
+    /* text-decoration: none; */
+    color: #757575;
+}
+
+h1, h2, h3, h4 {
+    margin: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 5;
+}
+
+.relative {
+    position: relative;
+    top: 85px;
+}

@@ -1,3 +1,5 @@
+import './HeaderBanner.css';
+
 const HeaderBanner = () => {
     return (
         <div id="large_banner" className="relative solid-bg">

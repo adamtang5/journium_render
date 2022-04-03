@@ -6,15 +6,19 @@ import WriteHollowIcon from '../utils/icons/WriteHollowIcon';
 import HomeHollowIcon from '../utils/icons/HomeHollowIcon';
 import BookmarksHollowIcon from '../utils/icons/BookmarksHollowIcon';
 import ReadHollowIcon from '../utils/icons/ReadHollowIcon';
+import Splash from '../Splash';
 import './Navigation.css';
 
 const Navigation = ({ isLoaded }) => {
     const sessionUser = useSelector(state => state.session.user);
 
-    let sessionLinks;
+    let pageContent;
     if (sessionUser) {
-        sessionLinks = (
-            <>
+        pageContent = (
+            <ul>
+                <li>
+                    <NavLink to="/">Home</NavLink>
+                </li>
                 <NavLink to="/">
                     <HomeHollowIcon />
                 </NavLink>
@@ -28,28 +32,18 @@ const Navigation = ({ isLoaded }) => {
                     <WriteHollowIcon />
                 </NavLink>
                 <ProfileButton user={sessionUser} />
-            </>
+            </ul>
         );
     } else {
-        sessionLinks = (
-            <>
-                <li>
-                    <NavLink to="/login">Log In</NavLink>
-                </li>
-                <li>
-                    <NavLink to="/signup">Sign Up</NavLink>
-                </li>
-            </>
+        pageContent = (
+            <Splash />
         );
     }
 
     return (
-        <ul>
-            <li>
-                <NavLink to="/">Home</NavLink>
-            </li>
-            {isLoaded && sessionLinks}
-        </ul>
+        <>
+            {isLoaded && pageContent}
+        </>
     );
 };
 
