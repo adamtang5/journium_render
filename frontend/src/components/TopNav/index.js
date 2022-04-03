@@ -9,6 +9,7 @@ const TopNav = () => {
                     <div id="top_left_logo">
                         <Link to="/">
                             <img src="/images/icons/journium-logo.svg" alt="Journium Logo" />
+                            <span className="logo-text">Journium</span>
                         </Link>
                     </div>
 

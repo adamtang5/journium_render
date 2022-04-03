@@ -16,8 +16,11 @@
 #intro {
     width: 550px;
     height: 100%;
+    min-height: 430px;
     display: flex;
     flex-direction: column;
+    gap: 30px;
+    justify-content: center;
     padding-top: 33px;
     padding-bottom: 30px;
 }
@@ -40,9 +43,7 @@ h3#sub_title {
     margin-bottom: 25px;
 }
 
-#intro ._flex {
-    display: flex;
-    flex-direction: row;
+#intro .flex-row {
     justify-content: flex-start;
 }
 
@@ -56,4 +57,9 @@ button#start_writing {
     font-size: 16px;
     line-height: 24px;
     width: fit-content;
+}
+
+button#start_writing:hover {
+    background-color: black;
+    color: white;
 }
