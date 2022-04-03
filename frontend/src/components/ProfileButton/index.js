@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import * as sessionActions from '../../store/session';
 import './ProfileButton.css';
 import UserSolidIcon from "../utils/icons/UserSolidIcon";
+import ProfileDropdown from "../ProfileDropdown";
 
 const ProfileButton = ({ user }) => {
     const dispatch = useDispatch();
@@ -33,16 +34,10 @@ const ProfileButton = ({ user }) => {
     return (
         <>
             <button onClick={openMenu}>
-                <UserSolidIcon fill="#7fffd4" />
+                <UserSolidIcon fill="#155" />
             </button>
             {showMenu && (
-                <ul className="profile-dropdown">
-                    <li>{user.username}</li>
-                    <li>{user.email}</li>
-                    <li>
-                        <button className="auth-button" onClick={logout}>Log Out</button>
-                    </li>
-                </ul>
+                <ProfileDropdown user={user} />
             )}
         </>
     )
