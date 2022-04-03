@@ -1,7 +1,7 @@
 #top_nav {
     border-bottom: 1px solid black;
-    padding-top: 25px;
-    padding-bottom: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 #top_nav_flexbox {
@@ -32,12 +32,11 @@
     justify-self: flex-end;
     align-self: center;
     width: 50%;
-
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: flex-end;
     align-items: center;
-
+    gap: 30px;
     font-size: 14px;
 }
 
