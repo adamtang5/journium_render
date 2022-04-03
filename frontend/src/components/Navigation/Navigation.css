@@ -1,0 +1,9 @@
+.nav-icons {
+    width: 24px;
+    height: 24px;
+}
+
+.nav-icons.react-icons {
+    width: 30px;
+    height: 30px;
+}
