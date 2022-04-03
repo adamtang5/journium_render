@@ -13,3 +13,5 @@ touch src/components/Navigation/index.js
 
 # tried to use react-icons
 npm install react-icons --save
+
+# mixed results with react icons as well
