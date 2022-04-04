@@ -36,6 +36,15 @@ const LoginFormPage = () => {
             });
     };
 
+    const handleDemoLogin = e => {
+        e.preventDefault();
+        return dispatch(sessionActions.demoLogin())
+            .catch(async (res) => {
+                const data = await res.json();
+                if (data && data.errors) setErrors(data.errors);
+            });
+    };
+
     const credentialChange = e => {
         setErrors([]);
         setCredential(e.target.value);
@@ -92,6 +101,11 @@ const LoginFormPage = () => {
                     disabled={submitDisabled}
                 >
                     Log In
+                </button>
+                <button
+                    className="button-demo-user"
+                    onClick={handleDemoLogin}>
+                    Demo User
                 </button>
             </form>
         </div>
