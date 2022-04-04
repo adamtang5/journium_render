@@ -4,7 +4,21 @@ const bcrypt = require('bcryptjs');
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
-    username: {
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [4, 256],
+      },
+    },
+    hashedPassword: {
+      type: DataTypes.STRING.BINARY,
+      allowNull: false,
+      validate: {
+        len: [60, 60],
+      },
+    },
+    displayName: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
@@ -16,19 +30,21 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    email: {
+    avatarUrl: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [3, 256],
-      },
+        isNotUrl(value) {
+          if (Validator.isUrl(value)) {
+            throw new Error('URL for image must be a valid URL.');
+          }
+        }
+      }
     },
-    hashedPassword: {
-      type: DataTypes.STRING.BINARY,
+    roleId: {
       allowNull: false,
-      validate: {
-        len: [60, 60],
-      },
+      type: DataTypes.INTEGER,
+      references: { model: 'Roles' },
     },
   },
     {
@@ -91,6 +107,11 @@ module.exports = (sequelize, DataTypes) => {
 
   User.associate = function (models) {
     // associations can be defined here
+
+    // 1-to-many relationship with Role model
+    User.belongsTo(models.Role, {
+      foreignKey: 'roleId',
+    });
   };
   return User;
 };
