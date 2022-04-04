@@ -24,7 +24,6 @@ npx sequelize seed:generate --name roles
 
 npx dotenv sequelize db:seed:all
 
-
 # Users
 npx sequelize-cli model:generate \
     --name User \
@@ -38,3 +37,5 @@ npx dotenv sequelize db:migrate
 npx sequelize seed:generate --name users
 
 # fill in seeds in seeder file
+
+npx dotenv sequelize db:seed:all
