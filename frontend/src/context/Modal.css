@@ -30,4 +30,5 @@
   position: absolute;
   background-color:white;
   z-index: 11;
+  border-radius: 10px;
 }

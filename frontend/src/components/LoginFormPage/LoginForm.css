@@ -47,17 +47,36 @@ ul.errors {
     margin-bottom: 0;
 }
 
-.auth-form .button-submit {
+.gap-10px {
+    gap: 10px;
+}
+
+.auth-form .button-submit,
+.auth-form .button-demo-user {
     font-size: 16px;
-    background-color: #155;
-    color: white;
-    border: none;
     padding: 5px 10px;
     border-radius: 5px;
     margin-top: 20px;
 }
 
+.auth-form .button-submit {
+    background-color: #155;
+    color: white;
+    border: none;
+}
+
 .auth-form .button-submit.disabled {
     background-color: #ccc;
     color: #555;
+}
+
+.auth-form .button-demo-user {
+    background-color: #191919;
+    color: white;
+    border: #191919 1px solid;
+}
+
+.auth-form .button-demo-user:hover {
+    background-color: white;
+    color: #292929;
 }

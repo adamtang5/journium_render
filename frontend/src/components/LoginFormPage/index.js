@@ -95,18 +95,20 @@ const LoginFormPage = () => {
                         {errors.map((error, i) => <li key={i} className="error-text">{error}</li>)}
                     </ul>
                 )}
-                <button
-                    type="submit"
-                    className={`button-submit${submitDisabled ? ' disabled' : ''}`}
-                    disabled={submitDisabled}
-                >
-                    Log In
-                </button>
-                <button
-                    className="button-demo-user"
-                    onClick={handleDemoLogin}>
-                    Demo User
-                </button>
+                <div className="flex-row gap-10px">
+                    <button
+                        type="submit"
+                        className={`button-submit${submitDisabled ? ' disabled' : ''}`}
+                        disabled={submitDisabled}
+                    >
+                        Log In
+                    </button>
+                    <button
+                        className="button-demo-user"
+                        onClick={handleDemoLogin}>
+                        Demo User
+                    </button>
+                </div>
             </form>
         </div>
     )

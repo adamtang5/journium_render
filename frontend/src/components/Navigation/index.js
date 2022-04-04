@@ -7,7 +7,6 @@ import HomeHollowIcon from '../utils/icons/HomeHollowIcon';
 import BookmarksHollowIcon from '../utils/icons/BookmarksHollowIcon';
 import ReadHollowIcon from '../utils/icons/ReadHollowIcon';
 import Splash from '../Splash';
-// import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
 
 const Navigation = ({ isLoaded }) => {
@@ -38,7 +37,6 @@ const Navigation = ({ isLoaded }) => {
     } else {
         pageContent = (
             <>
-                {/* <LoginFormModal /> */}
                 <Splash />
             </>
         );
