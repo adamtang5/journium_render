@@ -6,7 +6,8 @@ import SignupFormPage from '../SignupFormPage';
 import './TopNav.css';
 
 const TopNav = () => {
-    const [showModal, setShowModal] = useState(false);
+    const [showLoginModal, setShowLoginModal] = useState(false);
+    const [showSignupModal, setShowSignupModal] = useState(false);
 
     return (
         <div id="top_nav" className="fixed solid-bg">
@@ -24,10 +25,10 @@ const TopNav = () => {
                         <div className="auth_modal">
                             <span
                                 className="nav_btn"
-                                onClick={() => setShowModal(true)}
+                                onClick={() => setShowLoginModal(true)}
                             >Sign In</span>
-                            {showModal && (
-                                <Modal onClose={() => setShowModal(false)}>
+                            {showLoginModal && (
+                                <Modal onClose={() => setShowLoginModal(false)}>
                                     <LoginFormPage />
                                 </Modal>
                             )}
@@ -35,10 +36,10 @@ const TopNav = () => {
                         <div className="auth_modal">
                             <button
                                 id="get_started"
-                                onClick={() => setShowModal(true)}
+                                onClick={() => setShowSignupModal(true)}
                             >Get Started</button>
-                            {showModal && (
-                                <Modal onClose={() => setShowModal(false)}>
+                            {showSignupModal && (
+                                <Modal onClose={() => setShowSignupModal(false)}>
                                     <SignupFormPage />
                                 </Modal>
                             )}
