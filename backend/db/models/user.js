@@ -34,8 +34,8 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        isNotUrl(value) {
-          if (Validator.isUrl(value)) {
+        isUrl(value) {
+          if (Validator.isNotUrl(value)) {
             throw new Error('URL for image must be a valid URL.');
           }
         }
