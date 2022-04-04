@@ -4,7 +4,7 @@
 <br />
 <div align="center">
   <!-- <a href="https://github.com/adamtang5/aa_mod4_meme_overflow_project"> -->
-<!--     <img src="public/icons/meme-overflow-icon.png" alt="Logo" width="80" height="80"> -->
+    <img src="frontend/public/images/icons/journium-icon.png" alt="Logo" width="80" height="80">
   [Journium Logo]
   </a>
 
