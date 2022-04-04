@@ -1,3 +1,5 @@
+import ArticleCard from '../ArticleCard';
+
 const SplashMain = () => {
     return (
         <main className="relative white-bg">
@@ -12,6 +14,7 @@ const SplashMain = () => {
                     </div>
 
                     <div id="trending_links">
+                        {/* <ArticleCard story={story} i={i} /> */}
                         <div id="trending_1" className="trending_article">
                             <div className="top_left_rank">01</div>
                             <div className="article">
