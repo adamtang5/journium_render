@@ -5,7 +5,7 @@
 <div align="center">
   <!-- <a href="https://github.com/adamtang5/aa_mod4_meme_overflow_project"> -->
     <img src="frontend/public/images/icons/journium-logo-white-on-black.png" alt="Logo" width="80" height="80">
-  [Journium Logo]
+<!--   [Journium Logo] -->
   </a>
 
 <h3 align="center">Journium</h3>
