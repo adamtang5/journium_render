@@ -4,18 +4,18 @@ const ArticleCard = ({ story, i }) => {
             <div className="top_left_rank">0{i}</div>
             <div className="article">
                 <div className="article_author">
-                    <a className="avatar" href="#">
+                    <a className="avatar" href="/">
                         <img src={story.User.avatarUrl}
                             alt={story.User.displayName} />
                     </a>
                     <div className="author_org">
-                        <a className="author_name" href="#">
+                        <a className="author_name" href="/">
                             <h4>{story.User.displayName}</h4>
                         </a>
                     </div>
                 </div>
                 <div className="article_title">
-                    <a href="#">
+                    <a href="/">
                         <h2>{story.title}</h2>
                     </a>
                 </div>
