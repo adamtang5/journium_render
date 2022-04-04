@@ -1,4 +1,5 @@
 import ArticleCard from '../ArticleCard';
+import './SplashMain.css';
 
 const SplashMain = () => {
     return (

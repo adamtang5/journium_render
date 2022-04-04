@@ -1,3 +1,5 @@
+import './SplashFooter.css';
+
 const SplashFooter = () => {
     return (
         <footer className="relative white-bg">

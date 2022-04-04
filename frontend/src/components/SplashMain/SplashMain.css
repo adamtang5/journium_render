@@ -1,0 +1,151 @@
+#content_links {
+    padding-top: 40px;
+    padding-bottom: 16px;
+}
+
+#trending {
+    /* padding-top: 40px; */
+    padding-bottom: 16px;
+}
+
+#trending_header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+#trending_logo {
+    vertical-align: middle;
+    padding: 2px;
+    margin-right: 10px;
+}
+
+#trending_label,
+#discover_right_nav h2 {
+    text-transform: uppercase;
+    color: #292929;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 0.083em;
+}
+
+#trending_links {
+    display: grid;
+    justify-items: stretch;
+    align-items: center;
+    grid-template-columns: repeat(3 1fr);
+    grid-template-areas:
+    "trending_1 trending_2 trending_3"
+    "trending_4 trending_5 trending_6";
+}
+
+#trending_1 {
+    grid-area: trending_1;
+}
+
+#trending_2 {
+    grid-area: trending_2;
+}
+
+#trending_3 {
+    grid-area: trending_3;
+}
+
+#trending_4 {
+    grid-area: trending_4;
+}
+
+#trending_5 {
+    grid-area: trending_5;
+}
+
+#trending_6 {
+    grid-area: trending_6;
+}
+
+.trending_article {
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.top_left_rank {
+    font-size: 30px;
+    color: #c6c6c6;
+    font-weight: 700;
+    line-height: 36px;
+
+    position: relative;
+    top: -10px;
+    margin-right: 16px;
+}
+
+.trending_article .article {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.article .article_author {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.article .article_author .author_org {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.author_org span {
+    font-size: 13px;
+    line-height: 16px;
+    color: #757575;
+    font-weight: 500;
+    padding: 0 2px;
+}
+
+a.avatar img {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    border-radius: 25%;
+}
+
+a.author_name h4,
+a.org_name h4 {
+    font-size: 13px;
+    max-height: 16px;
+    text-overflow: ellipsis;
+    line-height: 16px;
+    font-weight: 700;
+    color: #292929;
+}
+
+.article_title h2 {
+    font-size: 16px;
+    max-height: 40px;
+    text-overflow: ellipsis;
+    color: #292929;
+    font-weight: 700;
+}
+
+.article_metrics {
+    font-size: 13px;
+    line-height: 20px;
+    color: rgba(117, 117, 117, 1);
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.article_metrics span,
+.article_metrics .member_only_content {
+    padding: 0 6px;
+}
