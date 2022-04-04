@@ -36,9 +36,7 @@ const Navigation = ({ isLoaded }) => {
         );
     } else {
         pageContent = (
-            <>
-                <Splash />
-            </>
+            <Splash />
         );
     }
 

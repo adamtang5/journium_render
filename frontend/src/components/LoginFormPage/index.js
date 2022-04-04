@@ -65,6 +65,7 @@ const LoginFormPage = () => {
 
     return (
         <div id="login-form" className="page-wrapper centered bordered rounded-corners">
+            <h2 className="centered">Welcome Back.</h2>
             <form
                 className="auth-form stacked-form"
                 onSubmit={handleSubmit}>

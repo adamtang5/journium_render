@@ -94,6 +94,7 @@ const SignupFormPage = () => {
 
     return (
         <div id="signup-form" className="page-wrapper centered bordered rounded-corners">
+            <h2 className="centered">Join Journium.</h2>
             <form
                 className="auth-form stacked-form"
                 onSubmit={handleSubmit}>
