@@ -11,3 +11,5 @@ npx dotenv sequelize db:migrate
 npx sequelize seed:generate --name stories
 
 # fill in seeds in seeder file
+
+npx dotenv sequelize db:seed:all
