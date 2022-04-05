@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import * as sessionActions from '../../store/session';
 import './ProfileButton.css';
-import UserSolidIcon from "../utils/icons/UserSolidIcon";
+import Avatar from "../Avatar";
 import ProfileDropdown from "../ProfileDropdown";
 
 const ProfileButton = ({ user }) => {
@@ -34,7 +34,7 @@ const ProfileButton = ({ user }) => {
     return (
         <>
             <button onClick={openMenu}>
-                <UserSolidIcon fill="#155" />
+                <Avatar user={user} />
             </button>
             {showMenu && (
                 <ProfileDropdown user={user} />
