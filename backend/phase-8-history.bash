@@ -16,4 +16,6 @@ npx dotenv sequelize db:seed:all
 
 # write API routes for Story
 
+# tested fetching stories from API route in browser
+
 # write reducer for Story
