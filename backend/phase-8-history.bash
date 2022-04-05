@@ -13,3 +13,7 @@ npx sequelize seed:generate --name stories
 # fill in seeds in seeder file
 
 npx dotenv sequelize db:seed:all
+
+# write API routes for Story
+
+# write reducer for Story

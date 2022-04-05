@@ -2,6 +2,7 @@ const router = require('express').Router();
 const sessionRouter = require('./session');
 const usersRouter = require('./users');
 const rolesRouter = require('./roles');
+const storiesRouter = require('./stories');
 
 /*
 Testing user auth middlewares
@@ -39,6 +40,8 @@ router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
 
 router.use('/roles', rolesRouter);
+
+router.use('/stories', storiesRouter);
 
 /*
 router.post('/test', (req, res) => {
