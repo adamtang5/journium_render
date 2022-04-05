@@ -8,7 +8,8 @@
     max-width: 600px;
 }
 
-.auth-form {
+#login-form *,
+#signup-form * {
     font-family: gt-super, Georgia, Cambria, 'Times New Roman', Times, serif;
 }
 
@@ -18,7 +19,7 @@
     color: #333;
 }
 
-.auth-form .label-text {
+.auth-form .auth-form-element {
     display: block;
     margin: 20px 0;
 }

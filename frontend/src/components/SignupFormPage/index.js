@@ -6,7 +6,7 @@ import UsernameError from './Errors/UsernameError';
 import EmailError from './Errors/EmailError';
 import PasswordError from './Errors/PasswordError';
 import ConfirmPasswordError from './Errors/ConfirmPasswordError';
-import './SignupForm.css';
+import '../../context/AuthForm.css';
 
 const SignupFormPage = () => {
     const dispatch = useDispatch();
@@ -98,24 +98,13 @@ const SignupFormPage = () => {
             <form
                 className="auth-form stacked-form"
                 onSubmit={handleSubmit}>
-                <label>
-                    <span className="label-text">Username</span>
-                    <input
-                        type="text"
-                        value={username}
-                        onChange={usernameChange}
-                        onBlur={validateUsername}
-                        required
-                    />
-                    <UsernameError visible={usernameTooShort} />
-                </label>
-                <label>
-                    <span className="label-text">Email</span>
+                <label className="auth-form-element">
                     <input
                         type="email"
                         value={email}
                         onChange={emailChange}
                         onBlur={validateEmail}
+                        placeholder="Email"
                         required
                     />
                     <EmailError
@@ -123,24 +112,24 @@ const SignupFormPage = () => {
                         emailInvalid={emailInvalid}
                     />
                 </label>
-                <label>
-                    <span className="label-text">Password</span>
+                <label className="auth-form-element">
                     <input
                         type="password"
                         value={password}
                         onChange={passwordChange}
                         onBlur={validatePassword}
+                        placeholder="Password"
                         required
                     />
                     <PasswordError visible={passwordTooShort} />
                 </label>
-                <label>
-                    <span className="label-text">Confirm Password</span>
+                <label className="auth-form-element">
                     <input
                         type="password"
                         value={confirmPassword}
                         onChange={confirmPasswordChange}
                         onBlur={validateConfirmPassword}
+                        placeholder="Confirm Password"
                         required
                     />
                     <ConfirmPasswordError
@@ -148,6 +137,16 @@ const SignupFormPage = () => {
                         confirmPasswordTooShort={confirmPasswordTooShort}
                         passwordsDoNotMatch={passwordsDoNotMatch}
                     />
+                </label>
+                <label className={`auth-form-element${showAvatarUrl ? '' : ' hidden'}`}>
+                    <input
+                        type="text"
+                        value={avatarUrl}
+                        onChange={avatarUrlChange}
+                        onBlue={validateAvatarUrl}
+                        placeholder="Avatar URL"
+                    />
+                    <AvatarUrlError avatarUrlInvalid={avatarUrlInvalid} />
                 </label>
                 {errors.length > 0 && (
                     <ul className='errors'>
