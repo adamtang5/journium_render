@@ -26,6 +26,10 @@
     align-items: center;
 }
 
+#signup-pt-2-summary.flex-row.hidden {
+    display: none;
+}
+
 .auth-form .auth-form-group {
     display: block;
 }
