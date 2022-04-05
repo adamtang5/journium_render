@@ -8,7 +8,14 @@ module.exports = (sequelize, DataTypes) => {
         len: [4, 30],
       },
     },
-  }, {});
+  },
+    {
+      defaultScope: {
+        attributes: {
+          exclude: ['createdAt', 'updatedAt'],
+        },
+      },
+    });
   Role.associate = function (models) {
     // associations can be defined here
   };
