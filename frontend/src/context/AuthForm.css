@@ -19,9 +19,21 @@
     color: #333;
 }
 
+.auth-form .auth-form-group {
+    display: block;
+}
+
+.auth-form .auth-form-group.hidden {
+    display: none;
+}
+
 .auth-form .auth-form-element {
     display: block;
     margin: 20px 0;
+}
+
+.auth-form .auth-form-element.hidden {
+    display: none;
 }
 
 .auth-form input {
