@@ -39,3 +39,5 @@ npx sequelize seed:generate --name users
 # fill in seeds in seeder file
 
 npx dotenv sequelize db:seed:all
+
+# fixing login and signup form due to db change

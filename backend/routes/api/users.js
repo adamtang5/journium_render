@@ -25,6 +25,12 @@ const validateSignup = [
         .not()
         .isEmail()
         .withMessage('Name cannot be an email.'),
+    check('avatarUrl')
+        .isURL()
+        .withMessage('Avatar URL must be valid URL.'),
+    check('roleId')
+        .exists({ checkFalsy: true })
+        .withMessage('Please choose a valid role.'),
     handleValidationErrors,
 ];
 
