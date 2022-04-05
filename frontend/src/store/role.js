@@ -12,7 +12,7 @@ export const fetchRoles = () => async (dispatch) => {
     const data = await res.json();
     dispatch(loadRoles(data.roles));
     return res;
-}
+};
 
 const initialState = {
     roles: null,
