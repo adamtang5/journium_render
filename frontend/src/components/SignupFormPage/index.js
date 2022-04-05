@@ -8,6 +8,7 @@ import ConfirmPasswordError from './Errors/ConfirmPasswordError';
 import DisplayNameError from './Errors/DisplayNameError';
 import AvatarUrlError from './Errors/AvatarUrlError';
 import '../../context/AuthForm.css';
+import { csrfFetch } from '../../store/csrf';
 
 const SignupFormPage = () => {
     const dispatch = useDispatch();
@@ -183,8 +184,8 @@ const SignupFormPage = () => {
             <h2 className="centered">Join Journium.</h2>
             <form
                 className="auth-form stacked-form"
-                onSubmit={handleSubmit}>
-
+                onSubmit={handleSubmit}
+            >
                 <div
                     id="signup-pt-1"
                     className={`auth-form-group${showPart1 ? '' : ' hidden'}`}
