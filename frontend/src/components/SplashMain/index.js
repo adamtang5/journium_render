@@ -11,7 +11,7 @@ const SplashMain = () => {
                         <div id="trending_logo">
                             <i className="fas fa-chart-line"></i>
                         </div>
-                        <div id="trending_label">Trending on Medium</div>
+                        <div id="trending_label">Featured on Journium</div>
                     </div>
 
                     <div id="trending_links">
