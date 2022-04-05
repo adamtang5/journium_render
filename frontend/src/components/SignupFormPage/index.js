@@ -278,10 +278,10 @@ const SignupFormPage = () => {
                 </div>
                 <div
                     id="signup-pt-2-summary"
-                    className={`auth-form-group${showPart2Summary ? '' : ' hidden'}`}
+                    className={`flex-row auth-form-group${showPart2Summary ? '' : ' hidden'}`}
                 >
                     <img src={avatarUrl} width="30px" height="30px" alt={displayName} />
-                    <p className="summary-text">Name: {displayName}</p>
+                    <p className="summary-text">Writer Name: {displayName}</p>
                 </div>
 
                 <div

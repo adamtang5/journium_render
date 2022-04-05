@@ -19,6 +19,13 @@
     color: #333;
 }
 
+#signup-pt-2-summary.flex-row {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+}
+
 .auth-form .auth-form-group {
     display: block;
 }
@@ -62,6 +69,11 @@ ul.errors {
 
 .gap-10px {
     gap: 10px;
+}
+
+p.summary-text {
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .auth-form .button-submit,
