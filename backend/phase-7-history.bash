@@ -7,3 +7,6 @@
 # implemented roleReducer
 
 # styled signup form
+
+# pushed to heroku
+# removed db, migrated and seeded
