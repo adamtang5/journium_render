@@ -30,6 +30,22 @@
     display: none;
 }
 
+#signup-pt-3 .radio-label {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    margin-bottom: 5px;
+}
+
+#signup-pt-3 .radio-label input.radio {
+    min-width: auto;
+    width: auto;
+}
+
+#signup-pt-3 .radio-text {
+    font-size: 16px;
+}
+
 .auth-form .auth-form-group {
     display: block;
 }

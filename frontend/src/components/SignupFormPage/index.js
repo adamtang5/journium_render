@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as sessionActions from '../../store/session';
+import * as roleActions from '../../store/role';
 import { Redirect } from 'react-router-dom';
 import EmailError from './Errors/EmailError';
 import PasswordError from './Errors/PasswordError';
@@ -8,11 +9,11 @@ import ConfirmPasswordError from './Errors/ConfirmPasswordError';
 import DisplayNameError from './Errors/DisplayNameError';
 import AvatarUrlError from './Errors/AvatarUrlError';
 import '../../context/AuthForm.css';
-import { csrfFetch } from '../../store/csrf';
 
 const SignupFormPage = () => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
+    const roles = useSelector(state => state.role.roles);
 
     // slice-of-state variables for controlled inputs
     const [email, setEmail] = useState('');
@@ -161,6 +162,8 @@ const SignupFormPage = () => {
         setShowPart2(false);
         setShowPart2Summary(true);
         setShowPart3(true);
+        dispatch(roleActions.fetchRoles());
+        console.log(roles);
     };
 
     const handleSubmit = e => {
@@ -254,7 +257,7 @@ const SignupFormPage = () => {
                             type="text"
                             value={displayName}
                             onChange={displayNameChange}
-                            onBlue={validateDisplayName}
+                            onBlur={validateDisplayName}
                             placeholder="Display Name"
                         />
                         <DisplayNameError displayNameTooShort={displayNameTooShort} />
@@ -264,7 +267,7 @@ const SignupFormPage = () => {
                             type="text"
                             value={avatarUrl}
                             onChange={avatarUrlChange}
-                            onBlue={validateAvatarUrl}
+                            onBlur={validateAvatarUrl}
                             placeholder="Avatar URL"
                         />
                         <AvatarUrlError avatarUrlInvalid={avatarUrlInvalid} />
@@ -290,17 +293,20 @@ const SignupFormPage = () => {
                     className={`auth-form-group${showPart3 ? '' : ' hidden'}`}
                 >
                     <div className="auth-form-element">
-                        <label>Who do you identify with?</label>
-                        <label>
-                            {/* Need to set up API route to fetch for roles */}
-                            <input
-                                type="radio"
-                                value={1}
-                                checked={roleId === 1}
-                                onChange={roleIdChange}
-                            />
-                            Staff
-                        </label>
+                        <p>Who do you identify with?</p>
+                        {roles.map(role => (
+                            <label className="radio-label" key={role.id}>
+                                <input
+                                    className="radio"
+                                    type="radio"
+                                    key={role.id}
+                                    value={role.id}
+                                    checked={+roleId === role.id}
+                                    onChange={roleIdChange}
+                                />
+                                <span className="radio-text">{role.name}</span>
+                            </label>
+                        ))}
                     </div>
                     {errors.length > 0 && (
                         <ul className='errors'>
