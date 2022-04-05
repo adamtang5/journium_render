@@ -4,7 +4,21 @@ const bcrypt = require('bcryptjs');
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
-    username: {
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [4, 256],
+      },
+    },
+    hashedPassword: {
+      type: DataTypes.STRING.BINARY,
+      allowNull: false,
+      validate: {
+        len: [60, 60],
+      },
+    },
+    displayName: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
@@ -16,19 +30,21 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    email: {
+    avatarUrl: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [3, 256],
-      },
+        isUrl(value) {
+          if (Validator.isNotUrl(value)) {
+            throw new Error('URL for image must be a valid URL.');
+          }
+        }
+      }
     },
-    hashedPassword: {
-      type: DataTypes.STRING.BINARY,
+    roleId: {
       allowNull: false,
-      validate: {
-        len: [60, 60],
-      },
+      type: DataTypes.INTEGER,
+      references: { model: 'Roles' },
     },
   },
     {
@@ -51,8 +67,8 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   User.prototype.toSafeObject = function () {  // remember, this cannot be an arrow function
-    const { id, username, email } = this; // context will be the User instance
-    return { id, username, email };
+    const { id, displayName, email } = this; // context will be the User instance
+    return { id, displayName, email };
   };
 
   User.prototype.validatePassword = function (password) {
@@ -63,14 +79,11 @@ module.exports = (sequelize, DataTypes) => {
     return await User.scope('currentUser').findByPk(id);
   };
 
-  User.login = async function ({ credential, password }) {
+  User.login = async function ({ email, password }) {
     const { Op } = require('sequelize');
     const user = await User.scope('loginUser').findOne({
       where: {
-        [Op.or]: {
-          username: credential,
-          email: credential,
-        },
+        email,
       },
     });
 
@@ -79,18 +92,25 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
 
-  User.signup = async function ({ username, email, password }) {
+  User.signup = async function ({ email, password, displayName, avatarUrl, roleId }) {
     const hashedPassword = bcrypt.hashSync(password);
     const user = await User.create({
-      username,
       email,
       hashedPassword,
+      displayName,
+      avatarUrl,
+      roleId,
     });
     return await User.scope('currentUser').findByPk(user.id);
   };
 
   User.associate = function (models) {
     // associations can be defined here
+
+    // 1-to-many relationship with Role model
+    User.belongsTo(models.Role, {
+      foreignKey: 'roleId',
+    });
   };
   return User;
 };

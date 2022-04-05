@@ -2,25 +2,25 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import { Redirect } from 'react-router-dom';
-import CredentialError from './Errors/CredentialError';
+import EmailError from './Errors/EmailError';
 import PasswordError from './Errors/PasswordError';
-import './LoginForm.css';
+import '../../context/AuthForm.css';
 
 const LoginFormPage = () => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
 
-    const [credential, setCredential] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState([]);
 
-    const [credentialInvalid, setCredentialInvalid] = useState(false);
+    const [emailInvalid, setEmailInvalid] = useState(false);
     const [passwordInvalid, setPasswordInvalid] = useState(false);
     const [submitDisabled, setSubmitDisabled] = useState(true);
 
     useEffect(() => {
-        setSubmitDisabled(!(credential.length >= 4 && password.length >= 6));
-    }, [credential, password]);
+        setSubmitDisabled(!(email.length >= 4 && password.length >= 6));
+    }, [email, password]);
 
     if (sessionUser) return (
         <Redirect to="/" />
@@ -29,7 +29,7 @@ const LoginFormPage = () => {
     const handleSubmit = e => {
         e.preventDefault();
         setErrors([]);
-        return dispatch(sessionActions.login({ credential, password }))
+        return dispatch(sessionActions.login({ email, password }))
             .catch(async (res) => {
                 const data = await res.json();
                 if (data && data.errors) setErrors(data.errors);
@@ -45,9 +45,9 @@ const LoginFormPage = () => {
             });
     };
 
-    const credentialChange = e => {
+    const emailChange = e => {
         setErrors([]);
-        setCredential(e.target.value);
+        setEmail(e.target.value);
     };
 
     const passwordChange = e => {
@@ -55,8 +55,8 @@ const LoginFormPage = () => {
         setPassword(e.target.value);
     };
 
-    const validateCredential = e => {
-        setCredentialInvalid(credential.length < 4);
+    const validateEmail = e => {
+        setEmailInvalid(email.length < 4);
     };
 
     const validatePassword = e => {
@@ -69,24 +69,24 @@ const LoginFormPage = () => {
             <form
                 className="auth-form stacked-form"
                 onSubmit={handleSubmit}>
-                <label>
-                    <span className="label-text">Username or Email</span>
+                <label className="auth-form-element">
                     <input
                         type="text"
-                        value={credential}
-                        onChange={credentialChange}
-                        onBlur={validateCredential}
+                        value={email}
+                        onChange={emailChange}
+                        onBlur={validateEmail}
+                        placeholder="Email"
                         required
                     />
-                    <CredentialError visible={credentialInvalid} />
+                    <EmailError visible={emailInvalid} />
                 </label>
-                <label>
-                    <span className="label-text">Password</span>
+                <label className="auth-form-element">
                     <input
                         type="password"
                         value={password}
                         onChange={passwordChange}
                         onBlur={validatePassword}
+                        placeholder="Password"
                         required
                     />
                     <PasswordError visible={passwordInvalid} />

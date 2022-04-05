@@ -8,8 +8,9 @@
     max-width: 600px;
 }
 
-.auth-form {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+#login-form *,
+#signup-form * {
+    font-family: gt-super, Georgia, Cambria, 'Times New Roman', Times, serif;
 }
 
 .auth-form label {
@@ -18,9 +19,48 @@
     color: #333;
 }
 
-.auth-form .label-text {
+#signup-pt-2-summary.flex-row {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+}
+
+#signup-pt-2-summary.flex-row.hidden {
+    display: none;
+}
+
+#signup-pt-3 .radio-label {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    margin-bottom: 5px;
+}
+
+#signup-pt-3 .radio-label input.radio {
+    min-width: auto;
+    width: auto;
+}
+
+#signup-pt-3 .radio-text {
+    font-size: 16px;
+}
+
+.auth-form .auth-form-group {
+    display: block;
+}
+
+.auth-form .auth-form-group.hidden {
+    display: none;
+}
+
+.auth-form .auth-form-element {
     display: block;
     margin: 20px 0;
+}
+
+.auth-form .auth-form-element.hidden {
+    display: none;
 }
 
 .auth-form input {
@@ -49,6 +89,11 @@ ul.errors {
 
 .gap-10px {
     gap: 10px;
+}
+
+p.summary-text {
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .auth-form .button-submit,
