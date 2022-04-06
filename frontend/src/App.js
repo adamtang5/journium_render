@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Switch } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import * as sessionActions from './store/session';
 import * as userActions from './store/user';
 import * as roleActions from './store/role';
 import Navigation from './components/Navigation';
+import NewStoryForm from './components/NewStoryForm';
 
 function App() {
   const dispatch = useDispatch();
@@ -24,7 +25,7 @@ function App() {
 
   return (
     <>
-      <Navigation isLoaded={isLoaded} />
+      {/* <Navigation isLoaded={isLoaded} /> */}
       {isLoaded && (
         <Switch>
           {/* <Route path="/login">
@@ -34,6 +35,12 @@ function App() {
           {/* <Route path="/signup">
             <SignupFormPage />
           </Route> */}
+          <Route exact path="/">
+            <Navigation isLoaded={isLoaded} />
+          </Route>
+          <Route path="/new-story">
+            <NewStoryForm />
+          </Route>
         </Switch>
       )}
     </>

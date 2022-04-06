@@ -31,6 +31,12 @@ router.get('/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
     });
 
     return res.json({ story });
-}))
+}));
+
+// POST /api/stories
+router.post('/', requireAuth, asyncHandler(async (req, res) => {
+    const story = await Story.create(req.body);
+    res.json(story);
+}));
 
 module.exports = router;
