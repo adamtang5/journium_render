@@ -8,6 +8,11 @@
     width: 80px;
 }
 
+#story-column {
+    max-width: 1030px;
+    align-items: center;
+}
+
 #other-features {
     width: 400px;
 }
