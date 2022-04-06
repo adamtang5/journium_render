@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import * as userActions from '../../store/user';
-import HomeHollowIcon from '../utils/icons/HomeHollowIcon';
+import HomeSolidIcon from '../utils/icons/HomeSolidIcon';
 import BookmarksHollowIcon from '../utils/icons/BookmarksHollowIcon';
 import ReadHollowIcon from '../utils/icons/ReadHollowIcon';
 import WriteHollowIcon from '../utils/icons/WriteHollowIcon';
@@ -24,7 +24,7 @@ const UserNav = () => {
                 <NavLink to="/">Home</NavLink>
             </li>
             <NavLink to="/">
-                <HomeHollowIcon />
+                <HomeSolidIcon />
             </NavLink>
             <NavLink to="/lists">
                 <BookmarksHollowIcon />
