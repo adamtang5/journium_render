@@ -32,7 +32,6 @@ module.exports = (sequelize, DataTypes) => {
     },
     avatarUrl: {
       type: DataTypes.STRING,
-      allowNull: false,
       validate: {
         isUrl(value) {
           if (Validator.isNotUrl(value)) {
@@ -105,12 +104,17 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   User.associate = function (models) {
-    // associations can be defined here
-
     // 1-to-many relationship with Role model
     User.belongsTo(models.Role, {
       foreignKey: 'roleId',
     });
+
+    // many-to-1 relationship with Story model
+    User.hasMany(models.Story, {
+      foreignKey: 'userId',
+      onDelete: 'cascade',
+      hooks: true,
+    })
   };
   return User;
 };

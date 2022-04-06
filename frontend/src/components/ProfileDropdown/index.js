@@ -2,12 +2,14 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import * as sessionActions from '../../store/session';
-import UserSolidIcon from '../utils/icons/UserSolidIcon';
+import * as userActions from '../../store/user';
+import Avatar from '../Avatar';
 
 const ProfileDropdown = ({ user }) => {
     const dispatch = useDispatch();
     const logout = e => {
         e.preventDefault();
+        dispatch(userActions.clearUsers());
         dispatch(sessionActions.logout());
     };
 
@@ -15,7 +17,7 @@ const ProfileDropdown = ({ user }) => {
         <div className="profile-dropdown flex-column">
             <div className="profile-dropdown-card flex-row">
                 <div className="card-avatar">
-                    <UserSolidIcon fill="#155" />
+                    <Avatar user={user} />
                 </div>
                 <div className="card-text flex-column">
                     <h3 className="card-name">{user.username}</h3>

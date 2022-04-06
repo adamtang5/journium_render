@@ -50,4 +50,11 @@ router.post('/', validateSignup, asyncHandler(async (req, res) => {
     return res.json({ user });
 }));
 
+// GET /api/users/:id
+router.get('/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
+    const id = parseInt(req.params.id);
+    const user = await User.scope('currentUser').findByPk(id);
+    return res.json({ user });
+}));
+
 module.exports = router;

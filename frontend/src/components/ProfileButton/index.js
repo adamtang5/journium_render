@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import * as sessionActions from '../../store/session';
-import './ProfileButton.css';
-import UserSolidIcon from "../utils/icons/UserSolidIcon";
+import Avatar from "../Avatar";
 import ProfileDropdown from "../ProfileDropdown";
+import './ProfileButton.css';
 
 const ProfileButton = ({ user }) => {
-    const dispatch = useDispatch();
     const [showMenu, setShowMenu] = useState(false);
 
     const openMenu = () => {
@@ -26,15 +23,10 @@ const ProfileButton = ({ user }) => {
         return () => document.removeEventListener('click', closeMenu);
     }, [showMenu]);
 
-    const logout = e => {
-        e.preventDefault();
-        dispatch(sessionActions.logout());
-    };
-
     return (
         <>
             <button onClick={openMenu}>
-                <UserSolidIcon fill="#155" />
+                <Avatar user={user} />
             </button>
             {showMenu && (
                 <ProfileDropdown user={user} />

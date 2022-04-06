@@ -34,7 +34,6 @@ const SignupFormPage = () => {
     const [passwordsDoNotMatch, setPasswordsDoNotMatch] = useState(false);
     const [displayNameTooShort, setDisplayNameTooShort] = useState(false);
     const [avatarUrlInvalid, setAvatarUrlInvalid] = useState(false);
-    const [roleIdInvalid, setRoleIdInvalid] = useState(false);
 
     // signup form flow control
     const [showPart1, setShowPart1] = useState(true);
@@ -142,10 +141,6 @@ const SignupFormPage = () => {
             "{2,6}\\b([-a-zA-Z0-9@:%._\\+~# ?&//=]*)")
         setAvatarUrlInvalid(!urlRe.test(avatarUrl));
     }
-
-    const validateRoleId = e => {
-        setRoleIdInvalid(!roleId);
-    };
 
     // button onClick handlers
     const handlePart1Submit = e => {

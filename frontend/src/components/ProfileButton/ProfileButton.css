@@ -1,5 +1,11 @@
 .icons {
     width: 40px;
     height: 40px;
-    /* filter: invert(28%) sepia(52%) saturate(2423%) hue-rotate(155deg) brightness(93%) contrast(104%); */
+}
+
+.icons img.avatar {
+    object-fit: cover;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
 }
