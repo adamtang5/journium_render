@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Switch } from 'react-router-dom';
-// import LoginFormPage from './components/LoginFormPage';
-// import LoginFormModal from './components/LoginFormModal';
-// import SignupFormPage from './components/SignupFormPage';
 import * as sessionActions from './store/session';
+import * as userActions from './store/user';
 import Navigation from './components/Navigation';
 
 function App() {
@@ -12,8 +10,19 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
+    dispatch(sessionActions.restoreUser())
+      .then((user) => {
+        if (user) {
+          dispatch(userActions.fetchUser(user.id));
+          return;
+        }
+      })
+      .then(() => setIsLoaded(true));
   }, [dispatch]);
+
+  useEffect(() => {
+
+  })
 
   return (
     <>

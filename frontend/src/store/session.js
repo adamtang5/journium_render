@@ -26,7 +26,7 @@ export const login = (user) => async (dispatch) => {
     return res;
 };
 
-export const demoLogin = () => async (dispath) => {
+export const demoLogin = () => async (dispatch) => {
     const user = {
         email: 'demo@user.io',
         password: 'password',
@@ -36,7 +36,7 @@ export const demoLogin = () => async (dispath) => {
         body: JSON.stringify(user),
     });
     const data = await res.json();
-    dispath(setUser(data.user));
+    dispatch(setUser(data.user));
     return res;
 };
 
@@ -44,7 +44,7 @@ export const restoreUser = () => async (dispatch) => {
     const res = await csrfFetch('/api/session');
     const data = await res.json();
     dispatch(setUser(data.user));
-    return res;
+    return data.user;
 };
 
 export const signup = (user) => async (dispatch) => {
@@ -73,6 +73,16 @@ export const logout = () => async (dispatch) => {
 const initialState = {
     user: null,
 };
+
+/*
+state.session = {
+    user: {
+        id: ...,
+        email: ...,
+        displayName: ...,
+    }
+}
+*/
 
 const sessionReducer = (state = initialState, action) => {
     switch (action.type) {

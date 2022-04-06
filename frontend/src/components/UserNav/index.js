@@ -9,6 +9,7 @@ import './UserNav.css';
 
 const UserNav = () => {
     const sessionUser = useSelector(state => state.session.user);
+    const currentUser = useSelector(state => state.user.users[sessionUser.id]);
 
     return (
         <ul>
@@ -27,7 +28,7 @@ const UserNav = () => {
             <NavLink to="/new-story">
                 <WriteHollowIcon />
             </NavLink>
-            <ProfileButton user={sessionUser} />
+            <ProfileButton user={currentUser} />
         </ul>
     )
 };
