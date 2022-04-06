@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import * as userActions from '../../store/user';
+import JourniumLogo from '../JourniumLogo';
 import HomeSolidIcon from '../utils/icons/HomeSolidIcon';
 import BookmarksHollowIcon from '../utils/icons/BookmarksHollowIcon';
 import ReadHollowIcon from '../utils/icons/ReadHollowIcon';
@@ -19,28 +20,34 @@ const UserNav = () => {
     }, [dispatch]);
 
     return (
-        <ul>
-            <li>
-                <NavLink to="/">Home</NavLink>
-            </li>
-            <NavLink to="/">
-                <HomeSolidIcon />
-            </NavLink>
-            <NavLink to="/lists">
-                <BookmarksHollowIcon />
-            </NavLink>
-            <NavLink to="/">
-                <ReadHollowIcon />
-            </NavLink>
-            <NavLink to="/new-story">
-                <WriteHollowIcon />
-            </NavLink>
-            {currentUser && (
-                <>
-                    <ProfileButton user={currentUser} />
-                </>
-            )}
-        </ul>
+        <div id="user-nav-icons" className="flex-column">
+            <div className="start">
+                <NavLink to="/">
+                    <JourniumLogo />
+                </NavLink>
+            </div>
+            <div className="user-nav-actives flex-column">
+                <NavLink to="/">
+                    <HomeSolidIcon />
+                </NavLink>
+                <NavLink to="/lists">
+                    <BookmarksHollowIcon />
+                </NavLink>
+                <NavLink to="/">
+                    <ReadHollowIcon />
+                </NavLink>
+                <NavLink to="/new-story">
+                    <WriteHollowIcon />
+                </NavLink>
+            </div>
+            <div className="end">
+                {currentUser && (
+                    <>
+                        <ProfileButton user={currentUser} />
+                    </>
+                )}
+            </div>
+        </div>
     )
 };
 
