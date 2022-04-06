@@ -15,14 +15,43 @@ export const fetchStories = () => async (dispatch) => {
 };
 
 const initialState = {
-    stories: null,
+    stories: {},
 };
+
+/*
+state.story = {
+    stories: {
+        [id]: {
+            id: ...,
+            userId: ...,
+            title: ...,
+            content: ...,
+            imageUrl: ...,
+            videoUrl: ...,
+            createdAt: ...,
+            updatedAt: ...,
+        },
+        [id]: {
+            id: ...,
+            userId: ...,
+            title: ...,
+            content: ...,
+            imageUrl: ...,
+            videoUrl: ...,
+            createdAt: ...,
+            updatedAt: ...,
+        },
+    },
+}
+*/
 
 const storyReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_STORIES: {
             const newState = Object.assign({}, state);
-            newState.stories = action.stories;
+            action.stories.forEach(story => {
+                newState.stories[story.id] = story;
+            })
             return newState;
         }
         default:
