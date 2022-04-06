@@ -4,13 +4,18 @@ const { check } = require('express-validator');
 
 const { handleValidationErrors } = require('../../utils/validation');
 const { requireAuth } = require('../../utils/auth');
-const { Story } = require('../../db/models');
+const { Story, User, Role } = require('../../db/models');
 
 const router = express.Router();
 
 // GET /api/stories
 router.get('/', requireAuth, asyncHandler(async (req, res) => {
-    const stories = await Story.findAll();
+    const stories = await Story.findAll({
+        include: {
+            model: User,
+            include: Role,
+        },
+    });
 
     return res.json({ stories });
 }));
@@ -18,7 +23,12 @@ router.get('/', requireAuth, asyncHandler(async (req, res) => {
 // GET /api/stories/:storyId
 router.get('/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
     const id = parseInt(req.params.id, 10);
-    const story = await Story.findByPk(id);
+    const story = await Story.findByPk(id, {
+        include: {
+            model: User,
+            include: Role,
+        },
+    });
 
     return res.json({ story });
 }))

@@ -22,10 +22,6 @@ function App() {
       .then(() => setIsLoaded(true));
   }, [dispatch]);
 
-  useEffect(() => {
-
-  })
-
   return (
     <>
       <Navigation isLoaded={isLoaded} />
