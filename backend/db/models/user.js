@@ -32,7 +32,6 @@ module.exports = (sequelize, DataTypes) => {
     },
     avatarUrl: {
       type: DataTypes.STRING,
-      allowNull: false,
       validate: {
         isUrl(value) {
           if (Validator.isNotUrl(value)) {
