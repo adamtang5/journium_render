@@ -1,6 +1,6 @@
 import { csrfFetch } from "./csrf";
 
-const LOAD_ROLES = 'role/LOAD_ROLES';
+const LOAD_ROLES = 'role/loadRoles';
 
 const loadRoles = (roles) => ({
     type: LOAD_ROLES,

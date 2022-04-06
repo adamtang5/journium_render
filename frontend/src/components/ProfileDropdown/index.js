@@ -2,12 +2,14 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import * as sessionActions from '../../store/session';
+import * as userActions from '../../store/user';
 import Avatar from '../Avatar';
 
 const ProfileDropdown = ({ user }) => {
     const dispatch = useDispatch();
     const logout = e => {
         e.preventDefault();
+        dispatch(userActions.clearUsers());
         dispatch(sessionActions.logout());
     };
 

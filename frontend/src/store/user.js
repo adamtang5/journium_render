@@ -1,11 +1,16 @@
 import { csrfFetch } from "./csrf";
 
 const LOAD_USER = 'user/loadUser';
+const CLEAR_USERS = 'user/ClearUsers';
 
 const load = user => ({
     type: LOAD_USER,
     user,
 });
+
+const clear = () => ({
+    type: CLEAR_USERS,
+})
 
 export const fetchUser = (id) => async (dispatch) => {
     const res = await csrfFetch(`/api/users/${id}`);
@@ -13,6 +18,11 @@ export const fetchUser = (id) => async (dispatch) => {
     dispatch(load(data.user));
     return res;
 };
+
+export const clearUsers = () => async (dispatch) => {
+    dispatch(clear());
+    return;
+}
 
 const initialState = {
     users: {},
@@ -50,6 +60,8 @@ const userReducer = (state = initialState, action) => {
             newState.users[action.user.id] = action.user;
             return newState;
         }
+        case CLEAR_USERS:
+            return initialState;
         default:
             return state;
     }
