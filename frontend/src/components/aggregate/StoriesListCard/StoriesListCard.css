@@ -1,6 +1,7 @@
 .story-card {
     width: 100%;
     max-width: 700px;
+    margin-bottom: 30px;
 }
 
 .story-card .author {
@@ -25,33 +26,7 @@
     font-size: 12px;
     max-height: 16px;
     line-height: 16px;
-    border-radius: 99em;
     padding: 3px 8px;
-}
-
-.role-1 {
-    background-color: rgb(18, 43, 95);
-    color: white;
-}
-
-.role-2 {
-    background-color: rgb(94, 58, 27);
-    color: white;
-}
-
-.role-3 {
-    background-color: rgb(38, 23, 94);
-    color: white;
-}
-
-.role-4 {
-    background-color: rgb(13, 82, 94);
-    color: white;
-}
-
-.role-5 {
-    background-color: rgb(94, 86, 8);
-    color: white;
 }
 
 .story-card .story-body {

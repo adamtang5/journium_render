@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
-import * as userActions from '../../store/user';
-import * as storyActions from '../../store/story';
-import JourniumLogo from "../JourniumLogo";
-import ProfileButton from "../ProfileButton";
+import * as userActions from '../../../store/user';
+import * as storyActions from '../../../store/story';
+import JourniumLogo from "../../atomic/JourniumLogo";
+import ProfileButton from "../../ProfileButton";
 import NewStoryFormImageUrlError from './Errors/NewStoryFormImageUrlError';
-import RenderImage from "../RenderImage";
+import RenderImage from "../../RenderImage";
 import NewStoryFormVideoUrlError from './Errors/NewStoryFormVideoUrlError';
 import './NewStoryForm.css';
 

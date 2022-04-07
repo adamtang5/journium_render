@@ -1,0 +1,76 @@
+.single-story {
+    margin: 40px auto;
+    max-width: 1080px;
+    min-width: 800px;
+    width: fit-content;
+}
+
+.single-story .story-info {
+    gap: 10px;
+    margin: 0 50px;
+}
+
+.single-story .story-info .icons {
+    height: 48px;
+    width: 48px;
+}
+
+.single-story .story-info .icons img.avatar {
+    width: 100%;
+    height: 100%;
+}
+
+.single-story .story-info .story-info-text {
+    justify-content: space-around;
+    width: max-content;
+}
+
+.single-story .story-info .author-info {
+    gap: 8px;
+    align-items: center;
+}
+
+.single-story .story-info .author-info p.display-name {
+    margin: 0;
+    letter-spacing: 0.03em;
+}
+
+.single-story .story-info .role {
+    font-size: 12px;
+    max-height: 16px;
+    line-height: 16px;
+    padding: 3px 8px;
+    width: max-content;
+}
+
+.single-story .story-info .date {
+    color: #757575;
+}
+
+.single-story .story-main {
+    margin: 20px auto;
+    padding: 0px 50px;
+}
+
+.single-story .story-image {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.single-story .story-main .story-image img {
+    object-fit: scale-down;
+    width: 700px;
+    height: 350px;
+}
+
+.single-story .story-title h2 {
+    margin: 10px 0;
+}
+
+.single-story p.story-content {
+    font-size: 20px;
+    line-height: 32px;
+    font-family: Cambria, Georgia, Times, 'Times New Roman', serif;
+}

@@ -1,4 +1,4 @@
-* {
+/* * {
     font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
@@ -32,3 +32,32 @@ ul {
     display: flex;
     flex-direction: row;
 }
+
+.role {
+    border-radius: 99em;
+}
+
+.role-1 {
+    background-color: rgb(18, 43, 95);
+    color: white;
+}
+
+.role-2 {
+    background-color: rgb(94, 58, 27);
+    color: white;
+}
+
+.role-3 {
+    background-color: rgb(38, 23, 94);
+    color: white;
+}
+
+.role-4 {
+    background-color: rgb(13, 82, 94);
+    color: white;
+}
+
+.role-5 {
+    background-color: rgb(94, 86, 8);
+    color: white;
+} */

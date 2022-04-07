@@ -1,6 +1,6 @@
 const DisplayName = ({ user }) => {
     return (
-        <p className="display-name">{user.displayName}</p>
+        <div className="display-name">{user.displayName}</div>
     )
 };
 

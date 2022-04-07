@@ -6,8 +6,8 @@ import * as userActions from './store/user';
 import * as roleActions from './store/role';
 import * as storyActions from './store/story';
 import Navigation from './components/Navigation';
-import NewStoryForm from './components/NewStoryForm';
-import SingleStory from './components/SingleStory';
+import NewStoryForm from './components/aggregate/NewStoryForm';
+import SingleStory from './components/aggregate/SingleStory';
 
 function App() {
   const dispatch = useDispatch();
