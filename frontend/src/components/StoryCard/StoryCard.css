@@ -1,16 +1,11 @@
 .story-card {
-    display: grid;
-    grid-template-columns: 1fr 175px;
-    grid-template-areas:
-    "author author"
-    "story thumbnail"
-    "info .";
+    width: 100%;
     max-width: 700px;
 }
 
 .story-card .author {
-    grid-area: author;
     align-items: center;
+    gap: 5px;
 }
 
 .story-card .author .avatar img {
@@ -18,13 +13,12 @@
     height: 24px;
 }
 
-.story-card .author .display-name p {
+.story-card .author p.display-name {
     font-size: 16px;
     max-height: 20px;
     line-height: 20px;
-    color: black;
+    color: #292929;
     margin: 0;
-    margin-right: 8px;
 }
 
 .story-card .author .role {
@@ -60,18 +54,22 @@
     color: white;
 }
 
-.story-card .story {
-    grid-area: story;
+.story-card .story-body {
+    justify-content: space-between;
 }
 
-.story-card .story .title h2 {
+.story-card .story-text .story-title,
+.story-card .story-text .story-blurb {
+    color: #292929;
+}
+
+.story-card .story-text .story-title h2 {
     font-size: 22px;
     font-weight: 700;
-    color: #292929;
     padding-bottom: 8px;
 }
 
-.story-card .story .blurb p {
+.story-card .story-text .story-blurb p {
     font-size: 16px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     margin: 0;
