@@ -25,10 +25,12 @@ export const createStory = (story) => async (dispatch) => {
         method: 'POST',
         body: JSON.stringify(story),
     });
-    const data = await res.json();
-    dispatch(newStory(data.story));
-    return res;
-}
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(newStory(data));
+        return data;
+    }
+};
 
 const initialState = {
     stories: {},

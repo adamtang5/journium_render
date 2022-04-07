@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import * as userActions from '../../store/user';
 import * as storyActions from '../../store/story';
 import JourniumLogo from "../JourniumLogo";
@@ -12,6 +12,7 @@ import './NewStoryForm.css';
 
 const NewStoryForm = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
     const currentUser = useSelector(state => state.user.users[sessionUser.id]);
 
@@ -41,6 +42,10 @@ const NewStoryForm = () => {
         dispatch(userActions.fetchUser(sessionUser.id));
     }, [dispatch]);
 
+    useEffect(() => {
+        dispatch(storyActions.fetchStories());
+    }, [dispatch]);
+
     // publish button is disabled until basic validation is done
     useEffect(() => {
         if (!imageUrlInvalid && !videoUrlInvalid) {
@@ -56,7 +61,7 @@ const NewStoryForm = () => {
     // onBlur pre-validations
     const validateImageUrl = e => {
         setImageUrlInvalid(!urlRe.test(e.target.value) && !!e.target.value);
-        if (!imageUrlInvalid) {
+        if (!imageUrlInvalid && !!e.target.value) {
             setShowImageUrlInput(false);
             setShowRenderImage(true);
         }
@@ -74,17 +79,14 @@ const NewStoryForm = () => {
     const handlePublish = e => {
         e.preventDefault();
         setErrors([]);
-        return dispatch(storyActions.createStory({
+        const data = dispatch(storyActions.createStory({
             userId: sessionUser.id,
             title,
             content,
             imageUrl,
             videoUrl,
         }))
-            .catch(async (res) => {
-                const data = await res.json();
-                if (data && data.errors) setErrors(data.errors);
-            });
+            .then((data) => history.push(`/stories/${data.id}`));
     };
 
     return (
