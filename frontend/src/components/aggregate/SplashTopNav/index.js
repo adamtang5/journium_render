@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Modal } from '../../context/Modal';
+import { Modal } from '../../../context/Modal';
 import { Link } from 'react-router-dom';
-import LoginFormPage from '../LoginFormPage';
-import SignupFormPage from '../SignupFormPage';
-import JourniumLogo from '../JourniumLogo';
-import './TopNav.css';
+import SplashHeaderTopLeftLogo from '../SplashHeaderTopLeftLogo';
+import LoginFormPage from '../../LoginFormPage';
+import SignupFormPage from '../../SignupFormPage';
+import './SplashTopNav.css';
 
-const TopNav = () => {
+const SplashTopNav = () => {
     const [showLoginModal, setShowLoginModal] = useState(false);
     const [showSignupModal, setShowSignupModal] = useState(false);
 
@@ -14,13 +14,7 @@ const TopNav = () => {
         <div id="top_nav" className="fixed solid-bg">
             <div className="bounded centered">
                 <div id="top_nav_flexbox" className="cushioned">
-                    <div id="top_left_logo">
-                        <Link to="/">
-                            <JourniumLogo />
-                            <span className="logo-text">Journium</span>
-                        </Link>
-                    </div>
-
+                    <SplashHeaderTopLeftLogo />
                     <div id="top_right_nav">
                         <Link to="/new-story" className="nav_btn">Write</Link>
                         <div className="auth_modal">
@@ -52,4 +46,4 @@ const TopNav = () => {
     )
 };
 
-export default TopNav;
+export default SplashTopNav;

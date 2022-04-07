@@ -1,6 +1,6 @@
 import React from 'react';
-import UserNav from '../UserNav';
-import StoryColumn from '../StoryColumn';
+import UserNav from '../../UserNav';
+import StoriesPageMainColumn from '../StoriesPageMainColumn';
 import OtherFeaturesColumn from '../OtherFeaturesColumn';
 import './Stories.css';
 
@@ -11,7 +11,7 @@ const Stories = () => {
                 <UserNav />
             </div>
             <div id="story-column" className="flex-column">
-                <StoryColumn />
+                <StoriesPageMainColumn />
             </div>
             <div id="other-features">
                 <OtherFeaturesColumn />

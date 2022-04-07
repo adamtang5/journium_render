@@ -1,6 +1,6 @@
-import './HeaderBanner.css';
+import './SplashHeaderBanner.css';
 
-const HeaderBanner = () => {
+const SplashHeaderBanner = () => {
     return (
         <div id="large_banner" className="relative solid-bg">
             <div className="bounded centered">
@@ -20,4 +20,4 @@ const HeaderBanner = () => {
     )
 };
 
-export default HeaderBanner;
+export default SplashHeaderBanner;

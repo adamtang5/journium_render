@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import * as storyActions from '../../store/story';
-import TopGreeting from '../TopGreeting';
-import StoryCard from '../StoryCard';
+import * as storyActions from '../../../store/story';
+import StoriesPageMainColumnTop from '../../atomic/StoriesPageMainColumnTop';
+import StoriesListCard from '../StoriesListCard';
 
-const StoryColumn = () => {
+const StoriesPageMainColumn = () => {
     const dispatch = useDispatch();
     const [isLoaded, setIsLoaded] = useState(false);
     const stories = useSelector(state => Object.values(state.story.stories));
@@ -15,12 +15,12 @@ const StoryColumn = () => {
 
     return (
         <>
-            <TopGreeting />
+            <StoriesPageMainColumnTop />
             {isLoaded && stories.map(story => (
-                <StoryCard key={story.id} storyId={story.id} />
+                <StoriesListCard key={story.id} storyId={story.id} />
             ))}
         </>
     )
 };
 
-export default StoryColumn;
+export default StoriesPageMainColumn;

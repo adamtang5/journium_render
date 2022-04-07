@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
-import StoriesListCardFooter from "../aggregate/StoriesListCardFooter";
-import StoriesListCardHeader from "../aggregate/StoriesListCardHeader";
-import StoriesListCardMain from "../aggregate/StoriesListCardMain";
-import "./StoryCard.css";
+import StoriesListCardFooter from "../StoriesListCardFooter";
+import StoriesListCardHeader from "../StoriesListCardHeader";
+import StoriesListCardMain from "../StoriesListCardMain";
+import "./StoriesListCard.css";
 
-const StoryCard = ({ storyId }) => {
+const StoriesListCard = ({ storyId }) => {
     const stories = useSelector(state => state.story.stories);
     const story = stories[storyId];
 
@@ -17,4 +17,4 @@ const StoryCard = ({ storyId }) => {
     )
 };
 
-export default StoryCard;
+export default StoriesListCard;
