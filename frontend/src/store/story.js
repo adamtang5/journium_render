@@ -32,6 +32,25 @@ export const createStory = (story) => async (dispatch) => {
     }
 };
 
+export const editStory = (story) => async (dispatch) => {
+    const { id, userId, title, content, imageUrl, videoUrl } = story;
+    const res = await csrfFetch(`/api/stories/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+            userId,
+            title,
+            content,
+            imageUrl,
+            videoUrl,
+        }),
+    });
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(newStory(data));
+        return data;
+    }
+}
+
 const initialState = {
     stories: {},
 };

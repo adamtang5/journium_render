@@ -64,8 +64,17 @@ const requireAuth = [
     }
 ];
 
+// Unauthorized User Error for unauthorized requests
+const unauthorizedUserError = () => {
+    const err = Error("Forbidden - Unauthorized user.");
+    err.title = "Forbidden";
+    err.status = 403;
+    return err;
+};
+
 module.exports = {
     setTokenCookie,
     restoreUser,
     requireAuth,
+    unauthorizedUserError,
 };

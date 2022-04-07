@@ -8,6 +8,7 @@ import * as storyActions from './store/story';
 import Navigation from './components/Navigation';
 import NewStoryForm from './components/aggregate/NewStoryForm';
 import SingleStory from './components/aggregate/SingleStory';
+import EditStoryForm from './components/aggregate/EditStoryForm';
 
 function App() {
   const dispatch = useDispatch();
@@ -46,6 +47,9 @@ function App() {
           </Route>
           <Route path="/stories/:id">
             <SingleStory />
+          </Route>
+          <Route path="/stories/:id/edit">
+            <EditStoryForm />
           </Route>
         </Switch>
       )}
