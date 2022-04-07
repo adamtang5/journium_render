@@ -5,6 +5,11 @@
     width: fit-content;
 }
 
+.single-story .story-header {
+    align-items: center;
+    justify-content: space-between;
+}
+
 .single-story .story-info {
     gap: 10px;
     margin: 0 50px;
@@ -45,6 +50,15 @@
 
 .single-story .story-info .date {
     color: #757575;
+}
+
+.single-story button.edit {
+    background-color: #1a8917;
+    color: white;
+    font-size: 12px;
+    border-radius: 99em;
+    padding: 5px 10px;
+    border: none;
 }
 
 .single-story .story-main {
