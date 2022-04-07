@@ -83,7 +83,6 @@ const SignupFormPage = () => {
         <Redirect to="/" />
     )
 
-    // onBlur pre-validations
     const emailChange = e => {
         setErrors([]);
         setEmail(e.target.value);
@@ -158,7 +157,6 @@ const SignupFormPage = () => {
         setShowPart2Summary(true);
         setShowPart3(true);
         dispatch(roleActions.fetchRoles());
-        console.log(roles);
     };
 
     const handleSubmit = e => {
