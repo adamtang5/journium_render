@@ -9,7 +9,7 @@ const { Story, User, Role } = require('../../db/models');
 const router = express.Router();
 
 // GET /api/stories
-router.get('/', requireAuth, asyncHandler(async (req, res) => {
+router.get('/', asyncHandler(async (req, res) => {
     const stories = await Story.findAll({
         include: {
             model: User,
@@ -21,7 +21,7 @@ router.get('/', requireAuth, asyncHandler(async (req, res) => {
 }));
 
 // GET /api/stories/:storyId
-router.get('/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
+router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
     const id = parseInt(req.params.id, 10);
     const story = await Story.findByPk(id, {
         include: {
