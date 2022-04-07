@@ -1,4 +1,4 @@
-import UserSolidIcon from "../utils/icons/UserSolidIcon";
+import UserSolidIcon from "../../utils/icons/UserSolidIcon";
 
 const Avatar = ({ user }) => {
     if (user.avatarUrl) return (

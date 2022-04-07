@@ -1,5 +1,8 @@
 import { useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
+import Avatar from "../atomic/Avatar";
+import DisplayName from "../atomic/DisplayName";
+import Role from "../atomic/Role";
 import "./StoryCard.css";
 
 const StoryCard = ({ storyId }) => {
@@ -9,14 +12,14 @@ const StoryCard = ({ storyId }) => {
     return (
         <div className="story-card">
             <div className="author flex-row">
-                <Link className="avatar" to={`/users/${story.userId}`}>
-                    <img src={story.User.avatarUrl} alt={story.User.displayName} />
+                <Link to={`/users/${story.userId}`}>
+                    <Avatar user={story.User} />
                 </Link>
-                <Link className="display-name" to={`/users/${story.User.id}`}>
-                    <p>{story.User.displayName}</p>
+                <Link to={`/users/${story.User.id}`}>
+                    <DisplayName user={story.User} />
                 </Link>
-                <Link className={`role role-${(storyId % 5 === 0) ? 5 : storyId % 5}`} to={`/users/${story.User.id}`}>
-                    <span>{story.User.Role.name}</span>
+                <Link to={`/users/${story.User.id}`}>
+                    <Role user={story.User} />
                 </Link>
             </div>
             <div className="story">

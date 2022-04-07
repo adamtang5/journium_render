@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import * as sessionActions from '../../store/session';
 import * as userActions from '../../store/user';
-import Avatar from '../Avatar';
+import Avatar from '../atomic/Avatar';
 
 const ProfileDropdown = ({ user }) => {
     const dispatch = useDispatch();

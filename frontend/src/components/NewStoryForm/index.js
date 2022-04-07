@@ -79,7 +79,7 @@ const NewStoryForm = () => {
     const handlePublish = e => {
         e.preventDefault();
         setErrors([]);
-        const data = dispatch(storyActions.createStory({
+        dispatch(storyActions.createStory({
             userId: sessionUser.id,
             title,
             content,
