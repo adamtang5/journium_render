@@ -1,22 +1,27 @@
-// import ArticleCard from '../ArticleCard';
+import { useSelector } from 'react-redux';
+import SplashMainFeaturedStoryCard from '../SplashMainFeaturedStoryCard';
+import SplashMainFeaturedHeader from '../../atomic/SplashMainFeaturedHeader';
 import './SplashMain.css';
 
 const SplashMain = () => {
+    const stories = useSelector(state => Object.values(state.story.stories));
+    let featuredStories = stories.filter(story => {
+        return story.imageUrl !== "";
+    });
+    featuredStories = featuredStories.slice(featuredStories.length - 6);
+    featuredStories.reverse();
+
     return (
         <main className="relative white-bg">
 
             <div id="content_links" className="bounded centered">
-                <div id="trending" className="cushioned">
-                    <div id="trending_header">
-                        <div id="trending_logo">
-                            <i className="fas fa-chart-line"></i>
-                        </div>
-                        <div id="trending_label">Featured on Journium</div>
-                    </div>
+                <div id="featured" className="cushioned">
+                    <SplashMainFeaturedHeader />
+                    <div id="featured_links">
 
-                    <div id="trending_links">
-                        {/* <ArticleCard story={story} i={i} /> */}
-                        <div id="trending_1" className="trending_article">
+                        {featuredStories.map((featuredStory, i) => <SplashMainFeaturedStoryCard key={i} story={featuredStory} i={i + 1} />)}
+
+                        {/* <div id="trending_1" className="trending_article">
                             <div className="top_left_rank">01</div>
                             <div className="article">
                                 <div className="article_author">
@@ -197,7 +202,7 @@ const SplashMain = () => {
                                     <div className="time_consumed">5 min read</div>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

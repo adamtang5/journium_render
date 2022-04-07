@@ -3,24 +3,24 @@
     padding-bottom: 16px;
 }
 
-#trending {
+#featured {
     /* padding-top: 40px; */
     padding-bottom: 16px;
 }
 
-#trending_header {
+#featured_header {
     display: flex;
     align-items: center;
     margin-bottom: 16px;
 }
 
-#trending_logo {
+#featured_logo {
     vertical-align: middle;
     padding: 2px;
     margin-right: 10px;
 }
 
-#trending_label,
+#featured_label,
 #discover_right_nav h2 {
     text-transform: uppercase;
     color: #292929;
@@ -30,7 +30,7 @@
     letter-spacing: 0.083em;
 }
 
-#trending_links {
+#featured_links {
     display: grid;
     justify-items: stretch;
     align-items: center;
