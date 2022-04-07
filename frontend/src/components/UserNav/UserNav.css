@@ -1,0 +1,21 @@
+#user-nav {
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.925);
+    border-right: 1px solid #c4c4c4;
+}
+
+#user-nav-icons {
+    align-items: center;
+}
+
+#user-nav-icons .start {
+    justify-self: flex-start;
+}
+
+#user-nav-icons .user-nav-actives {
+    justify-self: center;
+}
+
+#user-nav-icons .end {
+    justify-self: flex-end;
+}

@@ -3,6 +3,7 @@ import { Modal } from '../../context/Modal';
 import { Link } from 'react-router-dom';
 import LoginFormPage from '../LoginFormPage';
 import SignupFormPage from '../SignupFormPage';
+import JourniumLogo from '../JourniumLogo';
 import './TopNav.css';
 
 const TopNav = () => {
@@ -15,7 +16,7 @@ const TopNav = () => {
                 <div id="top_nav_flexbox" className="cushioned">
                     <div id="top_left_logo">
                         <Link to="/">
-                            <img src="/images/icons/journium-logo.svg" alt="Journium Logo" />
+                            <JourniumLogo />
                             <span className="logo-text">Journium</span>
                         </Link>
                     </div>

@@ -25,7 +25,7 @@ const ProfileButton = ({ user }) => {
 
     return (
         <>
-            <button onClick={openMenu}>
+            <button className="profile-button" onClick={openMenu}>
                 <Avatar user={user} />
             </button>
             {showMenu && (

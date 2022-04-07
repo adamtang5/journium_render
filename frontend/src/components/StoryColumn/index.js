@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import * as storyActions from '../../store/story';
 import TopGreeting from '../TopGreeting';
 import StoryCard from '../StoryCard';
-import './StoryColumn.css';
 
 const StoryColumn = () => {
     const dispatch = useDispatch();
@@ -15,12 +14,12 @@ const StoryColumn = () => {
     }, [dispatch]);
 
     return (
-        <div id="story-feed">
+        <>
             <TopGreeting />
             {isLoaded && stories.map(story => (
                 <StoryCard key={story.id} storyId={story.id} />
             ))}
-        </div>
+        </>
     )
 };
 

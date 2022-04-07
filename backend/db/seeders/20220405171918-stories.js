@@ -13,13 +13,13 @@ module.exports = {
         title: 'Breakfast with Daddy',
         content: `My Daddy was so funny! He was looking at one of my coloring sheets from school, where I colored a bunch of fast foods, snacks, sweets. And he was wondering if I had spelled "McDonald's" correctly. And he told me to look at what I wrote. He said, I spelled "McDonuts" instead of "McDonald's"! Hahaha... 🤣`,
         userId: 4,
-        imageUrl: 'https://i.ibb.co/ZfXyFHp/img0001.jpg',
+        imageUrl: 'https://theorganisedhousewife.com.au/wp-content/uploads/2020/07/Icecream-colouring-in-printable-e1593653831424.jpg',
       },
       {
         title: 'Daddy took me to soccer',
         content: `Daddy took me to soccer on Saturday, where I played with my friends Timmy, Riley, Peter, and Kiran who's the coach's son. There were about 8 kids. And we played scrimage. And we also played 5 kids versus 3 kids plus coach. Our team beat the other team 5-0. We had fun. On the way home, my Dad stopped by the food trucks to look what trucks were there. And he told me about a Oaxacan truck that was new. He said that most people probably wouldn't know how to pronounce the name "Oaxaca", and would probably look at how it's spelled and pronounce it oh-Ax-a-kin. That sounded sooo funny! 🤣`,
         userId: 4,
-        imageUrl: 'https://i.ibb.co/ZfXyFHp/img0001.jpg',
+        imageUrl: 'https://s3-media0.fl.yelpcdn.com/bphoto/MiNhW5xYg21yPcI6ACjd8Q/o.jpg',
       },
       {
         title: `My Dad thinks I'm funny`,

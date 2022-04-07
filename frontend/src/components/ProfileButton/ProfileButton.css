@@ -1,11 +1,16 @@
+.profile-button {
+    background-color: unset;
+    border: none;
+}
+
 .icons {
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
 }
 
 .icons img.avatar {
     object-fit: cover;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
 }

@@ -10,7 +10,7 @@ const Stories = () => {
             <div id="user-nav">
                 <UserNav />
             </div>
-            <div id="story-column">
+            <div id="story-column" className="flex-column">
                 <StoryColumn />
             </div>
             <div id="other-features">
