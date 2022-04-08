@@ -9,3 +9,9 @@ npx dotenv sequelize-cli db:seed:all
 # newStory in reducer
 # POST /api/stories in API route
 # /new-story form page
+
+# /stories/:id page
+
+# /stories/:id/edit form
+
+# /stories/:id/delete form

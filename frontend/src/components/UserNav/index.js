@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import * as userActions from '../../store/user';
-import JourniumLogo from '../JourniumLogo';
+import JourniumLogo from '../atomic/JourniumLogo';
 import HomeSolidIcon from '../utils/icons/HomeSolidIcon';
 import BookmarksHollowIcon from '../utils/icons/BookmarksHollowIcon';
 import ReadHollowIcon from '../utils/icons/ReadHollowIcon';

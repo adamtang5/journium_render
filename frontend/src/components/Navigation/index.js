@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import Splash from '../Splash';
-import Stories from '../Stories';
+import Splash from '../aggregate/Splash';
+import Stories from '../aggregate/Stories';
 import './Navigation.css';
 
 const Navigation = ({ isLoaded }) => {

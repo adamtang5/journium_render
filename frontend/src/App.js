@@ -4,8 +4,11 @@ import { Switch, Route } from 'react-router-dom';
 import * as sessionActions from './store/session';
 import * as userActions from './store/user';
 import * as roleActions from './store/role';
+import * as storyActions from './store/story';
 import Navigation from './components/Navigation';
-import NewStoryForm from './components/NewStoryForm';
+import NewStoryForm from './components/aggregate/NewStoryForm';
+import SingleStory from './components/aggregate/SingleStory';
+import EditStoryForm from './components/aggregate/EditStoryForm';
 
 function App() {
   const dispatch = useDispatch();
@@ -20,6 +23,7 @@ function App() {
         }
       })
       .then(() => dispatch(roleActions.fetchRoles()))
+      .then(() => dispatch(storyActions.fetchStories()))
       .then(() => setIsLoaded(true));
   }, [dispatch]);
 
@@ -40,6 +44,12 @@ function App() {
           </Route>
           <Route path="/new-story">
             <NewStoryForm />
+          </Route>
+          <Route path="/stories/:id/edit">
+            <EditStoryForm />
+          </Route>
+          <Route exact path="/stories/:id">
+            <SingleStory />
           </Route>
         </Switch>
       )}
