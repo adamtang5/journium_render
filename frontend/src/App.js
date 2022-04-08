@@ -9,6 +9,7 @@ import Navigation from './components/Navigation';
 import NewStoryForm from './components/aggregate/NewStoryForm';
 import SingleStory from './components/aggregate/SingleStory';
 import EditStoryForm from './components/aggregate/EditStoryForm';
+import CommentsPanel from './components/CommentsPanel';
 
 function App() {
   const dispatch = useDispatch();
@@ -47,6 +48,9 @@ function App() {
           </Route>
           <Route path="/stories/:id/edit">
             <EditStoryForm />
+          </Route>
+          <Route path="/stories/:id/comments">
+            <CommentsPanel />
           </Route>
           <Route exact path="/stories/:id">
             <SingleStory />

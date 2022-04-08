@@ -31,3 +31,5 @@ npx dotenv sequelize db:migrate
 npx dotenv sequelize db:seed:all
 
 # write reducer for comments
+
+# comment components

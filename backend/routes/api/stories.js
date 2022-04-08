@@ -32,10 +32,13 @@ const storyNotFoundError = id => {
 router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
     const id = parseInt(req.params.id, 10);
     const story = await db.Story.findByPk(id, {
-        include: {
-            model: db.User,
-            include: db.Role,
-        },
+        include: [
+            {
+                model: db.User,
+                include: db.Role,
+            },
+            db.Comment,
+        ],
     });
 
     return res.json({ story });

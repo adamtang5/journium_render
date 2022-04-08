@@ -104,7 +104,7 @@ const storyReducer = (state = initialState, action) => {
             const newState = Object.assign({}, state);
             action.stories.forEach(story => {
                 newState.stories[story.id] = story;
-            })
+            });
             return newState;
         }
         case NEW_STORY: {
