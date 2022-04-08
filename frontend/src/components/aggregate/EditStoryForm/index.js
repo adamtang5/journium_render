@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory, useParams } from "react-router-dom";
+import * as sessionActions from '../../../store/session';
 import * as userActions from '../../../store/user';
 import * as storyActions from '../../../store/story';
 import JourniumLogo from "../../atomic/JourniumLogo";
@@ -41,11 +42,13 @@ const EditStoryForm = () => {
         "{2,6}\\b([-a-zA-Z0-9@:%._\\+~# ?&//=]*)");
 
     useEffect(() => {
-        dispatch(userActions.fetchUser(sessionUser.id));
-    }, [dispatch]);
-
-    useEffect(() => {
-        dispatch(storyActions.fetchStories());
+        dispatch(sessionActions.restoreUser())
+            .then((user) => {
+                if (user) {
+                    dispatch(userActions.fetchUser(sessionUser.id));
+                }
+            })
+            .then(() => dispatch(storyActions.fetchStories()));
     }, [dispatch]);
 
     // publish button is disabled until basic validation is done
@@ -89,7 +92,7 @@ const EditStoryForm = () => {
             imageUrl,
             videoUrl,
         }))
-            .then((data) => history.push(`/stories/${data.id}`));
+            .then(() => history.push(`/stories/${id}`));
     };
 
     return (

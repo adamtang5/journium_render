@@ -58,7 +58,13 @@ router.put('/:id(\\d+)', requireAuth, asyncHandler(async (req, res, next) => {
             await story.update({
                 title, content, imageUrl, videoUrl,
             });
-            res.json(story);
+            const returnStory = await Story.findByPk(storyId, {
+                include: {
+                    model: User,
+                    include: Role,
+                },
+            });
+            res.json(returnStory);
         } else {
             next(unauthorizedUserError());
         }

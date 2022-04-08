@@ -7,8 +7,7 @@ import './SingleStory.css';
 
 const SingleStory = () => {
     const { id } = useParams();
-    const stories = useSelector(state => state.story.stories);
-    const story = stories[+id];
+    const story = useSelector(state => state.story.stories[+id]);
 
     return (
         <div className="single-story flex-column">
