@@ -4,16 +4,16 @@ const { check } = require('express-validator');
 
 const { handleValidationErrors } = require('../../utils/validation');
 const { requireAuth, unauthorizedUserError } = require('../../utils/auth');
-const { Story, User, Role, Comment } = require('../../db/models');
+const db = require('../../db/models');
 
 const router = express.Router();
 
 // GET /api/stories
 router.get('/', asyncHandler(async (req, res) => {
-    const stories = await Story.findAll({
+    const stories = await db.Story.findAll({
         include: {
-            model: User,
-            include: Role,
+            model: db.User,
+            include: db.Role,
         },
     });
 
@@ -31,10 +31,10 @@ const storyNotFoundError = id => {
 // GET /api/stories/:id
 router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
     const id = parseInt(req.params.id, 10);
-    const story = await Story.findByPk(id, {
+    const story = await db.Story.findByPk(id, {
         include: {
-            model: User,
-            include: Role,
+            model: db.User,
+            include: db.Role,
         },
     });
 
@@ -43,12 +43,12 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
 
 // POST /api/stories
 router.post('/', requireAuth, asyncHandler(async (req, res) => {
-    const story = await Story.create(req.body);
+    const story = await db.Story.create(req.body);
 
-    const returnStory = await Story.findByPk(story.id, {
+    const returnStory = await db.Story.findByPk(story.id, {
         include: {
-            model: User,
-            include: Role,
+            model: db.User,
+            include: db.Role,
         },
     });
     res.json(returnStory);
@@ -58,7 +58,7 @@ router.post('/', requireAuth, asyncHandler(async (req, res) => {
 // PUT /api/stories/:id
 router.put('/:id(\\d+)', requireAuth, asyncHandler(async (req, res, next) => {
     const storyId = parseInt(req.params.id, 10);
-    const story = await Story.findByPk(storyId);
+    const story = await db.Story.findByPk(storyId);
 
     if (story) {
         if (req.user.id === story.userId) {
@@ -66,10 +66,10 @@ router.put('/:id(\\d+)', requireAuth, asyncHandler(async (req, res, next) => {
             await story.update({
                 title, content, imageUrl, videoUrl,
             });
-            const returnStory = await Story.findByPk(storyId, {
+            const returnStory = await db.Story.findByPk(storyId, {
                 include: {
-                    model: User,
-                    include: Role,
+                    model: db.User,
+                    include: db.Role,
                 },
             });
             res.json(returnStory);
@@ -84,7 +84,7 @@ router.put('/:id(\\d+)', requireAuth, asyncHandler(async (req, res, next) => {
 // DELETE /api/stories/:id
 router.delete('/:id(\\d+)', requireAuth, asyncHandler(async (req, res, next) => {
     const id = parseInt(req.params.id, 10);
-    const story = await Story.findByPk(id);
+    const story = await db.Story.findByPk(id);
 
     if (story) {
         if (req.user.id === story.userId) {
@@ -101,14 +101,17 @@ router.delete('/:id(\\d+)', requireAuth, asyncHandler(async (req, res, next) => 
 // GET /api/stories/:id/comments
 router.get('/:id(\\d+)/comments', asyncHandler(async (req, res, next) => {
     const id = parseInt(req.params.id, 10);
-    const story = await Story.findByPk(id);
+    const story = await db.Story.findByPk(id);
 
     if (story) {
-        const comments = await Comment.findAll({
+        const comments = await db.Comment.findAll({
             where: {
                 storyId: id,
             },
-            include: User,
+            include: {
+                model: db.User,
+                include: db.Role,
+            },
         });
 
         res.json(comments);

@@ -3,6 +3,7 @@ const sessionRouter = require('./session');
 const usersRouter = require('./users');
 const rolesRouter = require('./roles');
 const storiesRouter = require('./stories');
+const commentsRouter = require('./comments');
 
 /*
 Testing user auth middlewares
@@ -42,6 +43,8 @@ router.use('/users', usersRouter);
 router.use('/roles', rolesRouter);
 
 router.use('/stories', storiesRouter);
+
+router.use('/comments', commentsRouter);
 
 /*
 router.post('/test', (req, res) => {

@@ -23,3 +23,9 @@ npx dotenv sequelize db:seed:all
 # DELETE /api/comments/:id
 
 # Seeder needed to be fixed because of quotes -- lesson: use backticks
+npx dotenv sequelize db:drop
+npx dotenv sequelize db:create
+
+npx dotenv sequelize db:migrate
+
+npx dotenv sequelize db:seed:all
