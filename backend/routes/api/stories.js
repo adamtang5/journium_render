@@ -73,4 +73,21 @@ router.put('/:id(\\d+)', requireAuth, asyncHandler(async (req, res, next) => {
     }
 }));
 
+// DELETE /api/stories/:id
+router.delete('/:id(\\d+)', requireAuth, asyncHandler(async (req, res, next) => {
+    const id = parseInt(req.params.id, 10);
+    const story = await Story.findByPk(id);
+
+    if (story) {
+        if (req.user.id === story.userId) {
+            await story.destroy();
+            res.status(204).end();
+        } else {
+            next(unauthorizedUserError());
+        }
+    } else {
+        next(storyNotFoundError(id));
+    }
+}));
+
 module.exports = router;

@@ -11,3 +11,7 @@ npx dotenv sequelize-cli db:seed:all
 # /new-story form page
 
 # /stories/:id page
+
+# /stories/:id/edit form
+
+# /stories/:id/delete form

@@ -52,13 +52,25 @@
     color: #757575;
 }
 
-.single-story button.edit {
-    background-color: #1a8917;
-    color: white;
+.single-story .story-owner-action {
+    gap: 10px;
+}
+
+.single-story button {
     font-size: 12px;
     border-radius: 99em;
     padding: 5px 10px;
     border: none;
+}
+
+.single-story button.edit {
+    background-color: #1a8917;
+    color: white;
+}
+
+.single-story button.delete {
+    background-color: rgb(100, 20, 20);
+    color: white;
 }
 
 .single-story .story-main {
