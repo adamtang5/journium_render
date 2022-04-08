@@ -44,7 +44,15 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
 // POST /api/stories
 router.post('/', requireAuth, asyncHandler(async (req, res) => {
     const story = await Story.create(req.body);
-    res.json(story);
+
+    const returnStory = await Story.findByPk(story.id, {
+        include: {
+            model: User,
+            include: Role,
+        },
+    });
+    res.json(returnStory);
+
 }));
 
 // PUT /api/stories/:id
