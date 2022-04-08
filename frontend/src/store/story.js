@@ -114,7 +114,9 @@ const storyReducer = (state = initialState, action) => {
         }
         case REMOVE_STORY: {
             const newState = Object.assign({}, state);
-            delete newState[action.id];
+            console.log("before remove -------", action.id, newState);
+            delete newState.stories[action.id];
+            console.log("after remove -------", action.id, newState);
             return newState;
         }
         default:
