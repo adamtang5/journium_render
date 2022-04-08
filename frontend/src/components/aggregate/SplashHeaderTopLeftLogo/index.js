@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import JourniumLogo from '../../JourniumLogo';
+import JourniumLogo from '../../atomic/JourniumLogo';
 
 const SplashHeaderTopLeftLogo = () => {
     return (

@@ -45,11 +45,11 @@ function App() {
           <Route path="/new-story">
             <NewStoryForm />
           </Route>
-          <Route path="/stories/:id">
-            <SingleStory />
-          </Route>
           <Route path="/stories/:id/edit">
             <EditStoryForm />
+          </Route>
+          <Route exact path="/stories/:id">
+            <SingleStory />
           </Route>
         </Switch>
       )}

@@ -58,7 +58,7 @@ router.put('/:id(\\d+)', requireAuth, asyncHandler(async (req, res, next) => {
             await story.update({
                 title, content, imageUrl, videoUrl,
             });
-            res.json({ story });
+            res.json(story);
         } else {
             next(unauthorizedUserError());
         }

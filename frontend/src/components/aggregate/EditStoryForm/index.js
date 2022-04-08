@@ -81,7 +81,7 @@ const EditStoryForm = () => {
     const handlePublish = e => {
         e.preventDefault();
         setErrors([]);
-        dispatch(storyActions.createStory({
+        dispatch(storyActions.editStory({
             id: +id,
             userId: sessionUser.id,
             title,
