@@ -1,39 +1,14 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import * as sessionActions from '../../store/session';
-import * as userActions from '../../store/user';
-import * as storyActions from '../../store/story';
-import * as commentActions from '../../store/comment';
 import Avatar from '../atomic/Avatar';
 import DisplayName from '../atomic/DisplayName';
 
-const CommentsPanel = ({ }) => {
-    const dispatch = useDispatch();
-    const [userLoaded, setUserLoaded] = useState(false);
-    const [commentsLoaded, setCommentsLoaded] = useState(false);
+const CommentsPanel = () => {
     const sessionUser = useSelector(state => state.session.user);
     const currentUser = useSelector(state => state.user.users[sessionUser.id]);
     const { id } = useParams();
     const story = useSelector(state => state.story.stories[+id]);
     const comments = useSelector(state => state.comment.comments);
-
-    useEffect(() => {
-        dispatch(sessionActions.restoreUser())
-            .then((user) => {
-                if (user) {
-                    dispatch(userActions.fetchUser(user.id));
-                    return;
-                }
-            })
-            .then(() => setUserLoaded(true));
-    }, [dispatch]);
-
-    useEffect(() => {
-        dispatch(storyActions.fetchStories())
-            .then(() => commentActions.fetchComments(+id))
-            .then(() => setCommentsLoaded(true));
-    }, [dispatch]);
 
     const openCommentForm = e => {
 
