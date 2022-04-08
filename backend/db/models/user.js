@@ -104,17 +104,24 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   User.associate = function (models) {
-    // 1-to-many relationship with Role model
+    // many-to-1 relationship with Role model
     User.belongsTo(models.Role, {
       foreignKey: 'roleId',
     });
 
-    // many-to-1 relationship with Story model
+    // 1-to-many relationship with Story model
     User.hasMany(models.Story, {
       foreignKey: 'userId',
       onDelete: 'cascade',
       hooks: true,
-    })
+    });
+
+    // 1-to-many relationship with Comment model
+    User.hasMany(models.Comment, {
+      foreignKey: 'userId',
+      onDelete: 'cascade',
+      hooks: true,
+    });
   };
   return User;
 };

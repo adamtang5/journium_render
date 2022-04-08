@@ -1,30 +1,24 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Stories', {
+    return queryInterface.createTable('Comments', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      title: {
-        allowNull: false,
-        type: Sequelize.STRING(255),
-      },
-      content: {
-        allowNull: false,
-        type: Sequelize.TEXT,
-      },
       userId: {
         allowNull: false,
         type: Sequelize.INTEGER,
       },
-      imageUrl: {
-        type: Sequelize.STRING,
+      storyId: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
       },
-      videoUrl: {
-        type: Sequelize.STRING,
+      content: {
+        allowNull: false,
+        type: Sequelize.TEXT,
       },
       createdAt: {
         allowNull: false,
@@ -39,6 +33,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Stories');
+    return queryInterface.dropTable('Comments');
   }
 };

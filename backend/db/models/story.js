@@ -9,8 +9,8 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     content: {
-      type: DataTypes.TEXT,
       allowNull: false,
+      type: DataTypes.TEXT,
     },
     userId: {
       allowNull: false,
@@ -25,8 +25,15 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {});
   Story.associate = function (models) {
-    // 1-to-many relationship with User model
+    // many-to-1 relationship with User model
     Story.belongsTo(models.User, { foreignKey: 'userId' });
+
+    // 1-to-many relationship with Comment model
+    Story.hasMany(models.Comment, {
+      foreignKey: 'storyId',
+      onDelete: 'cascade',
+      hooks: true,
+    })
   };
   return Story;
 };
