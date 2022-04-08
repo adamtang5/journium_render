@@ -16,4 +16,10 @@ npx sequelize seed:generate --name comments
 
 npx dotenv sequelize db:seed:all
 
-# fixing login and signup form due to db change
+# write API routes for comments
+# GET /api/stories/:id/comments
+# POST /api/comments
+# PUT /api/comments/:id
+# DELETE /api/comments/:id
+
+# Seeder needed to be fixed because of quotes -- lesson: use backticks

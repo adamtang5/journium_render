@@ -4,7 +4,7 @@ const { check } = require('express-validator');
 
 const { handleValidationErrors } = require('../../utils/validation');
 const { requireAuth, unauthorizedUserError } = require('../../utils/auth');
-const { Story, User, Role } = require('../../db/models');
+const { Story, User, Role, Comment } = require('../../db/models');
 
 const router = express.Router();
 
@@ -28,7 +28,7 @@ const storyNotFoundError = id => {
     return err;
 };
 
-// GET /api/stories/:storyId
+// GET /api/stories/:id
 router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
     const id = parseInt(req.params.id, 10);
     const story = await Story.findByPk(id, {
@@ -97,5 +97,24 @@ router.delete('/:id(\\d+)', requireAuth, asyncHandler(async (req, res, next) => 
         next(storyNotFoundError(id));
     }
 }));
+
+// GET /api/stories/:id/comments
+router.get('/:id(\\d+)/comments', asyncHandler(async (req, res, next) => {
+    const id = parseInt(req.params.id, 10);
+    const story = await Story.findByPk(id);
+
+    if (story) {
+        const comments = await Comment.findAll({
+            where: {
+                storyId: id,
+            },
+            include: User,
+        });
+
+        res.json(comments);
+    } else {
+        next(storyNotFoundError(id));
+    }
+}))
 
 module.exports = router;
