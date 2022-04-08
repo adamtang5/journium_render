@@ -29,3 +29,5 @@ npx dotenv sequelize db:create
 npx dotenv sequelize db:migrate
 
 npx dotenv sequelize db:seed:all
+
+# write reducer for comments

@@ -4,12 +4,14 @@ import sessionReducer from './session';
 import roleReducer from './role';
 import storyReducer from './story';
 import userReducer from './user';
+import commentReducer from './comment';
 
 const rootReducer = combineReducers({
     session: sessionReducer,
     role: roleReducer,
     story: storyReducer,
     user: userReducer,
+    comment: commentReducer,
 });
 
 let enhancer;

@@ -55,7 +55,7 @@ export const editStory = (story) => async (dispatch) => {
         dispatch(newStory(data));
         return data;
     }
-}
+};
 
 export const deleteStory = (id) => async (dispatch) => {
     const res = await csrfFetch(`/api/stories/${id}`, {
