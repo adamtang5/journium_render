@@ -100,3 +100,8 @@
     line-height: 32px;
     font-family: Cambria, Georgia, Times, 'Times New Roman', serif;
 }
+
+.single-story .story-options .actions-comments {
+    align-items: center;
+    gap: 5px;
+}

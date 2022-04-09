@@ -17,6 +17,9 @@ module.exports = (sequelize, DataTypes) => {
     content: {
       allowNull: false,
       type: DataTypes.TEXT,
+      validate: {
+        notEmpty: true,
+      }
     },
   }, {});
   Comment.associate = function (models) {

@@ -1,7 +1,9 @@
 const CommentsCount = ({ comments }) => {
-    <div className="comments-count">
-        {comments.length}
-    </div>
+    return (
+        <div className="comments-count">
+            {Object.values(comments).length}
+        </div>
+    )
 };
 
 export default CommentsCount;

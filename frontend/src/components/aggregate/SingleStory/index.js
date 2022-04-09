@@ -17,7 +17,6 @@ const SingleStory = () => {
 
     useEffect(() => {
         dispatch(commentActions.fetchComments(+id))
-            .then(() => console.log("SingleStory -------- comments", comments))
             .then(() => setCommentsLoaded(true));
     }, [dispatch]);
 

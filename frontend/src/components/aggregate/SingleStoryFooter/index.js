@@ -12,8 +12,10 @@ const SingleStoryFooter = ({ story, comments }) => {
                 Follow
                 */}
             <Link to={`/stories/${story.id}/comments`}>
-                <CommentHollowIcon />
-                <CommentsCount comments={comments} />
+                <div className="actions-comments flex-row">
+                    <CommentHollowIcon />
+                    <CommentsCount comments={comments} />
+                </div>
             </Link>
         </div>
     )

@@ -1,47 +1,71 @@
-import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import Avatar from '../atomic/Avatar';
-import DisplayName from '../atomic/DisplayName';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, useParams } from 'react-router-dom';
+import * as commentActions from '../../store/comment';
+import CommenterCard from '../aggregate/CommenterCard';
 
 const CommentsPanel = () => {
+    const dispatch = useDispatch();
+    const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
     const currentUser = useSelector(state => state.user.users[sessionUser.id]);
     const { id } = useParams();
     const story = useSelector(state => state.story.stories[+id]);
     const comments = useSelector(state => state.comment.comments);
 
-    const openCommentForm = e => {
+    const [content, setContent] = useState('');
+    const [respondDisabled, setRespondDisabled] = useState(true);
+    const [showCommenterCard, setShowCommenterCard] = useState(false);
+    const [showFormButtons, setShowFormButtons] = useState(false);
 
+
+    // respond button is disabled until content is not empty
+    useEffect(() => {
+        setRespondDisabled(content === '');
+    }, [content]);
+
+    const openCommentForm = e => {
+        setShowCommenterCard(true);
+        setShowFormButtons(true);
     };
 
     const closeCommentForm = e => {
-
+        e.preventDefault();
+        setShowCommenterCard(false);
+        setShowFormButtons(false);
     };
 
     const handleRespond = e => {
         e.preventDefault();
+        dispatch(commentActions.createComment({
+            userId: sessionUser.id,
+            storyId: story.id,
+            content,
+        }))
+            .then((data) => history.push(`/stories/${id}`));
     };
 
     return (
         <div className="comments-panel">
             <p className="comments-header">
-                {/* Responses ({comments.length}) */}
-                Responses (10)
+                Responses ({Object.values(comments).length})
             </p>
             <form
                 onSubmit={handleRespond}
                 className="new-comment-form">
-                <div className="commenter-card flex-row">
-                    <Avatar user={currentUser} />
-                    <DisplayName user={currentUser} />
-                </div>
+                <CommenterCard
+                    visible={showCommenterCard}
+                    user={currentUser}
+                />
                 <textarea
                     className="comment-content"
                     rows="5"
                     onFocus={openCommentForm}
+                    value={content}
+                    onChange={e => setContent(e.target.value)}
                     placeholder="What are you thoughts?"
                 />
-                <div className="user-action flex-row">
+                <div className={`user-action flex-row${showFormButtons ? '' : ' hidden'}`}>
                     <button
                         className="cancel"
                         onClick={closeCommentForm}
