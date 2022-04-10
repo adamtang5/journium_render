@@ -40,7 +40,7 @@ const SingleCommentForm = ({ comment }) => {
 
     const handleEditSubmit = e => {
         e.preventDefault();
-        dispatchEvent(commentActions.editComment({
+        dispatch(commentActions.editComment({
             id: comment.id,
             userId: sessionUser.id,
             storyId: comment.userId,
