@@ -55,7 +55,7 @@ export const editStory = (story) => async (dispatch) => {
         dispatch(newStory(data));
         return data;
     }
-}
+};
 
 export const deleteStory = (id) => async (dispatch) => {
     const res = await csrfFetch(`/api/stories/${id}`, {
@@ -104,7 +104,7 @@ const storyReducer = (state = initialState, action) => {
             const newState = Object.assign({}, state);
             action.stories.forEach(story => {
                 newState.stories[story.id] = story;
-            })
+            });
             return newState;
         }
         case NEW_STORY: {

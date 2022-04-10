@@ -19,7 +19,7 @@ const EditStoryForm = () => {
     const currentUser = useSelector(state => state.user.users[sessionUser.id]);
     const story = useSelector(state => state.story.stories[+id]);
 
-    const [publishDisabled, setPublishDisabled] = useState(true);
+    const [updateDisabled, setUpdateDisabled] = useState(true);
 
     // slice-of-state variables for controlled inputs
     const [title, setTitle] = useState(story.title);
@@ -27,7 +27,7 @@ const EditStoryForm = () => {
     const [imageUrl, setImageUrl] = useState(story.imageUrl);
     const [videoUrl, setVideoUrl] = useState(story.videoUrl);
 
-    // slice of state for final validation when clicking publish button
+    // slice of state for final validation when clicking update button
     const [showImageUrlInput, setShowImageUrlInput] = useState(true);
     const [showRenderImage, setShowRenderImage] = useState(false);
     const [errors, setErrors] = useState([]);
@@ -51,15 +51,15 @@ const EditStoryForm = () => {
             .then(() => dispatch(storyActions.fetchStories()));
     }, [dispatch]);
 
-    // publish button is disabled until basic validation is done
+    // update button is disabled until basic validation is done
     useEffect(() => {
         if (!imageUrlInvalid && !videoUrlInvalid) {
-            setPublishDisabled(!(
+            setUpdateDisabled(!(
                 title.length > 0 &&
                 content.length > 0
             ));
         } else {
-            setPublishDisabled(true);
+            setUpdateDisabled(true);
         }
     }, [title, content, imageUrlInvalid, videoUrlInvalid]);
 
@@ -81,7 +81,7 @@ const EditStoryForm = () => {
         setVideoUrlInvalid(!urlRe.test(e.target.value) && !!e.target.value);
     };
 
-    const handlePublish = e => {
+    const handleUpdate = e => {
         e.preventDefault();
         setErrors([]);
         dispatch(storyActions.editStory({
@@ -106,11 +106,11 @@ const EditStoryForm = () => {
                 </div>
                 <div id="writer-top-right" className="flex-row">
                     <button
-                        className="publish"
-                        disabled={publishDisabled}
-                        onClick={handlePublish}
+                        className="update"
+                        disabled={updateDisabled}
+                        onClick={handleUpdate}
                     >
-                        Publish
+                        Update
                     </button>
                     {currentUser && (
                         <>

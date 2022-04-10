@@ -61,3 +61,7 @@ ul {
     background-color: rgb(94, 86, 8);
     color: white;
 }
+
+.hidden {
+    display: none;
+}

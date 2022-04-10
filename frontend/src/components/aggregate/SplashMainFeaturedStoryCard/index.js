@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import Avatar from '../../atomic/Avatar';
 import DisplayName from '../../atomic/DisplayName';
 import StoryTitle from '../../atomic/StoryTitle';
-import StoryDate from '../../atomic/StoryDate';
+import ResourceDate from '../../atomic/ResourceDate';
 
 const SplashMainFeaturedStoryCard = ({ story, i }) => {
     return (
@@ -25,7 +25,7 @@ const SplashMainFeaturedStoryCard = ({ story, i }) => {
                     </Link>
                 </div>
                 <div className="article_metrics">
-                    <StoryDate story={story} />
+                    <ResourceDate resource={story} />
                 </div>
             </div>
         </div>

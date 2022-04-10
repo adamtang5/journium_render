@@ -1,0 +1,56 @@
+.delete-comment-modal {
+    width: 900px;
+    min-height: 550px;
+    justify-content: center;
+    align-items: center;
+}
+
+.delete-comment-modal * {
+    font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+h1.delete-comment-form {
+    font-size: 30px;
+    line-height: 36px;
+    color: #292929;
+}
+
+p.delete-form-text {
+    font-size: 16px;
+    line-height: 24px;
+    color: #757575;
+}
+
+.actions {
+    align-items: center;
+    gap: 10px;
+}
+
+.delete-comment-modal button {
+    font-size: 14px;
+    line-height: 20px;
+    padding: 7px 16px 9px;
+    border-radius: 99em;
+}
+
+.delete-comment-modal button.cancel {
+    background-color: white;
+    border: 1px solid #494949;
+    color: #494949;
+}
+
+.delete-comment-modal button.cancel:hover {
+    border: 1px solid #191919;
+    color: #191919;
+}
+
+.delete-comment-modal button.delete {
+    background-color: #c94a4a;
+    color: white;
+    border: none;
+}
+
+.delete-comment-modal button.delete:hover {
+    background-color: #963636;
+    color: white;
+}

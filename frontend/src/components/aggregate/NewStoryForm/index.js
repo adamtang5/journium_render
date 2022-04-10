@@ -50,7 +50,7 @@ const NewStoryForm = () => {
     useEffect(() => {
         if (!imageUrlInvalid && !videoUrlInvalid) {
             setPublishDisabled(!(
-                title.length > 0 &&
+                title.length > 2 &&
                 content.length > 0
             ));
         } else {
