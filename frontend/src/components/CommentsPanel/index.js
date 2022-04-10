@@ -6,7 +6,7 @@ import CommenterCard from '../aggregate/CommenterCard';
 import SingleCommentCard from '../aggregate/SingleCommentCard';
 import SingleCommentForm from '../aggregate/SingleCommentForm';
 
-const CommentsPanel = () => {
+const CommentsPanel = ({ visible }) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
@@ -45,9 +45,11 @@ const CommentsPanel = () => {
             content,
         }))
             .then(() => dispatch(commentActions.fetchComments(story.id)))
-            .then(() => closeCommentForm(e))
-            .then(() => history.push(`/stories/${story.id}/comments`));
+            .then(() => closeCommentForm(e));
+        // .then(() => history.push(`/stories/${story.id}`));
     };
+
+    if (!visible) return null;
 
     return (
         <div className="comments-panel">

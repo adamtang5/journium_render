@@ -49,9 +49,9 @@ function App() {
           <Route path="/stories/:id/edit">
             <EditStoryForm />
           </Route>
-          <Route path="/stories/:id/comments">
+          {/* <Route path="/stories/:id/comments">
             <CommentsPanel />
-          </Route>
+          </Route> */}
           <Route exact path="/stories/:id">
             <SingleStory />
           </Route>
