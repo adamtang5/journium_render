@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import StoryDate from '../../atomic/StoryDate';
+import ResourceDate from '../../atomic/ResourceDate';
 
 const StoriesListCardFooter = ({ story }) => {
     return (
@@ -8,7 +8,7 @@ const StoriesListCardFooter = ({ story }) => {
                     <div className="tag">{tag.name}</div>
                 </Link> */}
             <Link to={`/stories/${story.id}`}>
-                <StoryDate story={story} />
+                <ResourceDate resource={story} />
             </Link>
         </div>
     )

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Avatar from "../../atomic/Avatar";
 import DisplayName from '../../atomic/DisplayName';
 import Role from '../../atomic/Role';
-import StoryDate from '../../atomic/StoryDate';
+import ResourceDate from '../../atomic/ResourceDate';
 import DeleteStoryForm from '../../DeleteStoryForm';
 
 const SingleStoryHeader = ({ story }) => {
@@ -21,7 +21,7 @@ const SingleStoryHeader = ({ story }) => {
                         <DisplayName user={story.User} />
                         <Role user={story.User} />
                     </div>
-                    <StoryDate story={story} />
+                    <ResourceDate resource={story} />
                 </div>
             </div>
             {(sessionUser.id === story.userId) ? (

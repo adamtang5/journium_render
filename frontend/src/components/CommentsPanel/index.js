@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import * as commentActions from '../../store/comment';
 import CommenterCard from '../aggregate/CommenterCard';
+import SingleCommentCard from '../aggregate/SingleCommentCard';
+import SingleCommentForm from '../aggregate/SingleCommentForm';
 
 const CommentsPanel = () => {
     const dispatch = useDispatch();
@@ -76,6 +78,11 @@ const CommentsPanel = () => {
                     >Respond</button>
                 </div>
             </form>
+            {Object.values(comments).map(comment => {
+                return (comment.userId === sessionUser.id)
+                    ? <SingleCommentCard comment={comment} />
+                    : <SingleCommentForm comment={comment} />
+            })}
         </div>
     )
 };
