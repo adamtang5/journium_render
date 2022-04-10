@@ -80,8 +80,8 @@ const CommentsPanel = () => {
             </form>
             {Object.values(comments).map(comment => {
                 return (comment.userId === sessionUser.id)
-                    ? <SingleCommentCard comment={comment} />
-                    : <SingleCommentForm comment={comment} />
+                    ? <SingleCommentCard key={comment.id} comment={comment} />
+                    : <SingleCommentForm key={comment.id} comment={comment} />
             })}
         </div>
     )
