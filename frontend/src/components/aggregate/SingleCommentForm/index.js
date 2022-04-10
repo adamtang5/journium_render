@@ -6,11 +6,13 @@ import SingleCommentBody from '../../atomic/SingleCommentBody';
 import DeleteCommentForm from '../../DeleteCommentForm';
 import { Modal } from '../../../context/Modal';
 
-const SingleCommentForm = ({ comment }) => {
+const SingleCommentForm = ({ commentId }) => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
+    const commentById = useSelector(state => state.comment.comments[commentId]);
+    console.log("SingleCommentForm ------", commentId, commentById)
 
-    const [content, setContent] = useState(comment.content);
+    const [content, setContent] = useState('');
     const [showCommentBody, setShowCommentBody] = useState(true);
     const [showContentField, setShowContentField] = useState(false);
     const [showPrimaryActions, setShowPrimaryActions] = useState(true);
@@ -19,8 +21,14 @@ const SingleCommentForm = ({ comment }) => {
     const [updateDisabled, setUpdateDisabled] = useState(true);
 
     useEffect(() => {
-        setUpdateDisabled(content.length === 0 || content === comment.content);
+        if (commentById) setContent(commentById.content);
+    }, []);
+
+    useEffect(() => {
+        setUpdateDisabled(content.length === 0 || content === commentById.content);
     }, [content]);
+
+    if (!commentById) return null;
 
     const openEditForm = e => {
         e.preventDefault();
@@ -41,12 +49,13 @@ const SingleCommentForm = ({ comment }) => {
     const handleEditSubmit = e => {
         e.preventDefault();
         dispatch(commentActions.editComment({
-            id: comment.id,
+            id: commentId,
             userId: sessionUser.id,
-            storyId: comment.userId,
+            storyId: commentById.storyId,
             content,
         }))
-            .then(() => dispatch(commentActions.fetchComments(comment.storyId)));
+            .then(() => dispatch(commentActions.fetchComments(commentById.storyId)))
+            .then(() => closeEditForm(e));
     };
 
     return (
@@ -55,8 +64,8 @@ const SingleCommentForm = ({ comment }) => {
                 className="comment-form"
                 onSubmit={e => e.preventDefault()}
             >
-                <SingleCommentHeader comment={comment} />
-                <SingleCommentBody visible={showCommentBody} comment={comment} />
+                <SingleCommentHeader comment={commentById} />
+                <SingleCommentBody visible={showCommentBody} comment={commentById} />
                 <textarea
                     className={`content-field${showContentField ? '' : ' hidden'}`}
                     value={content}
@@ -76,7 +85,7 @@ const SingleCommentForm = ({ comment }) => {
                         {showDeleteModal && (
                             <Modal onClose={() => setShowDeleteModal(false)}>
                                 <DeleteCommentForm
-                                    comment={comment}
+                                    comment={commentById}
                                     setShowDeleteModal={setShowDeleteModal}
                                 />
                             </Modal>

@@ -20,7 +20,6 @@ const CommentsPanel = () => {
     const [showCommenterCard, setShowCommenterCard] = useState(false);
     const [showFormButtons, setShowFormButtons] = useState(false);
 
-
     // respond button is disabled until content is not empty
     useEffect(() => {
         setRespondDisabled(content === '');
@@ -33,6 +32,7 @@ const CommentsPanel = () => {
 
     const closeCommentForm = e => {
         e.preventDefault();
+        setContent('');
         setShowCommenterCard(false);
         setShowFormButtons(false);
     };
@@ -44,7 +44,9 @@ const CommentsPanel = () => {
             storyId: story.id,
             content,
         }))
-            .then((data) => history.push(`/stories/${id}`));
+            .then(() => dispatch(commentActions.fetchComments(story.id)))
+            .then(() => closeCommentForm(e))
+            .then(() => history.push(`/stories/${story.id}/comments`));
     };
 
     return (
@@ -74,6 +76,7 @@ const CommentsPanel = () => {
                     >Cancel</button>
                     <button
                         type="submit"
+                        disabled={respondDisabled}
                         className="submit"
                     >Respond</button>
                 </div>
@@ -81,7 +84,7 @@ const CommentsPanel = () => {
             {Object.values(comments).map(comment => {
                 return (comment.userId !== sessionUser.id)
                     ? <SingleCommentCard key={comment.id} comment={comment} />
-                    : <SingleCommentForm key={comment.id} comment={comment} />
+                    : <SingleCommentForm key={comment.id} commentId={comment.id} />
             })}
         </div>
     )

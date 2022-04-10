@@ -6,12 +6,14 @@ import './DeleteCommentForm.css';
 const DeleteCommentForm = ({ comment, setShowDeleteModal }) => {
     const dispatch = useDispatch();
     const history = useHistory();
+    const storyId = comment.storyId;
 
     const handleDelete = e => {
         e.preventDefault();
         setShowDeleteModal(false);
         dispatch(commentActions.deleteComment(comment.id))
-            .then(() => history.push('/'));
+            .then(() => dispatch(commentActions.fetchComments(storyId)));
+        // .then(() => history.push(`/stories/${storyId}`));
     };
 
     return (
