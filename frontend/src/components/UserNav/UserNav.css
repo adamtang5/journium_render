@@ -27,3 +27,36 @@
 #user-nav-icons .end {
     justify-self: flex-end;
 }
+
+.profile-dropdown {
+    position: absolute;
+    transform: translate(5px, -160px);
+    z-index: 20;
+    background-color: white;
+    border: 1px solid #c4c4c4;
+    box-shadow: #c4c4c4 0 1px 4px;
+    width: 250px;
+}
+
+.profile-dropdown-card {
+    padding: 20px;
+    border-bottom: 1px solid #c4c4c4;
+    gap: 10px;
+}
+
+.profile-dropdown-card .display-name {
+    font-size: 16px;
+    color: #292929;
+}
+
+.profile-dropdown-card .member-since {
+    color: #757575;
+    font-size: 14px;
+    gap: 4px;
+}
+
+.profile-dropdown-links .auth-button {
+    background-color: unset;
+    border: none;
+    margin: 10px;
+}

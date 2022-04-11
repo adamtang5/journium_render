@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import * as sessionActions from '../../store/session';
 import * as userActions from '../../store/user';
 import Avatar from '../atomic/Avatar';
+import DisplayName from '../atomic/DisplayName';
+import ResourceDate from '../atomic/ResourceDate';
 
 const ProfileDropdown = ({ user }) => {
     const dispatch = useDispatch();
@@ -20,11 +22,15 @@ const ProfileDropdown = ({ user }) => {
                     <Avatar user={user} />
                 </div>
                 <div className="card-text flex-column">
-                    <h3 className="card-name">{user.username}</h3>
+                    <DisplayName user={user} />
+                    <div className="member-since flex-row">
+                        <div>Member since </div>
+                        <ResourceDate resource={user} />
+                    </div>
                 </div>
             </div>
             <div className="profile-dropdown-links flex-column">
-                <div>
+                {/* <div>
                     <Link to="/">Write a story</Link>
                 </div>
                 <div>
@@ -32,7 +38,7 @@ const ProfileDropdown = ({ user }) => {
                 </div>
                 <div>
                     <Link to="/">Settings</Link>
-                </div>
+                </div> */}
                 <div>
                     <button className="auth-button" onClick={logout}>Log Out</button>
                 </div>
