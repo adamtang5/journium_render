@@ -1,6 +1,5 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
 import * as sessionActions from '../../store/session';
 import * as userActions from '../../store/user';
 import Avatar from '../atomic/Avatar';

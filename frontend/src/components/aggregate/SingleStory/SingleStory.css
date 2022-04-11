@@ -120,15 +120,12 @@
     font-family: Cambria, Georgia, Times, 'Times New Roman', serif;
 }
 
+.single-story-main-area .story-options {
+    padding: 0px 50px;
+}
+
 .single-story-main-area .story-options .actions-comments {
     align-items: center;
     gap: 5px;
     cursor: pointer;
-}
-
-.comments-panel {
-    border-left: solid black 0px;
-    flex: 0 0 fit-content;
-    -webkit-box-shadow: -5px 1px 4px 1px rgba(0, 0, 0, 0.45);
-    box-shadow: -5px 1px 4px 1px rgba(0, 0, 0, 0.45);
 }

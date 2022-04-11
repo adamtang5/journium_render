@@ -10,7 +10,6 @@ const SingleCommentForm = ({ commentId }) => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const commentById = useSelector(state => state.comment.comments[commentId]);
-    console.log("SingleCommentForm ------", commentId, commentById)
 
     const [content, setContent] = useState('');
     const [showCommentBody, setShowCommentBody] = useState(true);

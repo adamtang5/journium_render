@@ -34,7 +34,7 @@
     border: none;
 }
 
-#writer-top-right button.update {
+#writer-top-right button.update:hover {
     background-color: #33a32f;
 }
 

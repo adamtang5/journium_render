@@ -7,7 +7,7 @@ import * as roleActions from './store/role';
 import * as storyActions from './store/story';
 import Navigation from './components/Navigation';
 import NewStoryForm from './components/aggregate/NewStoryForm';
-import SingleStory from './components/aggregate/SingleStory';
+import ReadSingleStory from './components/aggregate/ReadSingleStory';
 import EditStoryForm from './components/aggregate/EditStoryForm';
 import CommentsPanel from './components/CommentsPanel';
 
@@ -53,7 +53,7 @@ function App() {
             <CommentsPanel />
           </Route> */}
           <Route exact path="/stories/:id">
-            <SingleStory />
+            <ReadSingleStory />
           </Route>
         </Switch>
       )}
