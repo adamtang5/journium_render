@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import * as sessionActions from '../../store/session';
 import * as userActions from '../../store/user';
 import Avatar from '../atomic/Avatar';
@@ -7,11 +8,13 @@ import DisplayName from '../atomic/DisplayName';
 import ResourceDate from '../atomic/ResourceDate';
 
 const ProfileDropdown = ({ user }) => {
+    const history = useHistory();
     const dispatch = useDispatch();
     const logout = e => {
         e.preventDefault();
         dispatch(userActions.clearUsers());
         dispatch(sessionActions.logout());
+        history.push('/');
     };
 
     return (
