@@ -33,8 +33,8 @@ module.exports = (sequelize, DataTypes) => {
     avatarUrl: {
       type: DataTypes.STRING,
       validate: {
-        isUrl(value) {
-          if (Validator.isNotUrl(value)) {
+        emptyOrValidUrl(value) {
+          if (value !== "" && !Validator.isUrl(value)) {
             throw new Error('URL for image must be a valid URL.');
           }
         }

@@ -8,9 +8,10 @@ import PasswordError from './Errors/PasswordError';
 import ConfirmPasswordError from './Errors/ConfirmPasswordError';
 import DisplayNameError from './Errors/DisplayNameError';
 import AvatarUrlError from './Errors/AvatarUrlError';
+import UserSolidIcon from '../utils/icons/UserSolidIcon';
 import '../../context/AuthForm.css';
 
-const SignupFormPage = () => {
+const SignupFormPage = ({ handleSwitchForm }) => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const roles = useSelector(state => state.role.roles);
@@ -167,7 +168,7 @@ const SignupFormPage = () => {
             password,
             displayName,
             avatarUrl,
-            roleId,
+            roleId: +roleId,
         }))
             .catch(async (res) => {
                 const data = await res.json();
@@ -176,12 +177,12 @@ const SignupFormPage = () => {
     };
 
     return (
-        <div id="signup-form" className="page-wrapper centered bordered rounded-corners">
-            <h2 className="centered">Join Journium.</h2>
+        <div id="signup-form" className="page-wrapper flex-column centered bordered rounded-corners">
             <form
                 className="auth-form stacked-form"
                 onSubmit={handleSubmit}
             >
+                <h2 className="centered">Join Journium.</h2>
                 <div
                     id="signup-pt-1"
                     className={`auth-form-group${showPart1 ? '' : ' hidden'}`}
@@ -277,7 +278,13 @@ const SignupFormPage = () => {
                     id="signup-pt-2-summary"
                     className={`flex-row auth-form-group${showPart2Summary ? '' : ' hidden'}`}
                 >
-                    <img src={avatarUrl} width="30px" height="30px" alt={displayName} />
+                    {(avatarUrl.length > 0) ? (
+                        <img src={avatarUrl} width="30px" height="30px" alt={displayName} />
+                    ) : (
+                        <div className="icons">
+                            <UserSolidIcon fill="#155" />
+                        </div>
+                    )}
                     <p className="summary-text">Writer Name: {displayName}</p>
                 </div>
 
@@ -315,6 +322,12 @@ const SignupFormPage = () => {
                     </button>
                 </div>
             </form>
+            <p className="switch-form">
+                Already have an account? <span
+                    className="green-text bolded cursor-pointer"
+                    onClick={handleSwitchForm}
+                >Sign in</span>
+            </p>
         </div>
     )
 };

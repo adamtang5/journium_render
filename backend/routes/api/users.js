@@ -1,6 +1,6 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
-const { check } = require('express-validator');
+const { check, oneOf } = require('express-validator');
 
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
@@ -25,9 +25,13 @@ const validateSignup = [
         .not()
         .isEmail()
         .withMessage('Name cannot be an email.'),
-    check('avatarUrl')
-        .isURL()
-        .withMessage('Avatar URL must be valid URL.'),
+    oneOf([
+        check('avatarUrl')
+            .isEmpty(),
+        check('avatarUrl')
+            .isURL()
+            .withMessage('Avatar URL must be valid URL.'),
+    ]),
     check('roleId')
         .exists({ checkFalsy: true })
         .withMessage('Please choose a valid role.'),
@@ -37,6 +41,7 @@ const validateSignup = [
 // Sign up: POST /api/users
 router.post('/', validateSignup, asyncHandler(async (req, res) => {
     const { email, password, displayName, avatarUrl, roleId } = req.body;
+
     const user = await User.signup({
         email,
         password,
