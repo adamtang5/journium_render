@@ -8,6 +8,7 @@ import PasswordError from './Errors/PasswordError';
 import ConfirmPasswordError from './Errors/ConfirmPasswordError';
 import DisplayNameError from './Errors/DisplayNameError';
 import AvatarUrlError from './Errors/AvatarUrlError';
+import UserSolidIcon from '../utils/icons/UserSolidIcon';
 import '../../context/AuthForm.css';
 
 const SignupFormPage = ({ handleSwitchForm }) => {
@@ -167,7 +168,7 @@ const SignupFormPage = ({ handleSwitchForm }) => {
             password,
             displayName,
             avatarUrl,
-            roleId,
+            roleId: +roleId,
         }))
             .catch(async (res) => {
                 const data = await res.json();
@@ -277,7 +278,13 @@ const SignupFormPage = ({ handleSwitchForm }) => {
                     id="signup-pt-2-summary"
                     className={`flex-row auth-form-group${showPart2Summary ? '' : ' hidden'}`}
                 >
-                    <img src={avatarUrl} width="30px" height="30px" alt={displayName} />
+                    {(avatarUrl.length > 0) ? (
+                        <img src={avatarUrl} width="30px" height="30px" alt={displayName} />
+                    ) : (
+                        <div className="icons">
+                            <UserSolidIcon fill="#155" />
+                        </div>
+                    )}
                     <p className="summary-text">Writer Name: {displayName}</p>
                 </div>
 
