@@ -10,7 +10,7 @@ import DisplayNameError from './Errors/DisplayNameError';
 import AvatarUrlError from './Errors/AvatarUrlError';
 import '../../context/AuthForm.css';
 
-const SignupFormPage = () => {
+const SignupFormPage = ({ handleSwitchForm }) => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const roles = useSelector(state => state.role.roles);
@@ -176,12 +176,12 @@ const SignupFormPage = () => {
     };
 
     return (
-        <div id="signup-form" className="page-wrapper centered bordered rounded-corners">
-            <h2 className="centered">Join Journium.</h2>
+        <div id="signup-form" className="page-wrapper flex-column centered bordered rounded-corners">
             <form
                 className="auth-form stacked-form"
                 onSubmit={handleSubmit}
             >
+                <h2 className="centered">Join Journium.</h2>
                 <div
                     id="signup-pt-1"
                     className={`auth-form-group${showPart1 ? '' : ' hidden'}`}
@@ -315,6 +315,12 @@ const SignupFormPage = () => {
                     </button>
                 </div>
             </form>
+            <p className="switch-form">
+                Already have an account? <span
+                    className="green-text bolded cursor-pointer"
+                    onClick={handleSwitchForm}
+                >Sign in</span>
+            </p>
         </div>
     )
 };

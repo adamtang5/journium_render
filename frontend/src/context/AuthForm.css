@@ -5,11 +5,13 @@
 }
 
 .page-wrapper {
-    max-width: 600px;
+    width: 550px;
+    height: 500px;
+    justify-content: space-around;
+    align-items: center;
 }
 
-#login-form *,
-#signup-form * {
+.auth-form * {
     font-family: gt-super, Georgia, Cambria, 'Times New Roman', Times, serif;
 }
 
@@ -100,7 +102,7 @@ p.summary-text {
 .auth-form .button-demo-user {
     font-size: 16px;
     padding: 5px 10px;
-    border-radius: 5px;
+    border-radius: 99em;
     margin-top: 20px;
 }
 
@@ -124,4 +126,25 @@ p.summary-text {
 .auth-form .button-demo-user:hover {
     background-color: white;
     color: #292929;
+}
+
+p.switch-form {
+    font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+}
+
+p.switch-form span.green-text {
+    color: rgb(26, 137, 23);
+}
+
+p.switch-form span.green-text:hover {
+    color: rgb(27, 117, 24);
+}
+
+p.switch-form .bolded {
+    font-weight: 700;
+}
+
+p.switch-form .cursor-pointer {
+    cursor: pointer;
 }

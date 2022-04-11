@@ -6,7 +6,7 @@ import EmailError from './Errors/EmailError';
 import PasswordError from './Errors/PasswordError';
 import '../../context/AuthForm.css';
 
-const LoginFormPage = () => {
+const LoginFormPage = ({ handleSwitchForm }) => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
 
@@ -64,11 +64,11 @@ const LoginFormPage = () => {
     }
 
     return (
-        <div id="login-form" className="page-wrapper centered bordered rounded-corners">
-            <h2 className="centered">Welcome Back.</h2>
+        <div id="login-form" className="page-wrapper flex-column centered bordered rounded-corners">
             <form
                 className="auth-form stacked-form"
                 onSubmit={handleSubmit}>
+                <h2 className="centered">Welcome Back.</h2>
                 <label className="auth-form-element">
                     <input
                         type="text"
@@ -111,6 +111,12 @@ const LoginFormPage = () => {
                     </button>
                 </div>
             </form>
+            <p className="switch-form">
+                No account? <span
+                    className="green-text bolded cursor-pointer"
+                    onClick={handleSwitchForm}
+                >Create One</span>
+            </p>
         </div>
     )
 };

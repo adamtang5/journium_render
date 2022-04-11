@@ -10,6 +10,18 @@ const SplashTopNav = () => {
     const [showLoginModal, setShowLoginModal] = useState(false);
     const [showSignupModal, setShowSignupModal] = useState(false);
 
+    const switchToSignupForm = e => {
+        e.preventDefault();
+        setShowLoginModal(false);
+        setShowSignupModal(true);
+    };
+
+    const switchToLoginForm = e => {
+        e.preventDefault();
+        setShowSignupModal(false);
+        setShowLoginModal(true);
+    };
+
     return (
         <div id="top_nav" className="fixed solid-bg">
             <div className="bounded centered">
@@ -24,7 +36,7 @@ const SplashTopNav = () => {
                             >Sign In</span>
                             {showLoginModal && (
                                 <Modal onClose={() => setShowLoginModal(false)}>
-                                    <LoginFormPage />
+                                    <LoginFormPage handleSwitchForm={switchToSignupForm} />
                                 </Modal>
                             )}
                         </div>
@@ -35,7 +47,7 @@ const SplashTopNav = () => {
                             >Get Started</button>
                             {showSignupModal && (
                                 <Modal onClose={() => setShowSignupModal(false)}>
-                                    <SignupFormPage />
+                                    <SignupFormPage handleSwitchForm={switchToLoginForm} />
                                 </Modal>
                             )}
                         </div>
