@@ -16,7 +16,7 @@
 #intro {
     width: 550px;
     height: 100%;
-    min-height: 430px;
+    min-height: 450px;
     display: flex;
     flex-direction: column;
     gap: 30px;

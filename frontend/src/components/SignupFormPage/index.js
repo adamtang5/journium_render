@@ -11,7 +11,7 @@ import AvatarUrlError from './Errors/AvatarUrlError';
 import UserSolidIcon from '../utils/icons/UserSolidIcon';
 import '../../context/AuthForm.css';
 
-const SignupFormPage = ({ handleSwitchForm }) => {
+const SignupFormPage = ({ formTitle, handleSwitchForm }) => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const roles = useSelector(state => state.role.roles);
@@ -182,7 +182,7 @@ const SignupFormPage = ({ handleSwitchForm }) => {
                 className="auth-form stacked-form"
                 onSubmit={handleSubmit}
             >
-                <h2 className="centered">Join Journium.</h2>
+                <h2 className="centered">{formTitle}</h2>
                 <div
                     id="signup-pt-1"
                     className={`auth-form-group${showPart1 ? '' : ' hidden'}`}

@@ -24,7 +24,7 @@ const SingleStoryHeader = ({ story }) => {
                     <ResourceDate resource={story} />
                 </div>
             </div>
-            {(sessionUser.id === story.userId) ? (
+            {sessionUser && (sessionUser.id === story.userId) ? (
                 <div className="story-owner-action flex-row">
                     <Link to={`/stories/${story.id}/edit`}>
                         <button className="edit">Edit</button>

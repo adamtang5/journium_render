@@ -6,7 +6,7 @@ import EmailError from './Errors/EmailError';
 import PasswordError from './Errors/PasswordError';
 import '../../context/AuthForm.css';
 
-const LoginFormPage = ({ handleSwitchForm }) => {
+const LoginFormPage = ({ formTitle, handleSwitchForm }) => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
 
@@ -68,7 +68,7 @@ const LoginFormPage = ({ handleSwitchForm }) => {
             <form
                 className="auth-form stacked-form"
                 onSubmit={handleSubmit}>
-                <h2 className="centered">Welcome Back.</h2>
+                <h2 className="centered">{formTitle}</h2>
                 <label className="auth-form-element">
                     <input
                         type="text"

@@ -11,6 +11,7 @@ const CommentsPanel = ({ visible }) => {
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
     const currentUser = useSelector(state => state.user.users[sessionUser.id]);
+
     const { id } = useParams();
     const story = useSelector(state => state.story.stories[+id]);
     const comments = useSelector(state => state.comment.comments);
