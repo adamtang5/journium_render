@@ -1,6 +1,5 @@
 import GithubIcon from "../../utils/icons/GithubIcon";
 import LinkedInSolidIcon from '../../utils/icons/LinkedInSolidIcon';
-import CSS3SolidIcon from '../../utils/icons/CSS3SolidIcon';
 import './SplashFooter.css';
 
 const SplashFooter = () => {
@@ -41,24 +40,37 @@ const SplashFooter = () => {
             </div>
             <div className="tech-used flex-row">
                 <div className="featured-tech">
-                    <a href="https://expressjs.com">
-                        <img className="featured-tech-icons" src="/images/icons/expressjs-2.png" alt="Express.js" />
-                    </a>
+                    <img className="featured-tech-icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="Vanilla JS" />
                 </div>
                 <div className="featured-tech">
-                    <a href="https://postgresql.org">
-                        <img className="featured-tech-icons" src="/images/icons/postgresql.png" alt="Postgresql" />
-                    </a>
+                    <img className="featured-tech-icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React.JS" />
                 </div>
                 <div className="featured-tech">
-                    <a href="https://sequelize.org/v5/manual/">
-                        <img className="featured-tech-icons" src="/images/icons/sequelize-logo.png" alt="Sequelize" />
-                    </a>
+                    <img className="featured-tech-icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg" alt="Redux" />
                 </div>
-                <div className="featured-tech-svg">
-                    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">
-                        <CSS3SolidIcon fill="#292929" />
-                    </a>
+                <div className="featured-tech">
+                    <img className="featured-tech-icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-plain-wordmark.svg" alt="Node.js" />
+                </div>
+                <div className="featured-tech">
+                    <img className="featured-tech-icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original-wordmark.svg" alt="Express.js" />
+                </div>
+                <div className="featured-tech">
+                    <img className="featured-tech-icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="Postgresql" />
+                </div>
+                <div className="featured-tech">
+                    <img className="featured-tech-icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sequelize/sequelize-original.svg" alt="Sequelize" />
+                </div>
+                <div className="featured-tech">
+                    <img className="featured-tech-icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" />
+                </div>
+                <div className="featured-tech">
+                    <img className="featured-tech-icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" />
+                </div>
+                <div className="featured-tech">
+                    <img className="featured-tech-icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" />
+                </div>
+                <div className="featured-tech">
+                    <img className="featured-tech-icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code" />
                 </div>
             </div>
         </footer>
