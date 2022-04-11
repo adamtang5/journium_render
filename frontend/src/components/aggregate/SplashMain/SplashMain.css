@@ -36,35 +36,35 @@
     align-items: center;
     grid-template-columns: repeat(3 1fr);
     grid-template-areas:
-    "trending_1 trending_2 trending_3"
-    "trending_4 trending_5 trending_6";
+    "featured_1 featured_2 featured_3"
+    "featured_4 featured_5 featured_6";
 }
 
-#trending_1 {
-    grid-area: trending_1;
+#featured_1 {
+    grid-area: featured_1;
 }
 
-#trending_2 {
-    grid-area: trending_2;
+#featured_2 {
+    grid-area: featured_2;
 }
 
-#trending_3 {
-    grid-area: trending_3;
+#featured_3 {
+    grid-area: featured_3;
 }
 
-#trending_4 {
-    grid-area: trending_4;
+#featured_4 {
+    grid-area: featured_4;
 }
 
-#trending_5 {
-    grid-area: trending_5;
+#featured_5 {
+    grid-area: featured_5;
 }
 
-#trending_6 {
-    grid-area: trending_6;
+#featured_6 {
+    grid-area: featured_6;
 }
 
-.trending_article {
+.featured_article {
     margin-bottom: 24px;
     display: flex;
     flex-direction: row;
@@ -83,7 +83,7 @@
     margin-right: 16px;
 }
 
-.trending_article .article {
+.featured_article .article {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -95,6 +95,7 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
+    gap: 5px;
 }
 
 .article .article_author .author_org {

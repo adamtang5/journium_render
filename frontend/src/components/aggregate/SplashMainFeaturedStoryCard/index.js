@@ -27,8 +27,8 @@ const SplashMainFeaturedStoryCard = ({ story, i }) => {
     return (
         <div className="auth_modal">
             <div
-                id={`trending_${i}`}
-                className="trending_article"
+                id={`featured_${i}`}
+                className="featured_article"
                 onClick={() => setShowLoginModal(true)}
             >
                 <div className="top_left_rank">0{i}</div>
