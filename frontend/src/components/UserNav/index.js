@@ -27,12 +27,12 @@ const UserNav = () => {
                 </NavLink>
             </div>
             <div className="user-nav-actives flex-column">
-                <NavLink to="/">
+                {/* <NavLink to="/">
                     <HomeSolidIcon />
-                </NavLink>
-                <NavLink to="/lists">
+                </NavLink> */}
+                {/* <NavLink to="/lists">
                     <BookmarksHollowIcon />
-                </NavLink>
+                </NavLink> */}
                 <NavLink to="/">
                     <ReadHollowIcon />
                 </NavLink>

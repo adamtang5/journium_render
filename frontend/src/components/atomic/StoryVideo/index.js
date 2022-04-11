@@ -9,7 +9,7 @@ const StoryVideo = ({ videoUrl }) => {
     }
 
     return (
-        <iframe width="965" height="543" src={`https://www.youtube.com/embed/${youtubeVideoId}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
+        <iframe width="720" height="405" src={`https://www.youtube.com/embed/${youtubeVideoId}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
     )
 };
 

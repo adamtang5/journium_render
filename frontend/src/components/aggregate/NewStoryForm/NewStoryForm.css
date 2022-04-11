@@ -1,6 +1,7 @@
 #page-container {
     max-width: 1080px;
     margin: 0 auto;
+    padding-bottom: 100px;
 }
 
 #writer-top-nav {
@@ -26,10 +27,15 @@
 #writer-top-right button.publish {
     background-color: #1a8917;
     color: white;
-    font-size: 12px;
+    font-size: 14px;
+    line-height: 16px;
     border-radius: 99em;
-    padding: 5px 10px;
+    padding: 7px 16px 9px;
     border: none;
+}
+
+#writer-top-right button.publish {
+    background-color: #239c1e;
 }
 
 #writer-top-right button.publish:disabled {
@@ -74,7 +80,9 @@
 }
 
 .new-story-form-element .render-image img {
-    max-width: 100vw;
+    object-fit: scale-down;
+    width: 700px;
+    height: 350px;
     border: 3px solid rgb(7, 46, 78);
     cursor: pointer;
 }

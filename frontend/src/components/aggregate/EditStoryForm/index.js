@@ -7,7 +7,7 @@ import * as storyActions from '../../../store/story';
 import JourniumLogo from "../../atomic/JourniumLogo";
 import ProfileButton from "../../ProfileButton";
 import EditStoryFormImageUrlError from './Errors/EditStoryFormImageUrlError';
-import RenderImage from "../../RenderImage";
+import RenderImage from "../../atomic/RenderImage";
 import EditStoryFormVideoUrlError from './Errors/EditStoryFormVideoUrlError';
 import './EditStoryForm.css';
 
@@ -140,6 +140,7 @@ const EditStoryForm = () => {
                             onChange={e => setImageUrl(e.target.value)}
                             onBlur={validateImageUrl}
                             placeholder="Insert image URL"
+                            title="Click away to preview image"
                         />
                         <EditStoryFormImageUrlError
                             imageUrlInvalid={imageUrlInvalid}

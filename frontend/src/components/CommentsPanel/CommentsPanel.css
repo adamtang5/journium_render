@@ -1,0 +1,99 @@
+.comments-panel {
+    border-left: solid black 0px;
+    flex: 0 0 fit-content;
+    max-width: 320px;
+    /* -webkit-box-shadow: -1px 1px 2px 1px rgba(0, 0, 0, 0.45); */
+    /* box-shadow: -1px 1px 2px 1px rgba(0, 0, 0, 0.45); */
+}
+
+.comments-panel .comments-header {
+    font-size: 16px;
+    color: #292929;
+}
+
+.comments-panel .new-comment-form {
+    margin-bottom: 20px;
+}
+
+.comments-panel .commenter-card {
+    align-items: center;
+    gap: 10px;
+}
+
+.comments-panel .comment-content {
+    width: 300px;
+    margin: 10px auto;
+    font-size: 18px;
+}
+
+.comments-panel .user-action {
+    gap: 10px;
+}
+
+.comments-panel button {
+    font-size: 12px;
+    line-height: 14px;
+    padding: 7px 16px 9px;
+    border-radius: 99em;
+}
+
+.comments-panel button.cancel {
+    background-color: white;
+    border: 1px solid #292929;
+    color: #292929;
+}
+
+.comments-panel button.cancel:hover {
+    background-color: white;
+    border: 1px solid #191919;
+    color: #191919;
+}
+
+.comments-panel button.submit {
+    background-color: #1a8917;
+    border: none;
+    color: white;
+}
+
+.comments-panel button.submit:hover {
+    background-color: #33a32f;
+}
+
+.comments-panel button.submit:disabled {
+    background-color: #ccc;
+    color: #555;
+}
+
+.comments-panel .single-comment-header {
+    gap: 10px;
+}
+
+.comments-panel .primary-actions {
+    gap: 10px;
+}
+
+.comments-panel .primary-actions button.edit {
+    background-color: #1a8917;
+    border: none;
+    color: white;
+}
+
+.comments-panel .primary-actions button.edit:hover {
+    background-color: #33a32f;
+}
+
+.comments-panel .primary-actions button.edit:disabled {
+    background-color: #ccc;
+    color: #555;
+}
+
+.comments-panel .primary-actions button.delete {
+    background-color: rgb(100, 20, 20);
+    color: white;
+    border: none;
+}
+
+.comments-panel .primary-actions button.delete:hover {
+    background-color: rgb(128, 33, 33);
+    color: white;
+}

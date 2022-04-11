@@ -1,4 +1,4 @@
-#stories-layout {
+#read-story-layout {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -21,5 +21,5 @@
 }
 
 #other-features {
-    width: 400px;
+    width: 320px;
 }

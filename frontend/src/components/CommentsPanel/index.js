@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import * as commentActions from '../../store/comment';
 import CommenterCard from '../aggregate/CommenterCard';
 import SingleCommentCard from '../aggregate/SingleCommentCard';
 import SingleCommentForm from '../aggregate/SingleCommentForm';
+import './CommentsPanel.css';
 
 const CommentsPanel = ({ visible }) => {
     const dispatch = useDispatch();
-    const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
     const currentUser = useSelector(state => state.user.users[sessionUser.id]);
 
@@ -55,7 +55,7 @@ const CommentsPanel = ({ visible }) => {
     return (
         <div className="comments-panel">
             <p className="comments-header">
-                Responses ({Object.values(comments).length})
+                Responses
             </p>
             <form
                 onSubmit={handleRespond}

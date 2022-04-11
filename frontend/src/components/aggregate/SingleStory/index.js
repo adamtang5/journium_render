@@ -36,9 +36,7 @@ const SingleStory = () => {
                         />
                     )}
                 </div>
-                <div className="comments-panel">
-                    <CommentsPanel visible={showCommentsPanel} />
-                </div>
+                <CommentsPanel visible={showCommentsPanel} />
             </div>
         )
     } else {

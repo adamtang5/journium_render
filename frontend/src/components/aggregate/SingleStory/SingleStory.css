@@ -65,9 +65,10 @@
 }
 
 .single-story-main-area button {
-    font-size: 12px;
+    font-size: 14px;
+    line-height: 16px;
     border-radius: 99em;
-    padding: 5px 10px;
+    padding: 7px 16px 9px;
     border: none;
 }
 
@@ -76,8 +77,18 @@
     color: white;
 }
 
+.single-story-main-area button.edit:hover {
+    background-color: #239c1e;
+    color: white;
+}
+
 .single-story-main-area button.delete {
     background-color: rgb(100, 20, 20);
+    color: white;
+}
+
+.single-story-main-area button.delete:hover {
+    background-color: rgb(128, 33, 33);
     color: white;
 }
 
@@ -109,15 +120,12 @@
     font-family: Cambria, Georgia, Times, 'Times New Roman', serif;
 }
 
+.single-story-main-area .story-options {
+    padding: 0px 50px;
+}
+
 .single-story-main-area .story-options .actions-comments {
     align-items: center;
     gap: 5px;
     cursor: pointer;
-}
-
-.comments-panel {
-    border-left: solid black 0px;
-    flex: 0 0 fit-content;
-    -webkit-box-shadow: -5px 1px 4px 1px rgba(0, 0, 0, 0.45);
-    box-shadow: -5px 1px 4px 1px rgba(0, 0, 0, 0.45);
 }
