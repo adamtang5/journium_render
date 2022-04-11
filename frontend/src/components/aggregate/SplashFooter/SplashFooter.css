@@ -1,70 +1,44 @@
-#discover_right_nav h2 {
-    padding-left: 40px;
-}
-
-#discover_topics ul {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: flex-start;
-}
-
-#discover_topics .topic {
-    margin-bottom: 8px;
-    border-radius: 3px;
-    border: 1px solid rgba(230, 230, 230, 1);
-    padding: 6px 16px;
-    margin-right: 8px;
-    font-size: 13px;
-    line-height: 16px;
-    color: #757575;
-    font-weight: 500;
-}
-
-.recommended_article .article {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    max-width: 700px;
-    margin-bottom: 45px;
-}
-
-.recommended_article .article .article_title h2 {
-    font-size: 22px;
-    max-height: 56px;
-    line-height: 28px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    color: #292929;
-    font-weight: 700;
-}
-
-.recommended_article .article .article_subtitle h3 {
-    font-size: 16px;
-    max-height: 40px;
-    line-height: 20px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    color: rgba(117, 117, 117, 1);
-    font-weight: 400;
-}
-
-.recommended_article .article_info {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+.about {
     align-items: center;
 }
 
-.recommended_article .article_actions {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 8px;
+.github-icon {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
 }
 
-.recommended_article .article_left {
-    width: 100%;
-    padding-right: 20px;
+.project-name {
+    align-items: center;
+    gap: 5px;
+}
+
+.project-name-text {
+    display: inline-block;
+}
+
+.linkedin-icon {
+    width: 30px;
+    height: 30px;
+}
+
+.linkedin-icon a {
+    width: 30px;
+    height: 30px
+}
+
+.tech-used {
+    align-items: center;
+    gap: 10px;
+}
+
+.featured-tech-icons {
+    object-fit: contain;
+    width: 40px;
+    height: 30px;
+}
+
+.featured-tech-svg {
+    width: 30px;
+    height: 30px;
 }

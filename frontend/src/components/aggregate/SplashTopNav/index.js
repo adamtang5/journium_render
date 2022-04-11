@@ -28,7 +28,6 @@ const SplashTopNav = () => {
                 <div id="top_nav_flexbox" className="cushioned">
                     <SplashHeaderTopLeftLogo />
                     <div id="top_right_nav">
-                        <Link to="/new-story" className="nav_btn">Write</Link>
                         <div className="auth_modal">
                             <span
                                 className="nav_btn"
@@ -36,7 +35,10 @@ const SplashTopNav = () => {
                             >Sign In</span>
                             {showLoginModal && (
                                 <Modal onClose={() => setShowLoginModal(false)}>
-                                    <LoginFormPage handleSwitchForm={switchToSignupForm} />
+                                    <LoginFormPage
+                                        handleSwitchForm={switchToSignupForm}
+                                        formTitle="Welcome back."
+                                    />
                                 </Modal>
                             )}
                         </div>
@@ -47,7 +49,10 @@ const SplashTopNav = () => {
                             >Get Started</button>
                             {showSignupModal && (
                                 <Modal onClose={() => setShowSignupModal(false)}>
-                                    <SignupFormPage handleSwitchForm={switchToLoginForm} />
+                                    <SignupFormPage
+                                        handleSwitchForm={switchToLoginForm}
+                                        formTitle="Join Journium."
+                                    />
                                 </Modal>
                             )}
                         </div>
