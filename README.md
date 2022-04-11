@@ -13,7 +13,7 @@
   <p align="center">
     A clone of Medium
     <br />
-    <a href="https://aa-meme-overflow.herokuapp.com/"><strong>Explore the docs »</strong></a>
+    <a href="https://aa-journium.herokuapp.com/"><strong>Live Link on Heroku »</strong></a>
     <br />
   </p>
 </div>
