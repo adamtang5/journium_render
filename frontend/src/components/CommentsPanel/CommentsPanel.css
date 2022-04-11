@@ -97,3 +97,33 @@
     background-color: rgb(128, 33, 33);
     color: white;
 }
+
+.comments-panel .edit-actions {
+    gap: 10px;
+}
+
+.comments-panel .edit-actions button.edit-cancel {
+    background-color: white;
+    border: 1px solid #4c4c4c;
+    color: #4c4c4c;
+}
+
+.comments-panel .edit-actions button.edit-cancel:hover {
+    border: 1px solid #191919;
+    color: #191919;
+}
+
+.comments-panel .edit-actions button.edit-submit {
+    background-color: #1a8917;
+    border: none;
+    color: white;
+}
+
+.comments-panel .edit-actions button.edit-submit:hover {
+    background-color: #33a32f;
+}
+
+.comments-panel .edit-actions button.edit-submit:disabled {
+    background-color: #ccc;
+    color: #555;
+}
