@@ -1,8 +1,7 @@
-import { Link } from 'react-router-dom';
 import CommentHollowIcon from '../../utils/icons/CommentHollowIcon';
 import CommentsCount from '../../atomic/CommentsCount';
 
-const SingleStoryFooter = ({ story, comments }) => {
+const SingleStoryFooter = ({ story, comments, setShowCommentsPanel }) => {
     return (
         <div className="story-options flex-row">
             {/*
@@ -11,12 +10,13 @@ const SingleStoryFooter = ({ story, comments }) => {
                 Save
                 Follow
                 */}
-            <Link to={`/stories/${story.id}/comments`}>
-                <div className="actions-comments flex-row">
-                    <CommentHollowIcon />
-                    <CommentsCount comments={comments} />
-                </div>
-            </Link>
+            <div
+                className="actions-comments flex-row"
+                onClick={() => setShowCommentsPanel(true)}
+            >
+                <CommentHollowIcon />
+                <CommentsCount comments={comments} />
+            </div>
         </div>
     )
 };
