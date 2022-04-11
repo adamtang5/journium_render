@@ -65,9 +65,10 @@
 }
 
 .single-story-main-area button {
-    font-size: 12px;
+    font-size: 14px;
+    line-height: 16px;
     border-radius: 99em;
-    padding: 5px 10px;
+    padding: 7px 16px 9px;
     border: none;
 }
 
@@ -76,8 +77,18 @@
     color: white;
 }
 
+.single-story-main-area button.edit:hover {
+    background-color: #239c1e;
+    color: white;
+}
+
 .single-story-main-area button.delete {
     background-color: rgb(100, 20, 20);
+    color: white;
+}
+
+.single-story-main-area button.delete:hover {
+    background-color: rgb(128, 33, 33);
     color: white;
 }
 
