@@ -41,7 +41,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Meme Overflow is a clone of Medium, a website for budding developers in bootcamp and others who support them to write about their experience related to bootcamp, share their tips, comment on their stories, like their stories.
+Journium is a clone of Medium, a website for budding developers in bootcamp and others who support them to write about their experience related to bootcamp, share their tips, comment on their stories, like their stories. Access the <a href="https://aa-journium.herokuapp.com/">Journium MVP</a>.
 
 <!--  <img src="public/icons/mainpage-login-ss.png" width=auto height=auto> -->
 
