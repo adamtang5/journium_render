@@ -139,8 +139,8 @@ const SignupFormPage = ({ handleSwitchForm }) => {
         const urlRe = new RegExp("((http|https)://)(www.)?" +
             "[a-zA-Z0-9@:%._\\+~# ?&//=]{2,256}\\.[a-z]" +
             "{2,6}\\b([-a-zA-Z0-9@:%._\\+~# ?&//=]*)")
-        setAvatarUrlInvalid(!urlRe.test(avatarUrl));
-    }
+        setAvatarUrlInvalid(avatarUrl !== "" && !urlRe.test(avatarUrl));
+    };
 
     // button onClick handlers
     const handlePart1Submit = e => {
