@@ -29,8 +29,6 @@ Journium is a clone of Medium, a website for budding developers in bootcamp and 
 |
 [MVP Feature List](https://github.com/adamtang5/aa_mod5_w16_express_react_solo/wiki/MVP-Feature-List) |
 [Database Schema](https://github.com/adamtang5/aa_mod5_w16_express_react_solo/wiki/Database-Schema) |
-[API Documentation](https://github.com/adamtang5/aa_mod5_w16_express_react_solo/wiki/API-Documentation) |
-[Frontend Routes](https://github.com/adamtang5/aa_mod5_w16_express_react_solo/wiki/Frontend-Routes) |
 
 
 ## Technologies Used
