@@ -95,7 +95,7 @@ state.comment = {
 const commentReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_COMMENTS: {
-            const newState = Object.assign({}, state);
+            const newState = Object.assign({}, initialState);
             action.comments.forEach(comment => {
                 newState.comments[comment.id] = comment;
             });
