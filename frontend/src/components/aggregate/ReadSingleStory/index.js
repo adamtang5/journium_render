@@ -8,7 +8,7 @@ const ReadSingleStory = () => {
             <div id="user-nav">
                 <UserNav />
             </div>
-            <div id="story-column" class="flex-column">
+            <div id="story-column" className="flex-column">
                 <SingleStory />
             </div>
             <div id="other-features">
