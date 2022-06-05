@@ -8,10 +8,10 @@ import commentReducer from './comment';
 
 const rootReducer = combineReducers({
     session: sessionReducer,
-    role: roleReducer,
-    story: storyReducer,
-    user: userReducer,
-    comment: commentReducer,
+    roles: roleReducer,
+    stories: storyReducer,
+    users: userReducer,
+    comments: commentReducer,
 });
 
 let enhancer;

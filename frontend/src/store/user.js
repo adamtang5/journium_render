@@ -24,31 +24,27 @@ export const clearUsers = () => async (dispatch) => {
     return;
 }
 
-const initialState = {
-    users: {},
-};
+const initialState = {};
 
 /*
-state.user = {
-    users: {
-        [id]: {
-            id: ...,
-            email: ...,
-            displayName: ...,
-            avatarUrl: ...,
-            roleId: ...,
-            createdAt: ...,
-            updatedAt: ...,
-        },
-        [id]: {
-            id: ...,
-            email: ...,
-            displayName: ...,
-            avatarUrl: ...,
-            roleId: ...,
-            createdAt: ...,
-            updatedAt: ...,
-        },
+state.users = {
+    [id]: {
+        id: ...,
+        email: ...,
+        displayName: ...,
+        avatarUrl: ...,
+        roleId: ...,
+        createdAt: ...,
+        updatedAt: ...,
+    },
+    [id]: {
+        id: ...,
+        email: ...,
+        displayName: ...,
+        avatarUrl: ...,
+        roleId: ...,
+        createdAt: ...,
+        updatedAt: ...,
     },
 }
 */
@@ -57,7 +53,7 @@ const userReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_USER: {
             const newState = Object.assign({}, state);
-            newState.users[action.user.id] = action.user;
+            newState[action.user.id] = action.user;
             return newState;
         }
         case CLEAR_USERS:

@@ -14,17 +14,12 @@ export const fetchRoles = () => async (dispatch) => {
     return res;
 };
 
-const initialState = {
-    roles: null,
-};
+const initialState = {};
 
 const roleReducer = (state = initialState, action) => {
     switch (action.type) {
-        case LOAD_ROLES: {
-            const newState = Object.assign({}, state);
-            newState.roles = action.roles;
-            return newState;
-        }
+        case LOAD_ROLES:
+            return { ...action.roles };
         default:
             return state;
     }

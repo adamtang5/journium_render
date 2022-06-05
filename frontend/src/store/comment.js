@@ -23,7 +23,7 @@ export const fetchComments = (storyId) => async (dispatch) => {
     const res = await csrfFetch(`/api/stories/${storyId}/comments`);
     const data = await res.json();
     dispatch(loadComments(data));
-    return res;
+    return;
 };
 
 export const createComment = (comment) => async (dispatch) => {
@@ -65,29 +65,25 @@ export const deleteComment = (id) => async (dispatch) => {
     }
 };
 
-const initialState = {
-    comments: {},
-};
+const initialState = {};
 
 /*
-state.comment = {
-    comments: {
-        [id]: {
-            id: ...,
-            userId: ...,
-            storyId: ...,
-            content: ...,
-            createdAt: ...,
-            updatedAt: ...,
-        },
-        [id]: {
-            id: ...,
-            userId: ...,
-            storyId: ...,
-            content: ...,
-            createdAt: ...,
-            updatedAt: ...,
-        },
+state.comments = {
+    [id]: {
+        id: ...,
+        userId: ...,
+        storyId: ...,
+        content: ...,
+        createdAt: ...,
+        updatedAt: ...,
+    },
+    [id]: {
+        id: ...,
+        userId: ...,
+        storyId: ...,
+        content: ...,
+        createdAt: ...,
+        updatedAt: ...,
     },
 }
 */
@@ -95,20 +91,20 @@ state.comment = {
 const commentReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_COMMENTS: {
-            const newState = Object.assign({}, initialState);
+            const newState = { ...initialState };
             action.comments.forEach(comment => {
-                newState.comments[comment.id] = comment;
+                newState[comment.id] = comment;
             });
             return newState;
         }
         case NEW_COMMENT: {
             const newState = Object.assign({}, state);
-            newState.comments[action.comment.id] = action.comment;
+            newState[action.comment.id] = action.comment;
             return newState;
         }
         case REMOVE_COMMENT: {
             const newState = Object.assign({}, state);
-            delete newState.comments[action.id];
+            delete newState[action.id];
             return newState;
         }
         default:

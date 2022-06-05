@@ -67,33 +67,29 @@ export const deleteStory = (id) => async (dispatch) => {
     }
 };
 
-const initialState = {
-    stories: {},
-};
+const initialState = {};
 
 /*
-state.story = {
-    stories: {
-        [id]: {
-            id: ...,
-            userId: ...,
-            title: ...,
-            content: ...,
-            imageUrl: ...,
-            videoUrl: ...,
-            createdAt: ...,
-            updatedAt: ...,
-        },
-        [id]: {
-            id: ...,
-            userId: ...,
-            title: ...,
-            content: ...,
-            imageUrl: ...,
-            videoUrl: ...,
-            createdAt: ...,
-            updatedAt: ...,
-        },
+state.stories = {
+    [id]: {
+        id: ...,
+        userId: ...,
+        title: ...,
+        content: ...,
+        imageUrl: ...,
+        videoUrl: ...,
+        createdAt: ...,
+        updatedAt: ...,
+    },
+    [id]: {
+        id: ...,
+        userId: ...,
+        title: ...,
+        content: ...,
+        imageUrl: ...,
+        videoUrl: ...,
+        createdAt: ...,
+        updatedAt: ...,
     },
 }
 */
@@ -103,18 +99,18 @@ const storyReducer = (state = initialState, action) => {
         case LOAD_STORIES: {
             const newState = Object.assign({}, state);
             action.stories.forEach(story => {
-                newState.stories[story.id] = story;
+                newState[story.id] = story;
             });
             return newState;
         }
         case NEW_STORY: {
             const newState = Object.assign({}, state);
-            newState.stories[action.story.id] = action.story;
+            newState[action.story.id] = action.story;
             return newState;
         }
         case REMOVE_STORY: {
             const newState = Object.assign({}, state);
-            delete newState.stories[action.id];
+            delete newState[action.id];
             return newState;
         }
         default:

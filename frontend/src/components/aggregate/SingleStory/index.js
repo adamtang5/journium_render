@@ -15,11 +15,13 @@ const SingleStory = () => {
     const [commentsLoaded, setCommentsLoaded] = useState(false);
     const [showCommentsPanel, setShowCommentsPanel] = useState(false);
     const story = useSelector(state => state.story.stories[+id]);
-    const comments = useSelector(state => state.comment.comments);
+    const stateComments = useSelector(state => state.comment.comments);
+    const allComments = useSelector(state => Object.values(state.comment.comments));
 
     useEffect(() => {
         dispatch(commentActions.fetchComments(+id))
-            .then(() => setCommentsLoaded(true));
+            .then(() => setCommentsLoaded(true))
+            .then(() => console.log(stateComments));
     }, [dispatch]);
 
     if (story) {
@@ -31,7 +33,7 @@ const SingleStory = () => {
                     {commentsLoaded && (
                         <SingleStoryFooter
                             story={story}
-                            comments={comments}
+                            comments={allComments}
                             setShowCommentsPanel={setShowCommentsPanel}
                         />
                     )}
