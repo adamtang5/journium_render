@@ -14,7 +14,7 @@ import '../../context/AuthForm.css';
 const SignupFormPage = ({ formTitle, handleSwitchForm }) => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
-    const roles = useSelector(state => state.role.roles);
+    const roles = useSelector(state => Object.values(state.roles));
 
     // slice-of-state variables for controlled inputs
     const [email, setEmail] = useState('');

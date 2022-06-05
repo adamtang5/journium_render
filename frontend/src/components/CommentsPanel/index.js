@@ -10,11 +10,11 @@ import './CommentsPanel.css';
 const CommentsPanel = ({ visible }) => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
-    const currentUser = useSelector(state => state.user.users[sessionUser.id]);
+    const currentUser = useSelector(state => state.users[sessionUser.id]);
 
     const { id } = useParams();
-    const story = useSelector(state => state.story.stories[+id]);
-    const comments = useSelector(state => state.comment.comments);
+    const story = useSelector(state => state.stories[+id]);
+    const comments = useSelector(state => state.comments);
 
     const [content, setContent] = useState('');
     const [respondDisabled, setRespondDisabled] = useState(true);

@@ -13,7 +13,7 @@ import './UserNav.css';
 const UserNav = () => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
-    const currentUser = useSelector(state => state.user.users[sessionUser.id]);
+    const currentUser = useSelector(state => state.users[sessionUser.id]);
 
     useEffect(() => {
         dispatch(userActions.fetchUser(sessionUser.id));

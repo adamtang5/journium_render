@@ -4,7 +4,7 @@ import SplashMainFeaturedHeader from '../../atomic/SplashMainFeaturedHeader';
 import './SplashMain.css';
 
 const SplashMain = () => {
-    const stories = useSelector(state => Object.values(state.story.stories));
+    const stories = useSelector(state => Object.values(state.stories));
     let featuredStories = stories.filter(story => {
         return story.imageUrl !== "";
     });

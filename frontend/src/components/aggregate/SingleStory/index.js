@@ -14,14 +14,13 @@ const SingleStory = () => {
     const { id } = useParams();
     const [commentsLoaded, setCommentsLoaded] = useState(false);
     const [showCommentsPanel, setShowCommentsPanel] = useState(false);
-    const story = useSelector(state => state.story.stories[+id]);
-    const stateComments = useSelector(state => state.comment.comments);
-    const allComments = useSelector(state => Object.values(state.comment.comments));
+    const story = useSelector(state => state.stories[+id]);
+    const stateComments = useSelector(state => state.comments);
+    const allComments = useSelector(state => Object.values(state.comments));
 
     useEffect(() => {
         dispatch(commentActions.fetchComments(+id))
-            .then(() => setCommentsLoaded(true))
-            .then(() => console.log(stateComments));
+            .then(() => setCommentsLoaded(true));
     }, [dispatch]);
 
     if (story) {

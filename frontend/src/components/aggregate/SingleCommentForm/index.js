@@ -9,7 +9,7 @@ import { Modal } from '../../../context/Modal';
 const SingleCommentForm = ({ commentId }) => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
-    const commentById = useSelector(state => state.comment.comments[commentId]);
+    const commentById = useSelector(state => state.comments[commentId]);
 
     const [content, setContent] = useState('');
     const [showCommentBody, setShowCommentBody] = useState(true);

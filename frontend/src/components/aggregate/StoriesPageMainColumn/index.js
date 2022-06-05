@@ -7,7 +7,7 @@ import StoriesListCard from '../StoriesListCard';
 const StoriesPageMainColumn = () => {
     const dispatch = useDispatch();
     const [isLoaded, setIsLoaded] = useState(false);
-    let stories = useSelector(state => Object.values(state.story.stories));
+    let stories = useSelector(state => Object.values(state.stories));
     stories.reverse();
 
     useEffect(() => {

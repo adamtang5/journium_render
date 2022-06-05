@@ -5,7 +5,7 @@ import StoriesListCardMain from "../StoriesListCardMain";
 import "./StoriesListCard.css";
 
 const StoriesListCard = ({ storyId }) => {
-    const stories = useSelector(state => state.story.stories);
+    const stories = useSelector(state => state.stories);
     const story = stories[storyId];
 
     return (
