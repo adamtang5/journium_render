@@ -14,7 +14,7 @@ const NewStoryForm = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
-    const currentUser = useSelector(state => state.user.users[sessionUser.id]);
+    const currentUser = useSelector(state => state.users[sessionUser.id]);
 
     const [publishDisabled, setPublishDisabled] = useState(true);
 
