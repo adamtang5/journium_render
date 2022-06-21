@@ -1,7 +1,7 @@
 /* #user-nav {
     height: 100%;
     background-color: rgba(255, 255, 255, 0.925);
-    border-right: 1px solid #c4c4c4;
+    border-right: 1px solid var(--color-border-lighter);
     flex-shrink: 1;
     min-height: 100vh;
 } */
@@ -33,24 +33,24 @@
     transform: translate(5px, -160px);
     z-index: 20;
     background-color: white;
-    border: 1px solid #c4c4c4;
-    box-shadow: #c4c4c4 0 1px 4px;
+    border: 1px solid var(--color-border-lighter);
+    box-shadow: var(--color-border-lighter) 0 1px 4px;
     width: 250px;
 }
 
 .profile-dropdown-card {
     padding: 20px;
-    border-bottom: 1px solid #c4c4c4;
+    border-bottom: 1px solid var(--color-border-lighter);
     gap: 10px;
 }
 
 .profile-dropdown-card .display-name {
     font-size: 16px;
-    color: #292929;
+    color: var(--color-text-primary);
 }
 
 .profile-dropdown-card .member-since {
-    color: #757575;
+    color: var(--color-text-meta);
     font-size: 14px;
     gap: 4px;
 }

@@ -57,7 +57,7 @@
 }
 
 .single-story-main-area .story-info .date {
-    color: #757575;
+    color: var(--color-text-meta);
 }
 
 .single-story-main-area .story-owner-action {
@@ -72,7 +72,7 @@
     border: none;
 }
 
-.single-story-main-area button.edit {
+/* .single-story-main-area button.edit {
     background-color: #1a8917;
     color: white;
 }
@@ -90,7 +90,7 @@
 .single-story-main-area button.delete:hover {
     background-color: rgb(128, 33, 33);
     color: white;
-}
+} */
 
 .single-story-main-area .story-main {
     margin: 20px auto;
@@ -117,7 +117,7 @@
 .single-story-main-area p.story-content {
     font-size: 20px;
     line-height: 32px;
-    font-family: Cambria, Georgia, Times, 'Times New Roman', serif;
+    font-family: var(--font-family-serif-secondary);
 }
 
 .single-story-main-area .story-options {

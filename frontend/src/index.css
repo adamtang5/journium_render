@@ -1,5 +1,49 @@
 * {
-    font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --color-bg-role-1: rgb(18, 43, 95);
+    --color-bg-role-2: rgb(94, 58, 27);
+    --color-bg-role-3: rgb(38, 23, 94);
+    --color-bg-role-4: rgb(13, 82, 94);
+    --color-bg-role-5: rgb(94, 86, 8);
+    --color-border: #aaa;
+    --color-border-lighter: #c4c4c4;
+    --color-border-lightest: #e6e6e6;
+    --color-bg-button: #191919;
+    --color-button-cancel: #494949;
+    --color-button-delete: #c94a4a;
+    --color-button-delete-hover: #963636;
+    --color-button-publish: #1a8917;
+    --color-button-publish-hover: #239c1e;
+    /* #33a32f */
+    --color-text-primary: #292929;
+    --color-text-meta: #757575;
+    --color-text-form-label: #333;
+    --color-text-low-contrast: #c6c6c6;
+    --font-family-primary: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --font-family-sans-serif-secondary: medium-content-sans-serif-font,
+        "Lucida Grande",
+        "Lucida Sans Unicode",
+        "Lucida Sans",
+        Geneva,
+        Arial,
+        sans-serif;
+    --font-family-serif-secondary: gt-super,
+        Georgia,
+        Cambria,
+        "Times New Roman",
+        Times,
+        serif;
+    --font-family-sans-serif-tertiary: medium-content-sans-serif-font,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Oxygen,
+        Ubuntu,
+        Cantarell,
+        "Open Sans",
+        "Helvetica Neue",
+        sans-serif;
+    font-family: var(--font-family-primary);
 }
 
 a {
@@ -16,7 +60,7 @@ ul {
 }
 
 .bordered {
-    border: 1px solid #aaa;
+    border: 1px solid var(--color-border);
 }
 
 .rounded-corners {
@@ -35,33 +79,92 @@ ul {
 
 .role {
     border-radius: 99em;
+    color: white;
 }
 
 .role-1 {
-    background-color: rgb(18, 43, 95);
-    color: white;
+    background-color: var(--color-bg-role-1);
 }
 
 .role-2 {
-    background-color: rgb(94, 58, 27);
-    color: white;
+    background-color: var(--color-bg-role-2);
 }
 
 .role-3 {
-    background-color: rgb(38, 23, 94);
-    color: white;
+    background-color: var(--color-bg-role-3);
 }
 
 .role-4 {
-    background-color: rgb(13, 82, 94);
-    color: white;
+    background-color: var(--color-bg-role-4);
 }
 
 .role-5 {
-    background-color: rgb(94, 86, 8);
-    color: white;
+    background-color: var(--color-bg-role-5);
 }
 
 .hidden {
     display: none;
+}
+
+.button-submit {
+    background-color: #155;
+    color: white;
+    border: none;
+}
+
+.button-submit.disabled {
+    background-color: var(--color-text-low-contrast);
+    color: var(--color-text-meta);
+}
+
+button.cancel {
+    background-color: white;
+    border: 1px solid var(--color-button-cancel);
+    color: var(--color-button-cancel);
+}
+
+button.cancel:hover {
+    border: 1px solid var(--color-bg-button);
+    color: var(--color-bg-button);
+}
+
+button.delete {
+    background-color: var(--color-button-delete);
+    color: white;
+    border: none;
+}
+
+button.delete:hover {
+    background-color: var(--color-button-delete-hover);
+}
+
+button.submit,
+button.edit,
+button.edit-submit,
+button.update,
+button.publish {
+    background-color: var(--color-button-publish);
+    color: white;
+    border: none;
+}
+
+button.submit:hover,
+button.edit:hover,
+button.edit-submit:hover,
+button.update:hover,
+button.publish:hover {
+    background-color: var(--color-button-publish-hover);
+}
+
+button.submit:disabled,
+button.edit:disabled,
+button.edit-submit:disabled,
+button.update:disabled,
+button.publish:disabled {
+    background-color: var(--color-text-low-contrast);
+    color: var(--color-text-meta);
+}
+
+.error-text {
+    color: red;
 }

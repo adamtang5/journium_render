@@ -12,12 +12,12 @@
 #discover_topics .topic {
     margin-bottom: 8px;
     border-radius: 3px;
-    border: 1px solid rgba(230, 230, 230, 1);
+    border: 1px solid var(--color-border-lightest);
     padding: 6px 16px;
     margin-right: 8px;
     font-size: 13px;
     line-height: 16px;
-    color: #757575;
+    color: var(--color-text-meta);
     font-weight: 500;
 }
 
@@ -35,7 +35,7 @@
     line-height: 28px;
     text-overflow: ellipsis;
     overflow: hidden;
-    color: #292929;
+    color: var(--color-text-primary);
     font-weight: 700;
 }
 
@@ -45,7 +45,7 @@
     line-height: 20px;
     text-overflow: ellipsis;
     overflow: hidden;
-    color: rgba(117, 117, 117, 1);
+    color: var(--color-text-meta);
     font-weight: 400;
 }
 

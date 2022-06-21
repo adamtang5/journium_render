@@ -12,13 +12,13 @@
 }
 
 .auth-form * {
-    font-family: gt-super, Georgia, Cambria, 'Times New Roman', Times, serif;
+    font-family: var(--font-family-serif-secondary);
 }
 
 .auth-form label {
     display: block;
     font-size: 20px;
-    color: #333;
+    color: var(--color-text-form-label);
 }
 
 #signup-pt-2-summary.flex-row {
@@ -106,26 +106,26 @@ p.summary-text {
     margin-top: 20px;
 }
 
-.auth-form .button-submit {
+/* .auth-form .button-submit {
     background-color: #155;
     color: white;
     border: none;
-}
+} */
 
-.auth-form .button-submit.disabled {
+/* .auth-form .button-submit.disabled {
     background-color: #ccc;
     color: #555;
-}
+} */
 
 .auth-form .button-demo-user {
-    background-color: #191919;
+    background-color: var(--color-bg-button);
     color: white;
-    border: #191919 1px solid;
+    border: var(--color-bg-button) 1px solid;
 }
 
 .auth-form .button-demo-user:hover {
     background-color: white;
-    color: #292929;
+    color: var(--color-text-primary);
 }
 
 p.switch-form {
@@ -134,11 +134,11 @@ p.switch-form {
 }
 
 p.switch-form span.green-text {
-    color: rgb(26, 137, 23);
+    color: var(--color-button-publish);
 }
 
 p.switch-form span.green-text:hover {
-    color: rgb(27, 117, 24);
+    color: var(--color-button-publish-hover);
 }
 
 p.switch-form .bolded {

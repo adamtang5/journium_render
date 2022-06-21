@@ -6,7 +6,7 @@ import SingleStoryHeader from "./SingleStoryHeader";
 import SingleStoryMain from "./SingleStoryMain";
 import SingleStoryFooter from "./SingleStoryFooter";
 import CommentsPanel from '../Comment/CommentsPanel';
-import PageNotFound from '../atomic/PageNotFound';
+import PageNotFound from '../utils/PageNotFound';
 import './SingleStory.css';
 
 const SingleStory = () => {
