@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import Splash from '../aggregate/Splash';
+import Splash from '../Splash';
 import Stories from '../aggregate/Stories';
 import './Navigation.css';
 

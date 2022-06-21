@@ -3,7 +3,7 @@
 }
 
 #large_banner .with_bkgd {
-    background-image: url("../../../../public/images/large_banner_bg.png");
+    background-image: url("../../static/images/large_banner_bg.png");
     background-size: 380px 350px;
     background-repeat: no-repeat;
     background-position: bottom right;

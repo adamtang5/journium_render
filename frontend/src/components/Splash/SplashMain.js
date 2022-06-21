@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
-import SplashMainFeaturedStoryCard from '../SplashMainFeaturedStoryCard';
-import SplashMainFeaturedHeader from '../../atomic/SplashMainFeaturedHeader';
+import SplashMainFeaturedStoryCard from './SplashMainFeaturedStoryCard';
+import SplashMainFeaturedHeader from './SplashMainFeaturedHeader';
 import './SplashMain.css';
 
 const SplashMain = () => {

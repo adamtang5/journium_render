@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { Modal } from '../../../context/Modal';
-import { Link } from 'react-router-dom';
-import SplashHeaderTopLeftLogo from '../SplashHeaderTopLeftLogo';
-import LoginFormPage from '../../LoginFormPage';
-import SignupFormPage from '../../SignupFormPage';
+import { Modal } from '../../context/Modal';
+import SplashHeaderTopLeftLogo from './SplashHeaderTopLeftLogo';
+import LoginFormPage from '../LoginFormPage';
+import SignupFormPage from '../SignupFormPage';
 import './SplashTopNav.css';
 
 const SplashTopNav = () => {

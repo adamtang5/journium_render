@@ -1,12 +1,11 @@
 import { useState } from 'react';
-import { Modal } from '../../../context/Modal';
-import { Link } from 'react-router-dom';
-import Avatar from '../../atomic/Avatar';
-import DisplayName from '../../atomic/DisplayName';
-import StoryTitle from '../../atomic/StoryTitle';
-import ResourceDate from '../../atomic/ResourceDate';
-import LoginFormPage from '../../LoginFormPage';
-import SignupFormPage from '../../SignupFormPage';
+import { Modal } from '../../context/Modal';
+import Avatar from '../Avatar';
+import DisplayName from '../DisplayName';
+import StoryTitle from '../Story/StoryTitle';
+import ResourceDate from '../utils/ResourceDate';
+import LoginFormPage from '../LoginFormPage';
+import SignupFormPage from '../SignupFormPage';
 
 const SplashMainFeaturedStoryCard = ({ story, i }) => {
     const [showLoginModal, setShowLoginModal] = useState(false);

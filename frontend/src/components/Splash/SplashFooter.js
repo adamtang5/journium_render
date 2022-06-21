@@ -1,5 +1,5 @@
-import GithubIcon from "../../utils/icons/GithubIcon";
-import LinkedInSolidIcon from '../../utils/icons/LinkedInSolidIcon';
+// import GithubIcon from "../../utils/icons/GithubIcon";
+// import LinkedInSolidIcon from '../../utils/icons/LinkedInSolidIcon';
 import './SplashFooter.css';
 
 const SplashFooter = () => {
@@ -8,7 +8,8 @@ const SplashFooter = () => {
             <div className="project-name flex-row">
                 <div className="github-icon">
                     <a href="https://github.com/adamtang5/aa_mod5_w16_express_react_solo" target="_blank">
-                        <GithubIcon fill="#292929" />
+                        {/* <GithubIcon fill="#292929" /> */}
+                        <img src="https://raw.githubusercontent.com/devicons/devicon/v2.15.1/icons/github/github-original.svg" alt="project on github" />
                     </a>
                 </div>
                 <div className="project-name-text">
@@ -26,12 +27,14 @@ const SplashFooter = () => {
                 </div>
                 <div className="github-icon">
                     <a href="https://github.com/adamtang5" target="_blank">
-                        <GithubIcon fill="#757575" />
+                        {/* <GithubIcon fill="#757575" /> */}
+                        <img src="https://raw.githubusercontent.com/devicons/devicon/v2.15.1/icons/github/github-original.svg" alt="project on github" />
                     </a>
                 </div>
                 <div className="linkedin-icon">
                     <a href="https://linkedin.com/in/adamtangx" target="_blank">
-                        <LinkedInSolidIcon fill="#757575" />
+                        {/* <LinkedInSolidIcon fill="#757575" /> */}
+                        <img src="https://raw.githubusercontent.com/devicons/devicon/v2.15.1/icons/linkedin/linkedin-original.svg" alt="project on github" />
                     </a>
                 </div>
                 <div>

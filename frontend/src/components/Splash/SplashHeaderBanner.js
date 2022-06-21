@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { Modal } from '../../../context/Modal';
-import LoginFormPage from '../../LoginFormPage';
-import SignupFormPage from '../../SignupFormPage';
+import { Modal } from '../../context/Modal';
+import LoginFormPage from '../LoginFormPage';
+import SignupFormPage from '../SignupFormPage';
 import './SplashHeaderBanner.css';
 
 const SplashHeaderBanner = () => {

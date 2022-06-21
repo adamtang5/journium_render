@@ -1,5 +1,5 @@
-import SplashTopNav from "../SplashTopNav";
-import SplashHeaderBanner from '../SplashHeaderBanner';
+import SplashTopNav from "./SplashTopNav";
+import SplashHeaderBanner from './SplashHeaderBanner';
 
 const SplashHeader = () => {
     return (
