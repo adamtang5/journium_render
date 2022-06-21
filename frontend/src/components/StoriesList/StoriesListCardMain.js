@@ -1,5 +1,5 @@
-import StoriesListCardMainLeft from '../StoriesListCardMainLeft';
-import StoriesListCardMainRight from '../StoriesListCardMainRight';
+import StoriesListCardMainLeft from './StoriesListCardMainLeft';
+import StoriesListCardMainRight from './StoriesListCardMainRight';
 
 const StoriesListCardMain = ({ story }) => {
     return (

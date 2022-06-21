@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
-import StoriesListCardFooter from "../StoriesListCardFooter";
-import StoriesListCardHeader from "../StoriesListCardHeader";
-import StoriesListCardMain from "../StoriesListCardMain";
+import StoriesListCardFooter from "./StoriesListCardFooter";
+import StoriesListCardHeader from "./StoriesListCardHeader";
+import StoriesListCardMain from "./StoriesListCardMain";
 import "./StoriesListCard.css";
 
 const StoriesListCard = ({ storyId }) => {

@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import * as storyActions from '../../../store/story';
-import StoriesPageMainColumnTop from '../../atomic/StoriesPageMainColumnTop';
-import StoriesListCard from '../StoriesListCard';
+import * as storyActions from '../../store/story';
+import StoriesPageMainColumnTop from './StoriesPageMainColumnTop';
+import StoriesListCard from './StoriesListCard';
 
 const StoriesPageMainColumn = () => {
     const dispatch = useDispatch();

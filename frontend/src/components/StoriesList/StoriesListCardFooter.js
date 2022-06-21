@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import ResourceDate from '../../atomic/ResourceDate';
+import ResourceDate from '../utils/ResourceDate';
 
 const StoriesListCardFooter = ({ story }) => {
     return (

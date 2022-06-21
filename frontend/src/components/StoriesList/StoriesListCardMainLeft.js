@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import StoryTitle from '../../atomic/StoryTitle';
-import StoryBlurb from '../../atomic/StoryBlurb';
+import StoryTitle from '../Story/StoryTitle';
+import StoryBlurb from '../Story/StoryBlurb';
 
 const StoriesListCardMainLeft = ({ story }) => {
     return (
