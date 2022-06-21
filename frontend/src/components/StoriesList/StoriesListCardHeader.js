@@ -1,19 +1,13 @@
-import Avatar from '../Avatar';
-import DisplayName from "../DisplayName";
-import Role from "../atomic/Role";
+import Avatar from '../User/Avatar';
+import DisplayName from "../User/DisplayName";
+import Role from "../User/Role";
 
 const StoriesListCardHeader = ({ story }) => {
     return (
         <div className="author flex-row">
-            {/* <Link to={`/users/${story.userId}`}> */}
             <Avatar user={story.User} />
-            {/* </Link> */}
-            {/* <Link to={`/users/${story.User.id}`}> */}
             <DisplayName user={story.User} />
-            {/* </Link> */}
-            {/* <Link to={`/users/${story.User.id}`}> */}
             <Role user={story.User} />
-            {/* </Link> */}
         </div>
     )
 };

@@ -22,7 +22,7 @@
 }
 
 #top_left_logo .logo-text {
-    font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
+    font-family: var(--font-family-serif-secondary);
     font-size: 48px;
     line-height: 54px;
     color: black;
@@ -42,7 +42,7 @@
 
 .nav_btn {
     display: inline-block;
-    color: #292929;
+    color: var(--color-text-primary);
 }
 
 .nav_btn:hover {
@@ -52,8 +52,8 @@
 button#get_started {
     display: inline-block;
     padding: 9px 16px 9px;
-    background-color: #191919;
+    background-color: var(--color-bg-button);
     color: white;
-    border: #191919 1px solid;
+    border: var(--color-bg-button) 1px solid;
     border-radius: 99em;
 }

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Modal } from '../../context/Modal';
-import Avatar from '../Avatar';
-import DisplayName from '../DisplayName';
+import Avatar from '../User/Avatar';
+import DisplayName from '../User/DisplayName';
 import StoryTitle from '../Story/StoryTitle';
 import ResourceDate from '../utils/ResourceDate';
 import LoginFormPage from '../LoginFormPage';

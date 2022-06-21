@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { useSelector } from "react-redux";
 import { Modal } from '../../context/Modal';
 import { Link } from 'react-router-dom';
-import Avatar from "../Avatar";
-import DisplayName from '../DisplayName';
-import Role from '../atomic/Role';
+import Avatar from "../User/Avatar";
+import DisplayName from '../User/DisplayName';
+import Role from '../User/Role';
 import ResourceDate from '../utils/ResourceDate';
 import DeleteStoryForm from './DeleteStoryForm';
 

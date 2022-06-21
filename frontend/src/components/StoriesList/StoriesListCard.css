@@ -18,7 +18,7 @@
     font-size: 16px;
     max-height: 20px;
     line-height: 20px;
-    color: #292929;
+    color: var(--color-text-primary);
     margin: 0;
 }
 
@@ -35,7 +35,7 @@
 
 .story-card .story-text .story-title,
 .story-card .story-text .story-blurb {
-    color: #292929;
+    color: var(--color-text-primary);
 }
 
 .story-card .story-text .story-title h2 {
@@ -46,9 +46,9 @@
 
 .story-card .story-text .story-blurb p {
     font-size: 16px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: var(--font-family-serif-secondary);
     margin: 0;
-    color: #292929;
+    color: var(--color-text-primary);
 }
 
 .story-card .info {

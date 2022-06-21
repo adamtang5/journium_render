@@ -27,7 +27,7 @@ main {
 #featured_label,
 #discover_right_nav h2 {
     text-transform: uppercase;
-    color: #292929;
+    color: var(--color-text-primary);
     font-size: 12px;
     font-weight: 700;
     line-height: 16px;
@@ -40,8 +40,8 @@ main {
     align-items: center;
     grid-template-columns: repeat(3 1fr);
     grid-template-areas:
-    "featured_1 featured_2 featured_3"
-    "featured_4 featured_5 featured_6";
+        "featured_1 featured_2 featured_3"
+        "featured_4 featured_5 featured_6";
 }
 
 #featured_1 {
@@ -78,10 +78,9 @@ main {
 
 .top_left_rank {
     font-size: 30px;
-    color: #c6c6c6;
+    color: var(--color-text-low-contrast);
     font-weight: 700;
     line-height: 36px;
-
     position: relative;
     top: -10px;
     margin-right: 16px;
@@ -112,7 +111,7 @@ main {
 .author_org span {
     font-size: 13px;
     line-height: 16px;
-    color: #757575;
+    color: var(--color-text-meta);
     font-weight: 500;
     padding: 0 2px;
 }
@@ -131,21 +130,21 @@ a.org_name h4 {
     text-overflow: ellipsis;
     line-height: 16px;
     font-weight: 700;
-    color: #292929;
+    color: var(--color-text-primary);
 }
 
 .article_title h2 {
     font-size: 16px;
     max-height: 40px;
     text-overflow: ellipsis;
-    color: #292929;
+    color: var(--color-text-primary);
     font-weight: 700;
 }
 
 .article_metrics {
     font-size: 13px;
     line-height: 20px;
-    color: rgba(117, 117, 117, 1);
+    color: var(--color-text-meta);
     display: flex;
     flex-direction: row;
     justify-content: flex-start;

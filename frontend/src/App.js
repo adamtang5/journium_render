@@ -29,16 +29,8 @@ function App() {
 
   return (
     <>
-      {/* <Navigation isLoaded={isLoaded} /> */}
       {isLoaded && (
         <Switch>
-          {/* <Route path="/login">
-            <LoginFormPage />
-            <LoginFormModal />
-          </Route> */}
-          {/* <Route path="/signup">
-            <SignupFormPage />
-          </Route> */}
           <Route exact path="/">
             <Navigation isLoaded={isLoaded} />
           </Route>
@@ -48,9 +40,6 @@ function App() {
           <Route path="/stories/:id/edit">
             <EditStoryForm />
           </Route>
-          {/* <Route path="/stories/:id/comments">
-            <CommentsPanel />
-          </Route> */}
           <Route exact path="/stories/:id">
             <ReadSingleStory />
           </Route>

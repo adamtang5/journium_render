@@ -22,10 +22,13 @@ body {
 
 a {
     /* text-decoration: none; */
-    color: #757575;
+    color: var(--color-text-meta);
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
     margin: 0;
 }
 
