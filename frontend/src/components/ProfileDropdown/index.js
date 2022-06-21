@@ -3,9 +3,9 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import * as sessionActions from '../../store/session';
 import * as userActions from '../../store/user';
-import Avatar from '../atomic/Avatar';
-import DisplayName from '../atomic/DisplayName';
-import ResourceDate from '../atomic/ResourceDate';
+import Avatar from '../Avatar';
+import DisplayName from '../DisplayName';
+import ResourceDate from '../utils/ResourceDate';
 
 const ProfileDropdown = ({ user }) => {
     const history = useHistory();

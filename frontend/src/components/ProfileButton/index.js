@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Avatar from "../atomic/Avatar";
+import Avatar from "../Avatar";
 import ProfileDropdown from "../ProfileDropdown";
 import './ProfileButton.css';
 
