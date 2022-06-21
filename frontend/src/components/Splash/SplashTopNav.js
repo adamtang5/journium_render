@@ -8,15 +8,32 @@ import './SplashTopNav.css';
 const SplashTopNav = () => {
     const [showLoginModal, setShowLoginModal] = useState(false);
     const [showSignupModal, setShowSignupModal] = useState(false);
+    const [isModalOpen, setModalOpen] = useState(false);
+
+    const closeLoginModal = e => {
+        e.preventDefault();
+        setModalOpen(false);
+        setShowLoginModal(false);
+    };
+
+    const closeSignupModal = e => {
+        e.preventDefault();
+        setModalOpen(false);
+        setShowSignupModal(false);
+    };
 
     const switchToSignupForm = e => {
         e.preventDefault();
+        setModalOpen(showLoginModal || showSignupModal);
+
         setShowLoginModal(false);
         setShowSignupModal(true);
     };
 
     const switchToLoginForm = e => {
         e.preventDefault();
+        setModalOpen(showLoginModal || showSignupModal);
+
         setShowSignupModal(false);
         setShowLoginModal(true);
     };
@@ -33,7 +50,7 @@ const SplashTopNav = () => {
                                 onClick={() => setShowLoginModal(true)}
                             >Sign In</span>
                             {showLoginModal && (
-                                <Modal onClose={() => setShowLoginModal(false)}>
+                                <Modal onClose={closeLoginModal} isOpen={isModalOpen}>
                                     <LoginFormPage
                                         handleSwitchForm={switchToSignupForm}
                                         formTitle="Welcome back."
@@ -47,7 +64,7 @@ const SplashTopNav = () => {
                                 onClick={() => setShowSignupModal(true)}
                             >Get Started</button>
                             {showSignupModal && (
-                                <Modal onClose={() => setShowSignupModal(false)}>
+                                <Modal onClose={closeSignupModal} isOpen={isModalOpen}>
                                     <SignupFormPage
                                         handleSwitchForm={switchToLoginForm}
                                         formTitle="Join Journium."

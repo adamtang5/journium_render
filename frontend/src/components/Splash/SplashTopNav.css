@@ -56,4 +56,9 @@ button#get_started {
     color: white;
     border: var(--color-bg-button) 1px solid;
     border-radius: 99em;
+    transition: background-color 0.8s;
+}
+
+button#get_started:hover {
+    background-color: black;
 }
