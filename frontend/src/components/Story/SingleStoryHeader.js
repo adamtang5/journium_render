@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { useSelector } from "react-redux";
-import { Modal } from '../../../context/Modal';
+import { Modal } from '../../context/Modal';
 import { Link } from 'react-router-dom';
-import Avatar from "../../atomic/Avatar";
-import DisplayName from '../../atomic/DisplayName';
-import Role from '../../atomic/Role';
-import ResourceDate from '../../atomic/ResourceDate';
-import DeleteStoryForm from '../../DeleteStoryForm';
+import Avatar from "../Avatar";
+import DisplayName from '../DisplayName';
+import Role from '../atomic/Role';
+import ResourceDate from '../utils/ResourceDate';
+import DeleteStoryForm from './DeleteStoryForm';
 
 const SingleStoryHeader = ({ story }) => {
     const [showDeleteModal, setShowDeleteModal] = useState(false);

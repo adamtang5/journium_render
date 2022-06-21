@@ -1,33 +1,30 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useHistory, useParams } from "react-router-dom";
-import * as sessionActions from '../../../store/session';
-import * as userActions from '../../../store/user';
-import * as storyActions from '../../../store/story';
-import JourniumLogo from "../../atomic/JourniumLogo";
-import ProfileButton from "../../ProfileButton";
-import EditStoryFormImageUrlError from './Errors/EditStoryFormImageUrlError';
-import RenderImage from "../../atomic/RenderImage";
-import EditStoryFormVideoUrlError from './Errors/EditStoryFormVideoUrlError';
-import './EditStoryForm.css';
+import { NavLink, useHistory } from "react-router-dom";
+import * as userActions from '../../store/user';
+import * as storyActions from '../../store/story';
+import JourniumLogo from "../utils/JourniumLogo";
+import ProfileButton from "../ProfileButton";
+import NewStoryFormImageUrlError from './Errors/NewStoryFormImageUrlError';
+import RenderImage from "./RenderImage";
+import NewStoryFormVideoUrlError from './Errors/NewStoryFormVideoUrlError';
+import './NewStoryForm.css';
 
-const EditStoryForm = () => {
-    const { id } = useParams();
+const NewStoryForm = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
-    const currentUser = useSelector(state => state.user.users[sessionUser.id]);
-    const story = useSelector(state => state.story.stories[+id]);
+    const currentUser = useSelector(state => state.users[sessionUser.id]);
 
-    const [updateDisabled, setUpdateDisabled] = useState(true);
+    const [publishDisabled, setPublishDisabled] = useState(true);
 
     // slice-of-state variables for controlled inputs
-    const [title, setTitle] = useState(story.title);
-    const [content, setContent] = useState(story.content);
-    const [imageUrl, setImageUrl] = useState(story.imageUrl);
-    const [videoUrl, setVideoUrl] = useState(story.videoUrl);
+    const [title, setTitle] = useState('');
+    const [content, setContent] = useState('');
+    const [imageUrl, setImageUrl] = useState('');
+    const [videoUrl, setVideoUrl] = useState('');
 
-    // slice of state for final validation when clicking update button
+    // slice of state for final validation when clicking publish button
     const [showImageUrlInput, setShowImageUrlInput] = useState(true);
     const [showRenderImage, setShowRenderImage] = useState(false);
     const [errors, setErrors] = useState([]);
@@ -42,24 +39,22 @@ const EditStoryForm = () => {
         "{2,6}\\b([-a-zA-Z0-9@:%._\\+~# ?&//=]*)");
 
     useEffect(() => {
-        dispatch(sessionActions.restoreUser())
-            .then((user) => {
-                if (user) {
-                    dispatch(userActions.fetchUser(sessionUser.id));
-                }
-            })
-            .then(() => dispatch(storyActions.fetchStories()));
+        dispatch(userActions.fetchUser(sessionUser.id));
     }, [dispatch]);
 
-    // update button is disabled until basic validation is done
+    useEffect(() => {
+        dispatch(storyActions.fetchStories());
+    }, [dispatch]);
+
+    // publish button is disabled until basic validation is done
     useEffect(() => {
         if (!imageUrlInvalid && !videoUrlInvalid) {
-            setUpdateDisabled(!(
-                title.length > 0 &&
+            setPublishDisabled(!(
+                title.length > 2 &&
                 content.length > 0
             ));
         } else {
-            setUpdateDisabled(true);
+            setPublishDisabled(true);
         }
     }, [title, content, imageUrlInvalid, videoUrlInvalid]);
 
@@ -81,18 +76,17 @@ const EditStoryForm = () => {
         setVideoUrlInvalid(!urlRe.test(e.target.value) && !!e.target.value);
     };
 
-    const handleUpdate = e => {
+    const handlePublish = e => {
         e.preventDefault();
         setErrors([]);
-        dispatch(storyActions.editStory({
-            id: +id,
+        dispatch(storyActions.createStory({
             userId: sessionUser.id,
             title,
             content,
             imageUrl,
             videoUrl,
         }))
-            .then(() => history.push(`/stories/${id}`));
+            .then((data) => history.push(`/stories/${data.id}`));
     };
 
     return (
@@ -106,11 +100,11 @@ const EditStoryForm = () => {
                 </div>
                 <div id="writer-top-right" className="flex-row">
                     <button
-                        className="update"
-                        disabled={updateDisabled}
-                        onClick={handleUpdate}
+                        className="publish"
+                        disabled={publishDisabled}
+                        onClick={handlePublish}
                     >
-                        Update
+                        Publish
                     </button>
                     {currentUser && (
                         <>
@@ -142,7 +136,7 @@ const EditStoryForm = () => {
                             placeholder="Insert image URL"
                             title="Click away to preview image"
                         />
-                        <EditStoryFormImageUrlError
+                        <NewStoryFormImageUrlError
                             imageUrlInvalid={imageUrlInvalid}
                         />
                         <RenderImage
@@ -170,7 +164,7 @@ const EditStoryForm = () => {
                             onBlur={validateVideoUrl}
                             placeholder="Insert video URL"
                         />
-                        <EditStoryFormVideoUrlError
+                        <NewStoryFormVideoUrlError
                             videoUrlInvalid={videoUrlInvalid}
                         />
                     </label>
@@ -185,4 +179,4 @@ const EditStoryForm = () => {
     )
 };
 
-export default EditStoryForm;
+export default NewStoryForm;

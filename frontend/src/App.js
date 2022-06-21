@@ -6,9 +6,9 @@ import * as userActions from './store/user';
 import * as roleActions from './store/role';
 import * as storyActions from './store/story';
 import Navigation from './components/Navigation';
-import NewStoryForm from './components/aggregate/NewStoryForm';
-import ReadSingleStory from './components/aggregate/ReadSingleStory';
-import EditStoryForm from './components/aggregate/EditStoryForm';
+import NewStoryForm from './components/Story/NewStoryForm';
+import ReadSingleStory from './components/Story/ReadSingleStory';
+import EditStoryForm from './components/Story/EditStoryForm';
 import CommentsPanel from './components/CommentsPanel';
 
 function App() {

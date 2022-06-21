@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import Thumbnail from '../atomic/Thumbnail';
+import Thumbnail from '../Story/Thumbnail';
 
 const StoriesListCardMainRight = ({ story }) => {
     return (

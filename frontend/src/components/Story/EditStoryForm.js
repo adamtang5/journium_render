@@ -1,30 +1,33 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useHistory } from "react-router-dom";
-import * as userActions from '../../../store/user';
-import * as storyActions from '../../../store/story';
-import JourniumLogo from "../../atomic/JourniumLogo";
-import ProfileButton from "../../ProfileButton";
-import NewStoryFormImageUrlError from './Errors/NewStoryFormImageUrlError';
-import RenderImage from "../../atomic/RenderImage";
-import NewStoryFormVideoUrlError from './Errors/NewStoryFormVideoUrlError';
-import './NewStoryForm.css';
+import { NavLink, useHistory, useParams } from "react-router-dom";
+import * as sessionActions from '../../store/session';
+import * as userActions from '../../store/user';
+import * as storyActions from '../../store/story';
+import JourniumLogo from "../utils/JourniumLogo";
+import ProfileButton from "../ProfileButton";
+import EditStoryFormImageUrlError from './Errors/EditStoryFormImageUrlError';
+import RenderImage from "./RenderImage";
+import EditStoryFormVideoUrlError from './Errors/EditStoryFormVideoUrlError';
+import './EditStoryForm.css';
 
-const NewStoryForm = () => {
+const EditStoryForm = () => {
+    const { id } = useParams();
     const dispatch = useDispatch();
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
-    const currentUser = useSelector(state => state.users[sessionUser.id]);
+    const currentUser = useSelector(state => state.user.users[sessionUser.id]);
+    const story = useSelector(state => state.story.stories[+id]);
 
-    const [publishDisabled, setPublishDisabled] = useState(true);
+    const [updateDisabled, setUpdateDisabled] = useState(true);
 
     // slice-of-state variables for controlled inputs
-    const [title, setTitle] = useState('');
-    const [content, setContent] = useState('');
-    const [imageUrl, setImageUrl] = useState('');
-    const [videoUrl, setVideoUrl] = useState('');
+    const [title, setTitle] = useState(story.title);
+    const [content, setContent] = useState(story.content);
+    const [imageUrl, setImageUrl] = useState(story.imageUrl);
+    const [videoUrl, setVideoUrl] = useState(story.videoUrl);
 
-    // slice of state for final validation when clicking publish button
+    // slice of state for final validation when clicking update button
     const [showImageUrlInput, setShowImageUrlInput] = useState(true);
     const [showRenderImage, setShowRenderImage] = useState(false);
     const [errors, setErrors] = useState([]);
@@ -39,22 +42,24 @@ const NewStoryForm = () => {
         "{2,6}\\b([-a-zA-Z0-9@:%._\\+~# ?&//=]*)");
 
     useEffect(() => {
-        dispatch(userActions.fetchUser(sessionUser.id));
+        dispatch(sessionActions.restoreUser())
+            .then((user) => {
+                if (user) {
+                    dispatch(userActions.fetchUser(sessionUser.id));
+                }
+            })
+            .then(() => dispatch(storyActions.fetchStories()));
     }, [dispatch]);
 
-    useEffect(() => {
-        dispatch(storyActions.fetchStories());
-    }, [dispatch]);
-
-    // publish button is disabled until basic validation is done
+    // update button is disabled until basic validation is done
     useEffect(() => {
         if (!imageUrlInvalid && !videoUrlInvalid) {
-            setPublishDisabled(!(
-                title.length > 2 &&
+            setUpdateDisabled(!(
+                title.length > 0 &&
                 content.length > 0
             ));
         } else {
-            setPublishDisabled(true);
+            setUpdateDisabled(true);
         }
     }, [title, content, imageUrlInvalid, videoUrlInvalid]);
 
@@ -76,17 +81,18 @@ const NewStoryForm = () => {
         setVideoUrlInvalid(!urlRe.test(e.target.value) && !!e.target.value);
     };
 
-    const handlePublish = e => {
+    const handleUpdate = e => {
         e.preventDefault();
         setErrors([]);
-        dispatch(storyActions.createStory({
+        dispatch(storyActions.editStory({
+            id: +id,
             userId: sessionUser.id,
             title,
             content,
             imageUrl,
             videoUrl,
         }))
-            .then((data) => history.push(`/stories/${data.id}`));
+            .then(() => history.push(`/stories/${id}`));
     };
 
     return (
@@ -100,11 +106,11 @@ const NewStoryForm = () => {
                 </div>
                 <div id="writer-top-right" className="flex-row">
                     <button
-                        className="publish"
-                        disabled={publishDisabled}
-                        onClick={handlePublish}
+                        className="update"
+                        disabled={updateDisabled}
+                        onClick={handleUpdate}
                     >
-                        Publish
+                        Update
                     </button>
                     {currentUser && (
                         <>
@@ -136,7 +142,7 @@ const NewStoryForm = () => {
                             placeholder="Insert image URL"
                             title="Click away to preview image"
                         />
-                        <NewStoryFormImageUrlError
+                        <EditStoryFormImageUrlError
                             imageUrlInvalid={imageUrlInvalid}
                         />
                         <RenderImage
@@ -164,7 +170,7 @@ const NewStoryForm = () => {
                             onBlur={validateVideoUrl}
                             placeholder="Insert video URL"
                         />
-                        <NewStoryFormVideoUrlError
+                        <EditStoryFormVideoUrlError
                             videoUrlInvalid={videoUrlInvalid}
                         />
                     </label>
@@ -179,4 +185,4 @@ const NewStoryForm = () => {
     )
 };
 
-export default NewStoryForm;
+export default EditStoryForm;

@@ -1,7 +1,7 @@
-import StoryTitle from '../../atomic/StoryTitle';
-import StoryImage from '../../atomic/StoryImage';
-import StoryContent from '../../atomic/StoryContent';
-import StoryVideo from '../../atomic/StoryVideo';
+import StoryTitle from './StoryTitle';
+import StoryImage from './StoryImage';
+import StoryContent from './StoryContent';
+import StoryVideo from './StoryVideo';
 
 const SingleStoryMain = ({ story }) => {
     return (

@@ -1,5 +1,5 @@
-import UserNav from "../../UserNav";
-import SingleStory from "../SingleStory";
+import UserNav from "../UserNav";
+import SingleStory from "./SingleStory";
 import './ReadSingleStory.css';
 
 const ReadSingleStory = () => {
