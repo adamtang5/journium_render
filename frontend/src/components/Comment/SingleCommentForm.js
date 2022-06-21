@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import * as commentActions from '../../../store/comment';
-import SingleCommentHeader from '../SingleCommentHeader';
-import SingleCommentBody from '../../atomic/SingleCommentBody';
-import DeleteCommentForm from '../../DeleteCommentForm';
-import { Modal } from '../../../context/Modal';
+import * as commentActions from '../../store/comment';
+import SingleCommentHeader from './SingleCommentHeader';
+import SingleCommentBody from './SingleCommentBody';
+import DeleteCommentForm from './DeleteCommentForm';
+import { Modal } from '../../context/Modal';
 
 const SingleCommentForm = ({ commentId }) => {
     const dispatch = useDispatch();

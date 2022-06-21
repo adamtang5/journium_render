@@ -1,5 +1,5 @@
-import Avatar from "../../atomic/Avatar";
-import DisplayName from "../../atomic/DisplayName";
+import Avatar from "../Avatar";
+import DisplayName from "../DisplayName";
 
 const CommenterCard = ({ visible, user }) => {
     if (!visible || !user) return null;

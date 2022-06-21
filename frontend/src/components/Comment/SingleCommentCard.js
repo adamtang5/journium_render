@@ -1,5 +1,5 @@
-import SingleCommentHeader from "../SingleCommentHeader";
-import SingleCommentBody from "../../atomic/SingleCommentBody";
+import SingleCommentHeader from "./SingleCommentHeader";
+import SingleCommentBody from "./SingleCommentBody";
 
 const SingleCommentCard = ({ comment }) => {
     return (

@@ -1,5 +1,5 @@
 import CommentHollowIcon from '../utils/icons/CommentHollowIcon';
-import CommentsCount from '../atomic/CommentsCount';
+import CommentsCount from '../Comment/CommentsCount';
 
 const SingleStoryFooter = ({ story, comments, setShowCommentsPanel }) => {
     return (

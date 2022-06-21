@@ -5,7 +5,7 @@ import * as commentActions from '../../store/comment';
 import SingleStoryHeader from "./SingleStoryHeader";
 import SingleStoryMain from "./SingleStoryMain";
 import SingleStoryFooter from "./SingleStoryFooter";
-import CommentsPanel from '../CommentsPanel';
+import CommentsPanel from '../Comment/CommentsPanel';
 import PageNotFound from '../atomic/PageNotFound';
 import './SingleStory.css';
 

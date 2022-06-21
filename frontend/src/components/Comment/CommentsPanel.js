@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import * as commentActions from '../../store/comment';
-import CommenterCard from '../aggregate/CommenterCard';
-import SingleCommentCard from '../aggregate/SingleCommentCard';
-import SingleCommentForm from '../aggregate/SingleCommentForm';
+import CommenterCard from './CommenterCard';
+import SingleCommentCard from './SingleCommentCard';
+import SingleCommentForm from './SingleCommentForm';
 import './CommentsPanel.css';
 
 const CommentsPanel = ({ visible }) => {
