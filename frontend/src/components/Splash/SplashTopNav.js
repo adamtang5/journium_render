@@ -50,7 +50,7 @@ const SplashTopNav = () => {
                                 onClick={() => setShowLoginModal(true)}
                             >Sign In</span>
                             {showLoginModal && (
-                                <Modal onClose={closeLoginModal} isOpen={isModalOpen}>
+                                <Modal onClose={closeLoginModal} useTransition={!isModalOpen}>
                                     <LoginFormPage
                                         handleSwitchForm={switchToSignupForm}
                                         formTitle="Welcome back."
@@ -64,7 +64,7 @@ const SplashTopNav = () => {
                                 onClick={() => setShowSignupModal(true)}
                             >Get Started</button>
                             {showSignupModal && (
-                                <Modal onClose={closeSignupModal} isOpen={isModalOpen}>
+                                <Modal onClose={closeSignupModal} useTransition={!isModalOpen}>
                                     <SignupFormPage
                                         handleSwitchForm={switchToLoginForm}
                                         formTitle="Join Journium."
