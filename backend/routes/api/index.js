@@ -4,6 +4,7 @@ const usersRouter = require('./users');
 const rolesRouter = require('./roles');
 const storiesRouter = require('./stories');
 const commentsRouter = require('./comments');
+const likesRouter = require('./likes');
 
 /*
 Testing user auth middlewares
@@ -45,6 +46,8 @@ router.use('/roles', rolesRouter);
 router.use('/stories', storiesRouter);
 
 router.use('/comments', commentsRouter);
+
+router.use('/likes', likesRouter);
 
 /*
 router.post('/test', (req, res) => {
