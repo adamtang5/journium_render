@@ -1,9 +1,6 @@
 'use strict';
-
-// const story = require("./story");
-
 module.exports = (sequelize, DataTypes) => {
-  const Comment = sequelize.define('Comment', {
+  const Like = sequelize.define('Like', {
     userId: {
       allowNull: false,
       type: DataTypes.INTEGER,
@@ -14,24 +11,17 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       references: { model: 'Stories' },
     },
-    content: {
-      allowNull: false,
-      type: DataTypes.TEXT,
-      validate: {
-        notEmpty: true,
-      }
-    },
   }, {});
-  Comment.associate = function (models) {
+  Like.associate = function (models) {
     // many-to-1 relationship with User model
-    Comment.belongsTo(models.User, {
+    Like.belongsTo(models.User, {
       foreignKey: 'userId',
     });
 
     // many-to-1 relationship with Story model
-    Comment.belongsTo(models.Story, {
+    Like.belongsTo(models.Story, {
       foreignKey: 'storyId',
     });
   };
-  return Comment;
+  return Like;
 };

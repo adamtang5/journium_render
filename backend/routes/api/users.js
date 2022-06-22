@@ -4,7 +4,7 @@ const { check, oneOf } = require('express-validator');
 
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { User } = require('../../db/models');
+const db = require('../../db/models');
 
 const router = express.Router();
 
@@ -42,7 +42,7 @@ const validateSignup = [
 router.post('/', validateSignup, asyncHandler(async (req, res) => {
     const { email, password, displayName, avatarUrl, roleId } = req.body;
 
-    const user = await User.signup({
+    const user = await db.User.signup({
         email,
         password,
         displayName,
@@ -58,8 +58,21 @@ router.post('/', validateSignup, asyncHandler(async (req, res) => {
 // GET /api/users/:id
 router.get('/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
     const id = parseInt(req.params.id);
-    const user = await User.scope('currentUser').findByPk(id);
+    const user = await db.User.scope('currentUser').findByPk(id);
     return res.json({ user });
+}));
+
+// GET /api/users/:id/likes
+router.get('/:id(\\d+)/likes', requireAuth, asyncHandler(async (req, res) => {
+    const userId = parseInt(req.params.id);
+    let likes = await db.Likes.findAll({
+        where: {
+            userId,
+        },
+    });
+
+    likes = likes.map(like => like.storyId);
+    return res.json({ likes });
 }));
 
 module.exports = router;

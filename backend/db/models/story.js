@@ -37,6 +37,13 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: 'cascade',
       hooks: true,
     })
+
+    // 1-to-many relationship with Like model
+    Story.hasMany(models.Like, {
+      foreignKey: 'storyId',
+      onDelete: 'cascade',
+      hooks: true,
+    })
   };
   return Story;
 };

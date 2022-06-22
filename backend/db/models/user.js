@@ -122,6 +122,13 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: 'cascade',
       hooks: true,
     });
+
+    // 1-to-many relationship with Like model
+    User.hasMany(models.Like, {
+      foreignKey: 'userId',
+      onDelete: 'cascade',
+      hooks: true,
+    });
   };
   return User;
 };

@@ -23,3 +23,9 @@ npx sequelize seed:generate --name likes
 npx dotenv sequelize db:seed:all
 
 # API routes for Like
+    # GET /api/users/:id/likes
+    # GET /api/stories/:id/likes
+    # POST /api/likes
+    # DELETE /api/likes
+
+# write reducer for likes

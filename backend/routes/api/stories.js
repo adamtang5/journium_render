@@ -121,6 +121,19 @@ router.get('/:id(\\d+)/comments', asyncHandler(async (req, res, next) => {
     } else {
         next(storyNotFoundError(id));
     }
-}))
+}));
+
+// GET /api/stories/:id/likes
+router.get('/:id(\\d+)/likes', requireAuth, asyncHandler(async (req, res) => {
+    const storyId = parseInt(req.params.id);
+    let likes = await db.Likes.findAll({
+        where: {
+            storyId,
+        },
+    });
+
+    likes = likes.map(like => like.userId);
+    return res.json({ likes });
+}));
 
 module.exports = router;
