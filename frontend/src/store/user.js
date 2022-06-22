@@ -34,6 +34,9 @@ state.users = {
         displayName: ...,
         avatarUrl: ...,
         roleId: ...,
+        likes: {
+            storyIds: [...],
+        }
         createdAt: ...,
         updatedAt: ...,
     },

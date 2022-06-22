@@ -5,7 +5,6 @@ import roleReducer from './role';
 import storyReducer from './story';
 import userReducer from './user';
 import commentReducer from './comment';
-import likeReducer from './like';
 
 const rootReducer = combineReducers({
     session: sessionReducer,
@@ -13,7 +12,6 @@ const rootReducer = combineReducers({
     stories: storyReducer,
     users: userReducer,
     comments: commentReducer,
-    likes: likeReducer,
 });
 
 let enhancer;

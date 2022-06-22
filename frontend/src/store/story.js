@@ -67,6 +67,30 @@ export const deleteStory = (id) => async (dispatch) => {
     }
 };
 
+export const likeStory = (like) => async (dispatch) => {
+    const res = await csrfFetch(`/api/likes`, {
+        method: 'POST',
+        body: JSON.stringify(like),
+    });
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(newStory(data));
+        return data;
+    }
+};
+
+export const unlikeStory = (unlike) => async (dispatch) => {
+    const res = await csrfFetch(`/api/likes`, {
+        method: 'DELETE',
+        body: JSON.stringify(unlike),
+    });
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(newStory(data));
+        return data;
+    }
+};
+
 const initialState = {};
 
 /*
@@ -78,6 +102,9 @@ state.stories = {
         content: ...,
         imageUrl: ...,
         videoUrl: ...,
+        likes: {
+            userIds: [...],
+        },
         createdAt: ...,
         updatedAt: ...,
     },
@@ -99,13 +126,23 @@ const storyReducer = (state = initialState, action) => {
         case LOAD_STORIES: {
             const newState = Object.assign({}, state);
             action.stories.forEach(story => {
-                newState[story.id] = story;
+                newState[story.id] = {
+                    ...story,
+                    Likes: {
+                        userIds: story.Likes.map(like => like.userId),
+                    },
+                };
             });
             return newState;
         }
         case NEW_STORY: {
             const newState = Object.assign({}, state);
-            newState[action.story.id] = action.story;
+            newState[action.story.id] = {
+                ...action.story,
+                Likes: {
+                    userIds: action.story.Likes.map(like => like.userId),
+                },
+            };
             return newState;
         }
         case REMOVE_STORY: {

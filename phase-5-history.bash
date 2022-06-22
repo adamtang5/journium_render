@@ -28,4 +28,10 @@ npx dotenv sequelize db:seed:all
     # POST /api/likes
     # DELETE /api/likes
 
-# write reducer for likes
+# update reducers for stories and users to include like actions
+
+# fixed mistake in associations
+npx dotenv sequelize db:drop
+npx dotenv sequelize db:create
+npx dotenv sequelize db:migrate
+npx dotenv sequelize db:seed:all

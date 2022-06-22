@@ -36,14 +36,21 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'storyId',
       onDelete: 'cascade',
       hooks: true,
-    })
+    });
 
     // 1-to-many relationship with Like model
     Story.hasMany(models.Like, {
       foreignKey: 'storyId',
       onDelete: 'cascade',
       hooks: true,
-    })
+    });
+
+    // many-to-many relationship with User model through Like model
+    Story.belongsToMany(models.User, {
+      through: 'Like',
+      otherKey: 'userId',
+      foreignKey: 'storyId',
+    });
   };
   return Story;
 };
