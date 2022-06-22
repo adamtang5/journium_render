@@ -2,13 +2,23 @@
     border-left: solid black 0px;
     flex: 0 0 fit-content;
     max-width: 320px;
+    position: relative;
     /* -webkit-box-shadow: -1px 1px 2px 1px rgba(0, 0, 0, 0.45); */
     /* box-shadow: -1px 1px 2px 1px rgba(0, 0, 0, 0.45); */
+}
+
+.comments-panel .close-panel {
+    position: absolute;
+    right: 0;
+    top: 10px;
+    height: 20px;
+    width: 20px;
 }
 
 .comments-panel .comments-header {
     font-size: 16px;
     color: var(--color-text-primary);
+    font-weight: 600;
 }
 
 .comments-panel .new-comment-form {
@@ -20,10 +30,16 @@
     gap: 10px;
 }
 
-.comments-panel .comment-content {
+.comments-panel .comment-content,
+.comments-panel .content-field {
     width: 300px;
+    height: 150px;
     margin: 10px auto;
     font-size: 18px;
+}
+
+.comments-panel textarea:focus {
+    outline: none;
 }
 
 .comments-panel .user-action {
@@ -37,7 +53,7 @@
     border-radius: 99em;
 }
 
-.comments-panel button.cancel {
+/* .comments-panel button.cancel {
     background-color: white;
     border: 1px solid var(--color-text-primary);
     color: var(--color-text-primary);
@@ -47,7 +63,7 @@
     background-color: white;
     border: 1px solid var(--color-bg-button);
     color: var(--color-bg-button);
-}
+} */
 
 /* .comments-panel button.submit {
     background-color: #1a8917;
@@ -68,8 +84,10 @@
     gap: 10px;
 }
 
-.comments-panel .primary-actions {
+.comments-panel .primary-actions,
+.comments-panel .edit-actions {
     gap: 10px;
+    margin-bottom: 20px;
 }
 
 /* .comments-panel .primary-actions button.edit {
@@ -98,11 +116,7 @@
     color: white;
 } */
 
-.comments-panel .edit-actions {
-    gap: 10px;
-}
-
-.comments-panel .edit-actions button.edit-cancel {
+/* .comments-panel .edit-actions button.edit-cancel {
     background-color: white;
     border: 1px solid #4c4c4c;
     color: #4c4c4c;
@@ -111,7 +125,7 @@
 .comments-panel .edit-actions button.edit-cancel:hover {
     border: 1px solid var(--color-bg-button);
     color: var(--color-bg-button);
-}
+} */
 
 /* .comments-panel .edit-actions button.edit-submit {
     background-color: #1a8917;

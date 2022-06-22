@@ -7,14 +7,15 @@ import SingleCommentCard from './SingleCommentCard';
 import SingleCommentForm from './SingleCommentForm';
 import './CommentsPanel.css';
 
-const CommentsPanel = ({ visible }) => {
+const CommentsPanel = ({ visible, setShowCommentsPanel }) => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const currentUser = useSelector(state => state.users[sessionUser.id]);
 
     const { id } = useParams();
     const story = useSelector(state => state.stories[+id]);
-    const comments = useSelector(state => state.comments);
+    const stateComments = useSelector(state => state.comments);
+    const allComments = useSelector(state => Object.values(state.comments));
 
     const [content, setContent] = useState('');
     const [respondDisabled, setRespondDisabled] = useState(true);
@@ -54,8 +55,14 @@ const CommentsPanel = ({ visible }) => {
 
     return (
         <div className="comments-panel">
+            <div
+                className="close-panel cursor-pointer"
+                onClick={() => setShowCommentsPanel(false)}
+            >
+                <i className="fa-solid fa-xmark fa-1x" />
+            </div>
             <p className="comments-header">
-                Responses
+                Responses ({allComments?.length || 0})
             </p>
             <form
                 onSubmit={handleRespond}
@@ -66,7 +73,7 @@ const CommentsPanel = ({ visible }) => {
                 />
                 <textarea
                     className="comment-content"
-                    rows="5"
+                    // rows="5"
                     onFocus={openCommentForm}
                     value={content}
                     onChange={e => setContent(e.target.value)}
@@ -84,7 +91,7 @@ const CommentsPanel = ({ visible }) => {
                     >Respond</button>
                 </div>
             </form>
-            {Object.values(comments).map(comment => {
+            {allComments?.map(comment => {
                 return (comment.userId !== sessionUser.id)
                     ? <SingleCommentCard key={comment.id} comment={comment} />
                     : <SingleCommentForm key={comment.id} commentId={comment.id} />

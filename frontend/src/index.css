@@ -117,13 +117,15 @@ ul {
     color: var(--color-text-meta);
 }
 
-button.cancel {
+button.cancel,
+button.edit-cancel {
     background-color: white;
     border: 1px solid var(--color-button-cancel);
     color: var(--color-button-cancel);
 }
 
-button.cancel:hover {
+button.cancel:hover,
+button.edit-cancel:hover {
     border: 1px solid var(--color-bg-button);
     color: var(--color-bg-button);
 }
@@ -167,4 +169,8 @@ button.publish:disabled {
 
 .error-text {
     color: red;
+}
+
+.cursor-pointer {
+    cursor: pointer;
 }

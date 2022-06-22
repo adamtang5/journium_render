@@ -1,6 +1,6 @@
 .delete-comment-modal {
-    width: 900px;
-    min-height: 550px;
+    width: 450px;
+    height: 250px;
     justify-content: center;
     align-items: center;
 }

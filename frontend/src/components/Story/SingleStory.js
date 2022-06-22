@@ -37,7 +37,10 @@ const SingleStory = () => {
                         />
                     )}
                 </div>
-                <CommentsPanel visible={showCommentsPanel} />
+                <CommentsPanel
+                    visible={showCommentsPanel}
+                    setShowCommentsPanel={setShowCommentsPanel}
+                />
             </div>
         )
     } else {
