@@ -7,6 +7,7 @@
 .story-card .author {
     align-items: center;
     gap: 5px;
+    margin-bottom: 10px;
 }
 
 .story-card .author .avatar img {
