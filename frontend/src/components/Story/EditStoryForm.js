@@ -16,8 +16,8 @@ const EditStoryForm = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
-    const currentUser = useSelector(state => state.user.users[sessionUser.id]);
-    const story = useSelector(state => state.story.stories[+id]);
+    const currentUser = useSelector(state => state.users[sessionUser.id]);
+    const story = useSelector(state => state.stories[+id]);
 
     const [updateDisabled, setUpdateDisabled] = useState(true);
 
