@@ -28,7 +28,24 @@
 
 #modal-content {
   position: absolute;
-  background-color:white;
+  background-color: white;
   z-index: 11;
   border-radius: 10px;
+}
+
+#modal-content.use-transition {
+  animation-name: fly-down;
+  animation-duration: 0.8s;
+}
+
+@keyframes fly-down {
+  from {
+    /* top: -600px; */
+    transform: translateY(-1000px);
+  }
+
+  to {
+    /* top: unset; */
+    transform: translateY(0);
+  }
 }
