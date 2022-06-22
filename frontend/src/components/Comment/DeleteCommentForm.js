@@ -19,7 +19,7 @@ const DeleteCommentForm = ({ comment, setShowDeleteModal }) => {
     return (
         <div className="delete-comment-modal flex-column">
             <h1 className="delete-comment-form">Delete comment</h1>
-            <p className="delete-form-text">Are you sure you want to delete this comment?</p>
+            <p className="delete-form-text">Deleted responses are gone forever. Are you sure?</p>
             <div className="actions flex-row">
                 <button
                     className="cancel"

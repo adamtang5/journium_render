@@ -69,7 +69,7 @@ const SingleCommentForm = ({ commentId }) => {
                     className={`content-field${showContentField ? '' : ' hidden'}`}
                     value={content}
                     onChange={e => setContent(e.target.value)}
-                    rows="8"
+                // rows="8"
                 />
                 <div className={`primary-actions flex-row${showPrimaryActions ? '' : ' hidden'}`}>
                     <button
