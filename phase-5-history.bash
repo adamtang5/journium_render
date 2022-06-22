@@ -35,3 +35,7 @@ npx dotenv sequelize db:drop
 npx dotenv sequelize db:create
 npx dotenv sequelize db:migrate
 npx dotenv sequelize db:seed:all
+
+# added back associations -- no need to drop/re-create db
+
+# used opportunity to rename db_username and db_name

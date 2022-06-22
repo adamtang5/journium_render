@@ -26,7 +26,6 @@ router.post('/', requireAuth, asyncHandler(async (req, res, next) => {
         ],
     });
 
-    console.log(JSON.stringify(returnStory, null, 2));
     res.json(returnStory);
 }));
 
@@ -64,7 +63,6 @@ router.delete('/', requireAuth, asyncHandler(async (req, res, next) => {
         ],
     });
 
-    console.log(JSON.stringify(returnStory, null, 2));
     res.json(returnStory);
 }));
 
