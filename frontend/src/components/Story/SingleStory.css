@@ -122,10 +122,11 @@
 
 .single-story-main-area .story-options {
     padding: 0px 50px;
+    gap: 20px;
 }
 
+.single-story-main-area .story-options .actions-likes,
 .single-story-main-area .story-options .actions-comments {
     align-items: center;
     gap: 5px;
-    cursor: pointer;
 }

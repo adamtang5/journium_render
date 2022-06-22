@@ -11,10 +11,13 @@ const router = express.Router();
 // GET /api/stories
 router.get('/', asyncHandler(async (req, res) => {
     const stories = await db.Story.findAll({
-        include: {
-            model: db.User,
-            include: db.Role,
-        },
+        include: [
+            {
+                model: db.User,
+                include: db.Role,
+            },
+            db.Like,
+        ],
     });
 
     return res.json({ stories });
@@ -37,7 +40,7 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
                 model: db.User,
                 include: db.Role,
             },
-            db.Comment,
+            db.Like,
         ],
     });
 

@@ -129,6 +129,13 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: 'cascade',
       hooks: true,
     });
+
+    // many-to-many relationship with Story model through Like model
+    User.belongsToMany(models.Story, {
+      through: 'Like',
+      otherKey: 'storyId',
+      foreignKey: 'userId',
+    });
   };
   return User;
 };
