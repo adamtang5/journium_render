@@ -9,6 +9,7 @@ import NewStoryFormImageUrlError from './Errors/NewStoryFormImageUrlError';
 import RenderImage from "./RenderImage";
 import NewStoryFormVideoUrlError from './Errors/NewStoryFormVideoUrlError';
 import './NewStoryForm.css';
+import QuillAdd from '../Quill/QuillAdd';
 
 const NewStoryForm = () => {
     const dispatch = useDispatch();
@@ -145,7 +146,7 @@ const NewStoryForm = () => {
                             onClick={toggleRenderImage}
                         />
                     </label>
-                    <label className="new-story-form-element">
+                    {/* <label className="new-story-form-element">
                         <textarea
                             id="content"
                             value={content}
@@ -154,7 +155,14 @@ const NewStoryForm = () => {
                             rows="15"
                             required
                         />
-                    </label>
+                    </label> */}
+                    <div className="new-story-form-element">
+                        <QuillAdd
+                            placeholder={"Tell your story..."}
+                            setData={setContent}
+                            elementId={"new-story-content-quill-toolbar"}
+                        />
+                    </div>
                     <label className="new-story-form-element">
                         <input
                             id="videoUrl"
