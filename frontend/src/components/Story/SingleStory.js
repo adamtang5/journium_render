@@ -15,7 +15,7 @@ const SingleStory = () => {
     const [commentsLoaded, setCommentsLoaded] = useState(false);
     const [showCommentsPanel, setShowCommentsPanel] = useState(false);
     const story = useSelector(state => state.stories[+id]);
-    const stateComments = useSelector(state => state.comments);
+    // const stateComments = useSelector(state => state.comments);
     const allComments = useSelector(state => Object.values(state.comments));
 
     useEffect(() => {

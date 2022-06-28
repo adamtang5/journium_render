@@ -14,7 +14,7 @@ const CommentsPanel = ({ visible, setShowCommentsPanel }) => {
 
     const { id } = useParams();
     const story = useSelector(state => state.stories[+id]);
-    const stateComments = useSelector(state => state.comments);
+    // const stateComments = useSelector(state => state.comments);
     const allComments = useSelector(state => Object.values(state.comments));
 
     const [content, setContent] = useState('');

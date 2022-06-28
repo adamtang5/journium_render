@@ -7,13 +7,13 @@ const SplashFooter = () => {
         <footer className="about flex-column">
             <div className="project-name flex-row">
                 <div className="github-icon">
-                    <a href="https://github.com/adamtang5/aa_mod5_w16_express_react_solo" target="_blank">
+                    <a href="https://github.com/adamtang5/aa_mod5_w16_express_react_solo" target="_blank" rel="noreferrer">
                         {/* <GithubIcon fill="#292929" /> */}
                         <img src="https://raw.githubusercontent.com/devicons/devicon/v2.15.1/icons/github/github-original.svg" alt="project on github" />
                     </a>
                 </div>
                 <div className="project-name-text">
-                    <a href="https://github.com/adamtang5/aa_mod5_w16_express_react_solo" target="_blank">
+                    <a href="https://github.com/adamtang5/aa_mod5_w16_express_react_solo" target="_blank" rel="noreferrer">
                         Journium Project
                     </a>
                 </div>
@@ -21,18 +21,18 @@ const SplashFooter = () => {
                     <span>, created by </span>
                 </div>
                 <div className="creator-name-text">
-                    <a href="https://github.com/adamtang5" target="_blank">
+                    <a href="https://github.com/adamtang5" target="_blank" rel="noreferrer">
                         Adam Tang
                     </a>
                 </div>
                 <div className="github-icon">
-                    <a href="https://github.com/adamtang5" target="_blank">
+                    <a href="https://github.com/adamtang5" target="_blank" rel="noreferrer">
                         {/* <GithubIcon fill="#757575" /> */}
                         <img src="https://raw.githubusercontent.com/devicons/devicon/v2.15.1/icons/github/github-original.svg" alt="project on github" />
                     </a>
                 </div>
                 <div className="linkedin-icon">
-                    <a href="https://linkedin.com/in/adamtangx" target="_blank">
+                    <a href="https://linkedin.com/in/adamtangx" target="_blank" rel="noreferrer">
                         {/* <LinkedInSolidIcon fill="#757575" /> */}
                         <img src="https://raw.githubusercontent.com/devicons/devicon/v2.15.1/icons/linkedin/linkedin-original.svg" alt="project on github" />
                     </a>
