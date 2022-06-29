@@ -6,34 +6,27 @@ import 'react-quill/dist/quill.bubble.css';
 // import SnowQuillEditor from './SnowQuillEditor';
 
 function undoChange() {
-    console.log(this);
+    // console.log(this);
     this.quill.history.undo();
 }
 
 function redoChange() {
-    console.log(this);
+    // console.log(this);
     this.quill.history.redo();
 }
 
 const BubbleToolbar = ({ toolbarId, hiddenUndoRef, hiddenRedoRef }) => {
     return (
-        <div id={toolbarId}>
-            <span className="ql-formats" style={{ display: 'none' }}>
-                <button
-                    ref={hiddenUndoRef}
-                    className="ql-undo"
-                />
-                <button
-                    ref={hiddenRedoRef}
-                    className="ql-redo"
-                />
-            </span>
+        <div id={toolbarId} className="position-relative">
             <span className="ql-formats">
                 <button className="ql-header" value="1" />
                 <button className="ql-header" value="2" />
             </span>
             <span className="ql-formats">
-                <button className="ql-bold" />
+                <button
+                    className="ql-bold"
+                    onClick={e => console.log(hiddenUndoRef.current)}
+                />
                 <button className="ql-italic" />
                 <button className="ql-underline" />
                 <button className="ql-strike" />
@@ -46,6 +39,19 @@ const BubbleToolbar = ({ toolbarId, hiddenUndoRef, hiddenRedoRef }) => {
                 <button className="ql-list" value="bullet" />
                 <button className="ql-indent" value="-1" />
                 <button className="ql-indent" value="+1" />
+            </span>
+            <span className="ql-formats position-absolute invisible">
+                {/* <span className="ql-formats"> */}
+                <button
+                    ref={hiddenUndoRef}
+                    id="bubble-hidden-undo"
+                    className="ql-undo"
+                />
+                <button
+                    ref={hiddenRedoRef}
+                    id="bubble-hidden-redo"
+                    className="ql-redo"
+                />
             </span>
             <span className="ql-formats">
                 <button className="ql-clean" />

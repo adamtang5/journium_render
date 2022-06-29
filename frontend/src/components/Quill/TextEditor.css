@@ -11,3 +11,8 @@
 .quill {
     height: 500px;
 }
+
+.quill .ql-bubble .ql-hidden {
+    display: unset;
+    visibility: hidden;
+}

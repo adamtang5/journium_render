@@ -22,13 +22,13 @@ const QuillEditor = ({ elementId, snowToolbarId, bubbleToolbarId, placeholder, s
     }, [singleSourceHtml]);
 
     const undoChange = () => {
-        hiddenUndoRef?.current?.click();
-        // visibleQuillRef.current?.editor.history.undo();
+        const hiddenUndoButton = document.getElementById('bubble-hidden-undo');
+        hiddenUndoButton.click();
     };
 
     const redoChange = () => {
-        hiddenRedoRef.current.click();
-        // visibleQuillRef.current?.editor.history.redo();
+        const hiddenRedoButton = document.getElementById('bubble-hidden-redo');
+        hiddenRedoButton.click();
     };
 
     return (
