@@ -15,7 +15,7 @@ function redoChange() {
     this.quill.history.redo();
 }
 
-const BubbleToolbar = ({ toolbarId, hiddenUndoRef, hiddenRedoRef }) => {
+const BubbleToolbar = ({ toolbarId }) => {
     return (
         <div id={toolbarId} className="position-relative">
             <span className="ql-formats">
@@ -23,10 +23,7 @@ const BubbleToolbar = ({ toolbarId, hiddenUndoRef, hiddenRedoRef }) => {
                 <button className="ql-header" value="2" />
             </span>
             <span className="ql-formats">
-                <button
-                    className="ql-bold"
-                    onClick={e => console.log(hiddenUndoRef.current)}
-                />
+                <button className="ql-bold" />
                 <button className="ql-italic" />
                 <button className="ql-underline" />
                 <button className="ql-strike" />
@@ -43,12 +40,10 @@ const BubbleToolbar = ({ toolbarId, hiddenUndoRef, hiddenRedoRef }) => {
             <span className="ql-formats position-absolute invisible">
                 {/* <span className="ql-formats"> */}
                 <button
-                    ref={hiddenUndoRef}
                     id="bubble-hidden-undo"
                     className="ql-undo"
                 />
                 <button
-                    ref={hiddenRedoRef}
                     id="bubble-hidden-redo"
                     className="ql-redo"
                 />

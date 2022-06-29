@@ -5,8 +5,8 @@ import SnowQuillEditor from "./SnowQuillEditor";
 const QuillEditor = ({ elementId, snowToolbarId, bubbleToolbarId, placeholder, setData, initialHtml }) => {
     const hiddenQuillRef = createRef();
     const visibleQuillRef = createRef();
-    const hiddenRedoRef = createRef();
-    const hiddenUndoRef = createRef();
+    // const hiddenRedoRef = createRef();
+    // const hiddenUndoRef = createRef();
 
     const [singleSourceHtml, setSingleSourceHtml] = useState(initialHtml || "");
 
@@ -44,8 +44,8 @@ const QuillEditor = ({ elementId, snowToolbarId, bubbleToolbarId, placeholder, s
             <BubbleQuillEditor
                 toolbarId={bubbleToolbarId}
                 visibleQuillRef={visibleQuillRef}
-                hiddenRedoRef={hiddenRedoRef}
-                hiddenUndoRef={hiddenUndoRef}
+                // hiddenRedoRef={hiddenRedoRef}
+                // hiddenUndoRef={hiddenUndoRef}
                 placeholder={placeholder}
                 onEditorChange={onEditorChange}
                 initialHtml={initialHtml}
