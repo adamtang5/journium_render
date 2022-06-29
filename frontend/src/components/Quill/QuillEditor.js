@@ -8,18 +8,9 @@ const QuillEditor = ({ elementId, snowToolbarId, bubbleToolbarId, placeholder, s
     // const hiddenRedoRef = createRef();
     // const hiddenUndoRef = createRef();
 
-    const [singleSourceHtml, setSingleSourceHtml] = useState(initialHtml || "");
-
     const onEditorChange = value => {
         setData(value);
-        setSingleSourceHtml(value);
-        console.log(`singleSourceHtml: ${singleSourceHtml}`);
     };
-
-    useEffect(() => {
-        console.log(hiddenQuillRef.current);
-        console.log(visibleQuillRef?.current?.editor?.history);
-    }, [singleSourceHtml]);
 
     const undoChange = () => {
         const hiddenUndoButton = document.getElementById('bubble-hidden-undo');
@@ -31,15 +22,26 @@ const QuillEditor = ({ elementId, snowToolbarId, bubbleToolbarId, placeholder, s
         hiddenRedoButton.click();
     };
 
+    const handleImage = () => {
+        const hiddenImageButton = document.getElementById('bubble-hidden-image');
+        console.log(hiddenImageButton);
+        hiddenImageButton.click();
+    };
+
+    const handleVideo = () => {
+        const hiddenVideoButton = document.getElementById('bubble-hidden-video');
+        console.log(hiddenVideoButton);
+        hiddenVideoButton.click();
+    };
+
     return (
         <div id={elementId}>
             <SnowQuillEditor
                 toolbarId={snowToolbarId}
-                hiddenQuillRef={hiddenQuillRef}
-                onEditorChange={onEditorChange}
-                initialHtml={initialHtml}
                 undoChange={undoChange}
                 redoChange={redoChange}
+                handleImage={handleImage}
+                handleVideo={handleVideo}
             />
             <BubbleQuillEditor
                 toolbarId={bubbleToolbarId}

@@ -38,7 +38,6 @@ const BubbleToolbar = ({ toolbarId }) => {
                 <button className="ql-indent" value="+1" />
             </span>
             <span className="ql-formats position-absolute invisible">
-                {/* <span className="ql-formats"> */}
                 <button
                     id="bubble-hidden-undo"
                     className="ql-undo"
@@ -46,6 +45,17 @@ const BubbleToolbar = ({ toolbarId }) => {
                 <button
                     id="bubble-hidden-redo"
                     className="ql-redo"
+                />
+            </span>
+            <span className="ql-formats position-absolute invisible">
+                {/* <span className="ql-formats"> */}
+                <button
+                    id="bubble-hidden-image"
+                    className="ql-image"
+                />
+                <button
+                    id="bubble-hidden-video"
+                    className="ql-video"
                 />
             </span>
             <span className="ql-formats">
@@ -60,25 +70,14 @@ class BubbleQuillEditor extends React.Component {
         super(props);
         this.state = {
             editorHtml: this.props.initialHtml || '',
-            // theme: 'bubble',
         }
         this.handleChange = this.handleChange.bind(this);
         this.undoChange = undoChange.bind(this);
         this.redoChange = redoChange.bind(this);
     };
 
-    // undoChange = () => {
-    //     console.log(this);
-    //     this.quill.history.undo();
-    // };
-
-    // redoChange = () => {
-    //     console.log(this);
-    //     this.quill.history.redo();
-    // };
-
     handleChange(html) {
-        console.log(this);
+        // console.log(this);
         this.setState({ editorHtml: html },
             () => this.props.onEditorChange(this.state.editorHtml));
         console.log(this.state.editorHtml);
@@ -93,12 +92,6 @@ class BubbleQuillEditor extends React.Component {
     render() {
         return (
             <div className="bubble-quill-editor">
-                {/* <SnowQuillEditor
-                    elementId={"snow-toolbar"}
-                    undoChange={this.undoChange}
-                    redoChange={this.redoChange}
-                    hiddenQuillRef={this.hiddenQuillRef}
-                /> */}
                 <BubbleToolbar
                     toolbarId={this.props.toolbarId}
                     hiddenRedoRef={this.props.hiddenRedoRef}
@@ -111,7 +104,6 @@ class BubbleQuillEditor extends React.Component {
                     value={this.state.editorHtml}
                     modules={this.modules}
                     formats={this.formats}
-                    // bounds={'.quill-editor'}
                     placeholder={this.props.placeholder}
                 />
             </div>
@@ -149,8 +141,8 @@ class BubbleQuillEditor extends React.Component {
         'bullet',
         'indent',
         'link',
-        // 'image',
-        // 'video',
+        'image',
+        'video',
     ];
 }
 

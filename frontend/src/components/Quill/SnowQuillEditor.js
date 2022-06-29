@@ -39,22 +39,16 @@ const CustomRedo = () => {
 
 // Quill Toolbar component
 const SnowQuillToolbar = ({ toolbarId }) => {
-    const undoButtonRef = React.createRef();
-    const redoButtonRef = React.createRef();
+    // const undoButtonRef = React.createRef();
+    // const redoButtonRef = React.createRef();
 
     return (
         <div id={toolbarId}>
             <span className="ql-formats">
-                <button
-                    ref={undoButtonRef}
-                    className="ql-undo"
-                >
+                <button className="ql-undo">
                     <CustomUndo />
                 </button>
-                <button
-                    ref={redoButtonRef}
-                    className="ql-redo"
-                >
+                <button className="ql-redo">
                     <CustomRedo />
                 </button>
             </span>
@@ -97,17 +91,17 @@ const SnowQuillToolbar = ({ toolbarId }) => {
 class SnowQuillEditor extends React.Component {
 
     // placeholder;
-    onEditorChange;
+    // onEditorChange;
     toolbarId;
     undoChange;
     redoChange;
     // initialHtml;
     _isMounted;
 
-    state = {
-        editorHtml: this.props.initialHtml || "",
-        reactQuillRef: this.props.hiddenQuillRef || null,
-    };
+    // state = {
+    //     editorHtml: this.props.initialHtml || "",
+    //     reactQuillRef: this.props.hiddenQuillRef || null,
+    // };
 
     componentDidMount() {
         this._isMounted = true;
@@ -155,15 +149,15 @@ class SnowQuillEditor extends React.Component {
     //     }
     // };
 
-    handleChange = html => {
-        console.log(this);
-        this.setState({
-            editorHtml: html
-        }, () => {
-            this.props.onEditorChange(this.state.editorHtml);
-        });
-        console.log(this.state.editorHtml);
-    };
+    // handleChange = html => {
+    //     // console.log(this);
+    //     this.setState({
+    //         editorHtml: html
+    //     }, () => {
+    //         this.props.onEditorChange(this.state.editorHtml);
+    //     });
+    //     // console.log(this.state.editorHtml);
+    // };
 
     render() {
         return (
@@ -171,9 +165,9 @@ class SnowQuillEditor extends React.Component {
                 <SnowQuillToolbar toolbarId={this.props.toolbarId} />
                 <ReactQuill
                     theme="snow"
-                    ref={this.state.reactQuillRef}
-                    value={this.state.editorHtml}
-                    onChange={this.handleChange}
+                    // ref={this.state.reactQuillRef}
+                    // value={this.state.editorHtml}
+                    // onChange={this.handleChange}
                     // placeholder={this.props.placeholder}
                     modules={this.modules}
                     formats={this.formats}
@@ -188,10 +182,10 @@ class SnowQuillEditor extends React.Component {
         toolbar: {
             container: "#" + this.props.toolbarId,
             handlers: {
-                // undo: this.props.undoChange,
-                // redo: this.props.redoChange,
                 undo: this.props.undoChange,
                 redo: this.props.redoChange,
+                image: this.props.handleImage,
+                video: this.props.handleVideo,
             },
         },
         history: {
