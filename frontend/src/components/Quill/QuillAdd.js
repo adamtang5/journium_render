@@ -1,9 +1,8 @@
 import React from 'react';
 import QuillEditor from './QuillEditor';
-import 'react-quill/dist/quill.snow.css';
 import './TextEditor.css';
 
-const QuillAdd = ({ placeholder, setData, elementId }) => {
+const QuillAdd = ({ placeholder, setData, elementId, snowToolbarId, bubbleToolbarId }) => {
     const onEditorChange = value => {
         setData(value);
     };
@@ -12,8 +11,11 @@ const QuillAdd = ({ placeholder, setData, elementId }) => {
         <div className="quill-add">
             <QuillEditor
                 placeholder={placeholder}
-                onEditorChange={onEditorChange}
+                setData={setData}
+                // onEditorChange={onEditorChange}
                 editorId={elementId}
+                snowToolbarId={snowToolbarId}
+                bubbleToolbarId={bubbleToolbarId}
             />
         </div>
     )

@@ -161,8 +161,9 @@ const NewStoryForm = () => {
                             placeholder={"Tell your story..."}
                             setData={setContent}
                             elementId={"new-story-content-editor"}
+                            snowToolbarId="new-story-content-snow-toolbar"
+                            bubbleToolbarId="new-story-content-bubble-toolbar"
                         />
-                        {/* <div className="quill-editor" /> */}
                     </div>
                     <label className="new-story-form-element">
                         <input

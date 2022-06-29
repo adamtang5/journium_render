@@ -1,91 +1,57 @@
-import React from 'react';
-import ReactQuill, { Quill } from 'react-quill';
-import PropTypes from 'prop-types';
-import 'react-quill/dist/quill.snow.css';
-import 'react-quill/dist/quill.bubble.css';
-import SnowQuillEditor from './SnowQuillEditor';
+import { createRef, useState, useEffect } from "react";
+import BubbleQuillEditor from "./BubbleQuillEditor";
+import SnowQuillEditor from "./SnowQuillEditor";
 
-// const SnowToolbar = ({ elementId }) => {
-//     return (
-//         <div id={elementId}>
-//             <span className="ql-formats">
-//                 <button className="ql-image" />
-//                 <button className="ql-video" />
-//             </span>
-//         </div>
-//     )
-// }
+const QuillEditor = ({ elementId, snowToolbarId, bubbleToolbarId, placeholder, setData, initialHtml }) => {
+    const hiddenQuillRef = createRef();
+    const visibleQuillRef = createRef();
+    const hiddenRedoRef = createRef();
+    const hiddenUndoRef = createRef();
 
-class QuillEditor extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            editorHtml: '',
-            theme: 'bubble',
-        }
-        this.handleChange = this.handleChange.bind(this);
-        this.reactQuillRef = null;
+    const [singleSourceHtml, setSingleSourceHtml] = useState(initialHtml || "");
+
+    const onEditorChange = value => {
+        setData(value);
+        setSingleSourceHtml(value);
+        console.log(`singleSourceHtml: ${singleSourceHtml}`);
     };
 
-    handleChange(html) {
-        this.setState({ editorHtml: html },
-            () => this.props.onEditorChange(this.state.editorHtml));
+    useEffect(() => {
+        console.log(hiddenQuillRef.current);
+        console.log(visibleQuillRef?.current?.editor?.history);
+    }, [singleSourceHtml]);
+
+    const undoChange = () => {
+        hiddenUndoRef?.current?.click();
+        // visibleQuillRef.current?.editor.history.undo();
     };
 
-    render() {
-        return (
-            <div id={this.props.editorId}>
-                <SnowQuillEditor elementId={"snow-toolbar"} />
-                <ReactQuill
-                    theme={this.state.theme}
-                    ref={el => this.reactQuillRef = el}
-                    onChange={this.handleChange}
-                    value={this.state.editorHtml}
-                    modules={QuillEditor.modules}
-                    formats={QuillEditor.formats}
-                    // bounds={'.quill-editor'}
-                    placeholder={this.props.placeholder}
-                />
-            </div>
-        );
-    }
-}
+    const redoChange = () => {
+        hiddenRedoRef.current.click();
+        // visibleQuillRef.current?.editor.history.redo();
+    };
 
-QuillEditor.modules = {
-    toolbar: [
-        [{ 'header': '1' }, { 'header': '2' },],
-        ['bold', 'italic', 'underline', 'strike', 'code-block', 'blockquote', 'link',],
-        [{ 'list': 'ordered' }, { 'list': 'ordered' }, { 'indent': '-1' }, { 'indent': '+1' },],
-        ['image', 'video',],
-        ['clean'],
-    ],
-    clipboard: {
-        // toggle to add extra line breaks when pasting HTML:
-        matchVisual: false,
-    },
-};
-
-QuillEditor.formats = [
-    'header',
-    'bold',
-    'italic',
-    'underline',
-    'strike',
-    'code-block',
-    'blockquote',
-    'list',
-    'bullet',
-    'indent',
-    'link',
-    'image',
-    'video',
-];
-
-// PropType validation
-QuillEditor.propTypes = {
-    placeholder: PropTypes.string,
-    editorId: PropTypes.string,
-    onEditorChange: PropTypes.func,
+    return (
+        <div id={elementId}>
+            <SnowQuillEditor
+                toolbarId={snowToolbarId}
+                hiddenQuillRef={hiddenQuillRef}
+                onEditorChange={onEditorChange}
+                initialHtml={initialHtml}
+                undoChange={undoChange}
+                redoChange={redoChange}
+            />
+            <BubbleQuillEditor
+                toolbarId={bubbleToolbarId}
+                visibleQuillRef={visibleQuillRef}
+                hiddenRedoRef={hiddenRedoRef}
+                hiddenUndoRef={hiddenUndoRef}
+                placeholder={placeholder}
+                onEditorChange={onEditorChange}
+                initialHtml={initialHtml}
+            />
+        </div>
+    );
 };
 
 export default QuillEditor;

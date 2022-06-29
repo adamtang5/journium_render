@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactQuill, { Quill } from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 const CustomUndo = () => {
     return (
@@ -26,23 +27,34 @@ const CustomRedo = () => {
 };
 
 // Undo and redo functions for Custom Toolbar
-function undoChange() {
-    this.quill.history.undo();
-};
+// export function undoChange() {
+//     console.log(this);
+//     this.quill.history.undo();
+// };
 
-function redoChange() {
-    this.quill.history.redo();
-};
+// export function redoChange() {
+//     console.log(this);
+//     this.quill.history.redo();
+// };
 
 // Quill Toolbar component
-const QuillToolbar = ({ elementId }) => {
+const SnowQuillToolbar = ({ toolbarId }) => {
+    const undoButtonRef = React.createRef();
+    const redoButtonRef = React.createRef();
+
     return (
-        <div id={elementId}>
+        <div id={toolbarId}>
             <span className="ql-formats">
-                <button className="ql-undo">
+                <button
+                    ref={undoButtonRef}
+                    className="ql-undo"
+                >
                     <CustomUndo />
                 </button>
-                <button className="ql-redo">
+                <button
+                    ref={redoButtonRef}
+                    className="ql-redo"
+                >
                     <CustomRedo />
                 </button>
             </span>
@@ -85,14 +97,17 @@ const QuillToolbar = ({ elementId }) => {
 class SnowQuillEditor extends React.Component {
 
     // placeholder;
-    // onEditorChange;
-    elementId;
+    onEditorChange;
+    toolbarId;
+    undoChange;
+    redoChange;
     // initialHtml;
     _isMounted;
 
-    state = { editorHtml: this.props.initialHtml || "" };
-
-    reactQuillRef = null;
+    state = {
+        editorHtml: this.props.initialHtml || "",
+        reactQuillRef: this.props.hiddenQuillRef || null,
+    };
 
     componentDidMount() {
         this._isMounted = true;
@@ -140,23 +155,25 @@ class SnowQuillEditor extends React.Component {
     //     }
     // };
 
-    // handleChange = html => {
-    //     this.setState({
-    //         editorHtml: html
-    //     }, () => {
-    //         this.props.onEditorChange(this.state.editorHtml);
-    //     });
-    // };
+    handleChange = html => {
+        console.log(this);
+        this.setState({
+            editorHtml: html
+        }, () => {
+            this.props.onEditorChange(this.state.editorHtml);
+        });
+        console.log(this.state.editorHtml);
+    };
 
     render() {
         return (
-            <div className="compound-text-editor">
-                <QuillToolbar elementId={this.props.elementId} />
+            <div className="snow-quill-editor">
+                <SnowQuillToolbar toolbarId={this.props.toolbarId} />
                 <ReactQuill
                     theme="snow"
-                    ref={el => this.reactQuillRef = el}
-                    // value={this.state.editorHtml}
-                    // onChange={this.handleChange}
+                    ref={this.state.reactQuillRef}
+                    value={this.state.editorHtml}
+                    onChange={this.handleChange}
                     // placeholder={this.props.placeholder}
                     modules={this.modules}
                     formats={this.formats}
@@ -169,10 +186,12 @@ class SnowQuillEditor extends React.Component {
     // Modules object for setting up the Quill editor
     modules = {
         toolbar: {
-            container: "#" + this.props.elementId,
+            container: "#" + this.props.toolbarId,
             handlers: {
-                undo: undoChange,
-                redo: redoChange,
+                // undo: this.props.undoChange,
+                // redo: this.props.redoChange,
+                undo: this.props.undoChange,
+                redo: this.props.redoChange,
             },
         },
         history: {
