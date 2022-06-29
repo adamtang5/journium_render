@@ -13,7 +13,7 @@ const QuillAdd = ({ placeholder, setData, elementId }) => {
             <QuillEditor
                 placeholder={placeholder}
                 onEditorChange={onEditorChange}
-                elementId={elementId}
+                editorId={elementId}
             />
         </div>
     )

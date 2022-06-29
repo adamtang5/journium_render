@@ -160,8 +160,9 @@ const NewStoryForm = () => {
                         <QuillAdd
                             placeholder={"Tell your story..."}
                             setData={setContent}
-                            elementId={"new-story-content-quill-toolbar"}
+                            elementId={"new-story-content-editor"}
                         />
+                        {/* <div className="quill-editor" /> */}
                     </div>
                     <label className="new-story-form-element">
                         <input

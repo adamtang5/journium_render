@@ -4,3 +4,9 @@
 # install react-quill@beta
 
 # removed warning from react terminal
+
+# implemented QuillAdd in NewStoryForm
+
+# changed editor buttons
+
+# implement image file handler
