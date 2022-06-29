@@ -1,7 +1,20 @@
 import React from 'react';
 import ReactQuill, { Quill } from 'react-quill';
 import PropTypes from 'prop-types';
+import 'react-quill/dist/quill.snow.css';
 import 'react-quill/dist/quill.bubble.css';
+import SnowQuillEditor from './SnowQuillEditor';
+
+// const SnowToolbar = ({ elementId }) => {
+//     return (
+//         <div id={elementId}>
+//             <span className="ql-formats">
+//                 <button className="ql-image" />
+//                 <button className="ql-video" />
+//             </span>
+//         </div>
+//     )
+// }
 
 class QuillEditor extends React.Component {
     constructor(props) {
@@ -11,6 +24,7 @@ class QuillEditor extends React.Component {
             theme: 'bubble',
         }
         this.handleChange = this.handleChange.bind(this);
+        this.reactQuillRef = null;
     };
 
     handleChange(html) {
@@ -21,8 +35,10 @@ class QuillEditor extends React.Component {
     render() {
         return (
             <div id={this.props.editorId}>
+                <SnowQuillEditor elementId={"snow-toolbar"} />
                 <ReactQuill
                     theme={this.state.theme}
+                    ref={el => this.reactQuillRef = el}
                     onChange={this.handleChange}
                     value={this.state.editorHtml}
                     modules={QuillEditor.modules}
@@ -38,9 +54,9 @@ class QuillEditor extends React.Component {
 QuillEditor.modules = {
     toolbar: [
         [{ 'header': '1' }, { 'header': '2' },],
-        ['bold', 'italic', 'underline', 'strike', 'blockquote', 'link',],
+        ['bold', 'italic', 'underline', 'strike', 'code-block', 'blockquote', 'link',],
         [{ 'list': 'ordered' }, { 'list': 'ordered' }, { 'indent': '-1' }, { 'indent': '+1' },],
-        // ['image', 'video',],
+        ['image', 'video',],
         ['clean'],
     ],
     clipboard: {
@@ -55,13 +71,14 @@ QuillEditor.formats = [
     'italic',
     'underline',
     'strike',
+    'code-block',
     'blockquote',
     'list',
     'bullet',
     'indent',
     'link',
-    // 'image',
-    // 'video',
+    'image',
+    'video',
 ];
 
 // PropType validation

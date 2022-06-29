@@ -46,7 +46,7 @@ const QuillToolbar = ({ elementId }) => {
                     <CustomRedo />
                 </button>
             </span>
-            <span className="ql-formats">
+            {/* <span className="ql-formats">
                 <select className="ql-header">
                     <option value="">Normal text</option>
                     <option value="1">Heading 1</option>
@@ -69,25 +69,25 @@ const QuillToolbar = ({ elementId }) => {
                 <button className="ql-list" value="bullet" />
                 <button className="ql-indent" value="-1" />
                 <button className="ql-indent" value="+1" />
-            </span>
+            </span> */}
             <span className="ql-formats">
                 <button className="ql-image" />
                 <button className="ql-video" />
             </span>
-            <span className="ql-formats">
+            {/* <span className="ql-formats">
                 <button className="ql-clean" />
-            </span>
+            </span> */}
         </div>
     )
 };
 
 
-class QuillEditor extends React.Component {
+class SnowQuillEditor extends React.Component {
 
-    placeholder;
-    onEditorChange;
+    // placeholder;
+    // onEditorChange;
     elementId;
-    initialHtml;
+    // initialHtml;
     _isMounted;
 
     state = { editorHtml: this.props.initialHtml || "" };
@@ -140,26 +140,27 @@ class QuillEditor extends React.Component {
     //     }
     // };
 
-    handleChange = html => {
-        this.setState({
-            editorHtml: html
-        }, () => {
-            this.props.onEditorChange(this.state.editorHtml);
-        });
-    };
+    // handleChange = html => {
+    //     this.setState({
+    //         editorHtml: html
+    //     }, () => {
+    //         this.props.onEditorChange(this.state.editorHtml);
+    //     });
+    // };
 
     render() {
         return (
-            <div className="text-editor">
+            <div className="compound-text-editor">
                 <QuillToolbar elementId={this.props.elementId} />
                 <ReactQuill
-                    theme={"bubble"}
+                    theme="snow"
                     ref={el => this.reactQuillRef = el}
-                    value={this.state.editorHtml}
-                    onChange={this.handleChange}
-                    placeholder={this.props.placeholder}
+                    // value={this.state.editorHtml}
+                    // onChange={this.handleChange}
+                    // placeholder={this.props.placeholder}
                     modules={this.modules}
                     formats={this.formats}
+                    style={{ display: 'none' }}
                 />
             </div>
         )
@@ -183,21 +184,21 @@ class QuillEditor extends React.Component {
 
     // Formats objects for setting up the Quill editor
     formats = [
-        "header",
-        "bold",
-        "italic",
-        "underline",
-        "strike",
-        "script",
-        "blockquote",
-        "list",
-        "bullet",
-        "indent",
-        "link",
+        // "header",
+        // "bold",
+        // "italic",
+        // "underline",
+        // "strike",
+        // "script",
+        // "code-block",
+        // "blockquote",
+        // "list",
+        // "bullet",
+        // "indent",
+        // "link",
         "image",
         "video",
-        "code-block"
     ];
 };
 
-export default QuillEditor;
+export default SnowQuillEditor;
