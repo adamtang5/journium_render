@@ -126,7 +126,7 @@ const NewStoryForm = () => {
                             required
                         />
                     </label>
-                    <label className="new-story-form-element">
+                    {/* <label className="new-story-form-element">
                         <input
                             id="imageUrl"
                             className={`${(showImageUrlInput) ? "" : "hidden"}`}
@@ -145,27 +145,18 @@ const NewStoryForm = () => {
                             imageUrl={imageUrl}
                             onClick={toggleRenderImage}
                         />
-                    </label>
-                    {/* <label className="new-story-form-element">
-                        <textarea
-                            id="content"
-                            value={content}
-                            onChange={e => setContent(e.target.value)}
-                            placeholder="Tell your story..."
-                            rows="15"
-                            required
-                        />
                     </label> */}
                     <div className="new-story-form-element">
                         <QuillAdd
                             placeholder={"Tell your story..."}
                             setData={setContent}
+                            setImageUrl={setImageUrl}
                             elementId={"new-story-content-editor"}
                             snowToolbarId="new-story-content-snow-toolbar"
                             bubbleToolbarId="new-story-content-bubble-toolbar"
                         />
                     </div>
-                    <label className="new-story-form-element">
+                    {/* <label className="new-story-form-element">
                         <input
                             id="videoUrl"
                             type="text"
@@ -177,7 +168,7 @@ const NewStoryForm = () => {
                         <NewStoryFormVideoUrlError
                             videoUrlInvalid={videoUrlInvalid}
                         />
-                    </label>
+                    </label> */}
                     {errors.length > 0 && (
                         <ul className='errors'>
                             {errors.map((error, i) => <li key={i} className="error-text">{error}</li>)}

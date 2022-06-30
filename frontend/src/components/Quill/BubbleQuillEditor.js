@@ -1,18 +1,54 @@
 import React from 'react';
 import ReactQuill, { Quill } from 'react-quill';
 import PropTypes from 'prop-types';
-// import 'react-quill/dist/quill.snow.css';
 import 'react-quill/dist/quill.bubble.css';
-// import SnowQuillEditor from './SnowQuillEditor';
+import { singlePublicFileUpload, singleMulterUpload } from '../../../../backend/awsS3';
 
 function undoChange() {
-    // console.log(this);
     this.quill.history.undo();
 }
 
 function redoChange() {
-    // console.log(this);
     this.quill.history.redo();
+}
+
+async function handleImage(e) {
+    e.stopPropagation();
+    e.preventDefault();
+
+    const hiddenImageInput = document.getElementById('bubble-hidden-image');
+
+    if (hiddenImageInput.files && hiddenImageInput.files.length > 0) {
+        const newFile = hiddenImageInput.files[0];
+        console.log(newFile);
+
+        // let formData = new FormData();
+        // const options = {
+        //     headers: {
+        //         'content-type': 'multipart/form-data',
+        //     },
+        // };
+        // formData.append("file", newFile);
+
+        // upload to AWS S3, get back file URL
+        const newImageUrl = await singlePublicFileUpload(newFile);
+
+        if (newImageUrl) {
+            const quill = this.quillRef.getEditor();
+            quill.focus();
+
+            let range = quill.getSelection();
+            let position = range ? range.index : 0;
+
+            quill.insertEmbed(position, "image", { src: newImageUrl, alt: newFile.name });
+            quill.setSelection(position + 1);
+
+            this.props.setImageUrl(newImageUrl);
+        } else {
+            return alert('failed to upload file');
+        }
+
+    }
 }
 
 const BubbleToolbar = ({ toolbarId }) => {
@@ -49,10 +85,7 @@ const BubbleToolbar = ({ toolbarId }) => {
             </span>
             <span className="ql-formats position-absolute invisible">
                 {/* <span className="ql-formats"> */}
-                <button
-                    id="bubble-hidden-image"
-                    className="ql-image"
-                />
+                <button className="ql-image" />
                 <button
                     id="bubble-hidden-video"
                     className="ql-video"
@@ -74,6 +107,8 @@ class BubbleQuillEditor extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.undoChange = undoChange.bind(this);
         this.redoChange = redoChange.bind(this);
+        this.handleImage = handleImage.bind(this);
+        this.quillRef = React.createRef();
     };
 
     handleChange(html) {
@@ -99,12 +134,19 @@ class BubbleQuillEditor extends React.Component {
                 />
                 <ReactQuill
                     theme="bubble"
-                    ref={this.props.visibleQuillRef}
+                    ref={this.quillRef}
                     onChange={this.handleChange}
                     value={this.state.editorHtml}
                     modules={this.modules}
                     formats={this.formats}
                     placeholder={this.props.placeholder}
+                />
+                <input
+                    id="bubble-hidden-image"
+                    type="file"
+                    accepts="image/*"
+                    onChange={this.handleImage}
+                    hidden
                 />
             </div>
         );
@@ -116,6 +158,7 @@ class BubbleQuillEditor extends React.Component {
             handlers: {
                 undo: undoChange,
                 redo: redoChange,
+                // image: handleImage,
             }
         },
         clipboard: {
