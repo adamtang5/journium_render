@@ -2,7 +2,6 @@ import React from 'react';
 import ReactQuill, { Quill } from 'react-quill';
 import PropTypes from 'prop-types';
 import 'react-quill/dist/quill.bubble.css';
-import { singlePublicFileUpload, singleMulterUpload } from '../../../../backend/awsS3';
 
 function undoChange() {
     this.quill.history.undo();
