@@ -2,6 +2,7 @@ import React from 'react';
 import ReactQuill, { Quill } from 'react-quill';
 import PropTypes from 'prop-types';
 import 'react-quill/dist/quill.bubble.css';
+import FileUpload from '../aws/FileUpload';
 
 function undoChange() {
     this.quill.history.undo();
@@ -11,43 +12,17 @@ function redoChange() {
     this.quill.history.redo();
 }
 
-async function handleImage(e) {
-    e.stopPropagation();
-    e.preventDefault();
+function handleUploadUrl(file) {
+    const quill = this.quillRef.getEditor();
+    quill.focus();
 
-    const hiddenImageInput = document.getElementById('bubble-hidden-image');
+    let range = quill.getSelection();
+    let position = range ? range.index : 0;
 
-    if (hiddenImageInput.files && hiddenImageInput.files.length > 0) {
-        const newFile = hiddenImageInput.files[0];
-        console.log(newFile);
+    quill.insertEmbed(position, "image", { src: file.imageUrl, alt: file.originalName });
+    quill.setSelection(position + 1);
 
-        // let formData = new FormData();
-        // const options = {
-        //     headers: {
-        //         'content-type': 'multipart/form-data',
-        //     },
-        // };
-        // formData.append("file", newFile);
-
-        // upload to AWS S3, get back file URL
-        const newImageUrl = await singlePublicFileUpload(newFile);
-
-        if (newImageUrl) {
-            const quill = this.quillRef.getEditor();
-            quill.focus();
-
-            let range = quill.getSelection();
-            let position = range ? range.index : 0;
-
-            quill.insertEmbed(position, "image", { src: newImageUrl, alt: newFile.name });
-            quill.setSelection(position + 1);
-
-            this.props.setImageUrl(newImageUrl);
-        } else {
-            return alert('failed to upload file');
-        }
-
-    }
+    this.props.setImageUrl(file.imageUrl);
 }
 
 const BubbleToolbar = ({ toolbarId }) => {
@@ -106,7 +81,7 @@ class BubbleQuillEditor extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.undoChange = undoChange.bind(this);
         this.redoChange = redoChange.bind(this);
-        this.handleImage = handleImage.bind(this);
+        this.handleUploadUrl = handleUploadUrl.bind(this);
         this.quillRef = React.createRef();
     };
 
@@ -140,12 +115,16 @@ class BubbleQuillEditor extends React.Component {
                     formats={this.formats}
                     placeholder={this.props.placeholder}
                 />
-                <input
+                {/* <input
                     id="bubble-hidden-image"
                     type="file"
                     accepts="image/*"
                     onChange={this.handleImage}
                     hidden
+                /> */}
+                <FileUpload
+                    elementId="bubble-hidden-image"
+                    handleUploadUrl={this.handleUploadUrl}
                 />
             </div>
         );

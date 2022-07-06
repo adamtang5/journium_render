@@ -3,9 +3,9 @@ import { csrfFetch } from "./csrf";
 const NEW_UPLOAD = 'aws/newUpload';
 const CLEAR_UPLOADS = 'aws/clearUploads';
 
-const newUpload = (fileUrl) => ({
+const newUpload = (file) => ({
     type: NEW_UPLOAD,
-    fileUrl,
+    file,
 });
 
 const clearUploads = () => ({
@@ -13,14 +13,42 @@ const clearUploads = () => ({
 })
 
 export const uploadFile = (file) => async (dispatch) => {
+    // const httpBinRes = await fetch("https://httpbin.org/anything", {
+    //     method: 'POST',
+    //     body: data,
+    // });
+    // if (httpBinRes.ok) {
+    //     const resData = await httpBinRes.json();
+    //     console.log("-------httpbin res------", resData);
+    // }
+    // console.log("-----in uploadFile thunk, data-------", data);
+
+    const { name, size, type } = file;
+    const formData = new FormData();
+    formData.append("filename", name);
+    formData.append("filesize", size);
+    formData.append("filetype", type);
+
+    if (file) formData.append("image", file);
+
+    // console.log("-------image--------", formData.get("image"));
+
     const res = await csrfFetch('/api/storage', {
         method: 'POST',
-        file,
+        // headers: {
+        //     'Content-Type': 'multipart/form-data',
+        // },
+        body: formData,
     });
+
     if (res.ok) {
         const data = await res.json();
-        dispatch(newUpload(data.imageUrl));
-        return data;
+        console.log("-----res data------", data);
+        // dispatch(newUpload(resData));
+        // return res;
+    } else {
+        const data = await res.json();
+        console.log("-------res data------", data);
     }
 };
 
@@ -32,8 +60,14 @@ const initialState = [];
 
 /*
 state.aws = [
-    fileUrl,
-    fileUrl,
+    {
+        imageUrl: fileUrl,
+        originalName: fileName,
+    },
+    {
+        imageUrl: fileUrl,
+        originalName: fileName,
+    },
     ...
 ]
 */
@@ -46,7 +80,7 @@ const awsReducer = (state = initialState, action) => {
         case NEW_UPLOAD: {
             const newState = [
                 ...state,
-                action.fileUrl,
+                action.file,
             ];
             return newState;
         }
