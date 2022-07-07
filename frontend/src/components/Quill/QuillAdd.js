@@ -2,7 +2,7 @@ import React from 'react';
 import QuillEditor from './QuillEditor';
 import './TextEditor.css';
 
-const QuillAdd = ({ placeholder, setData, setImageUrl, elementId, snowToolbarId, bubbleToolbarId }) => {
+const QuillAdd = ({ placeholder, setData, handleInsertImage, elementId, snowToolbarId, bubbleToolbarId }) => {
     const onEditorChange = value => {
         setData(value);
     };
@@ -12,7 +12,7 @@ const QuillAdd = ({ placeholder, setData, setImageUrl, elementId, snowToolbarId,
             <QuillEditor
                 placeholder={placeholder}
                 setData={setData}
-                setImageUrl={setImageUrl}
+                handleInsertImage={handleInsertImage}
                 // onEditorChange={onEditorChange}
                 editorId={elementId}
                 snowToolbarId={snowToolbarId}

@@ -12,43 +12,26 @@ const clearUploads = () => ({
     type: CLEAR_UPLOADS,
 })
 
-export const uploadFile = (file) => async (dispatch) => {
-    // const httpBinRes = await fetch("https://httpbin.org/anything", {
-    //     method: 'POST',
-    //     body: data,
-    // });
-    // if (httpBinRes.ok) {
-    //     const resData = await httpBinRes.json();
-    //     console.log("-------httpbin res------", resData);
-    // }
-    // console.log("-----in uploadFile thunk, data-------", data);
-
+export const uploadFile = ({ file }) => async (dispatch) => {
     const { name, size, type } = file;
     const formData = new FormData();
     formData.append("filename", name);
     formData.append("filesize", size);
     formData.append("filetype", type);
-
     if (file) formData.append("image", file);
 
-    // console.log("-------image--------", formData.get("image"));
-
     const res = await csrfFetch('/api/storage', {
-        method: 'POST',
-        // headers: {
-        //     'Content-Type': 'multipart/form-data',
-        // },
+        method: "POST",
+        headers: {
+            "Content-Type": "multipart/form-data",
+        },
         body: formData,
     });
 
     if (res.ok) {
         const data = await res.json();
-        console.log("-----res data------", data);
-        // dispatch(newUpload(resData));
-        // return res;
-    } else {
-        const data = await res.json();
-        console.log("-------res data------", data);
+        dispatch(newUpload(data));
+        // return data;
     }
 };
 

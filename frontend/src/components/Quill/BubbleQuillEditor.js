@@ -13,16 +13,17 @@ function redoChange() {
 }
 
 function handleUploadUrl(file) {
-    const quill = this.quillRef.getEditor();
+    const quill = this.quillRef.current.getEditor();
     quill.focus();
 
     let range = quill.getSelection();
     let position = range ? range.index : 0;
 
-    quill.insertEmbed(position, "image", { src: file.imageUrl, alt: file.originalName });
+    // quill.insertEmbed(position, "image", { src: file.imageUrl, alt: file.originalName });
+    quill.insertEmbed(position, "image", file.imageUrl);
     quill.setSelection(position + 1);
 
-    this.props.setImageUrl(file.imageUrl);
+    this.props.handleInsertImage(file.imageUrl);
 }
 
 const BubbleToolbar = ({ toolbarId }) => {
@@ -86,7 +87,6 @@ class BubbleQuillEditor extends React.Component {
     };
 
     handleChange(html) {
-        // console.log(this);
         this.setState({ editorHtml: html },
             () => this.props.onEditorChange(this.state.editorHtml));
         console.log(this.state.editorHtml);

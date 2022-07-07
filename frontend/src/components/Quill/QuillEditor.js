@@ -2,7 +2,7 @@ import { createRef, useState, useEffect } from "react";
 import BubbleQuillEditor from "./BubbleQuillEditor";
 import SnowQuillEditor from "./SnowQuillEditor";
 
-const QuillEditor = ({ elementId, snowToolbarId, bubbleToolbarId, placeholder, setData, setImageUrl, initialHtml }) => {
+const QuillEditor = ({ elementId, snowToolbarId, bubbleToolbarId, placeholder, setData, handleInsertImage, initialHtml }) => {
     const hiddenQuillRef = createRef();
     const visibleQuillRef = createRef();
     // const hiddenRedoRef = createRef();
@@ -50,7 +50,7 @@ const QuillEditor = ({ elementId, snowToolbarId, bubbleToolbarId, placeholder, s
                 // hiddenUndoRef={hiddenUndoRef}
                 placeholder={placeholder}
                 onEditorChange={onEditorChange}
-                setImageUrl={setImageUrl}
+                handleInsertImage={handleInsertImage}
                 initialHtml={initialHtml}
             />
         </div>

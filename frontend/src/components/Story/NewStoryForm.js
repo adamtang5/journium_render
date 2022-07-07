@@ -77,6 +77,10 @@ const NewStoryForm = () => {
         setVideoUrlInvalid(!urlRe.test(e.target.value) && !!e.target.value);
     };
 
+    const handleInsertImage = url => {
+        if (!imageUrl) setImageUrl(url);
+    };
+
     const handlePublish = e => {
         e.preventDefault();
         setErrors([]);
@@ -150,7 +154,7 @@ const NewStoryForm = () => {
                         <QuillAdd
                             placeholder={"Tell your story..."}
                             setData={setContent}
-                            setImageUrl={setImageUrl}
+                            handleInsertImage={handleInsertImage}
                             elementId={"new-story-content-editor"}
                             snowToolbarId="new-story-content-snow-toolbar"
                             bubbleToolbarId="new-story-content-bubble-toolbar"
