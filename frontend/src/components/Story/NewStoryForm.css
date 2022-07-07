@@ -83,3 +83,11 @@
     /* border: 3px solid rgb(7, 46, 78); */
     cursor: pointer;
 }
+
+.story-media {
+    object-fit: scale-down;
+    width: 700px;
+    height: 350px;
+    display: block;
+    margin: 0 auto;
+}

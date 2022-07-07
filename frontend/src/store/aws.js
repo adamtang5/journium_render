@@ -31,7 +31,6 @@ export const uploadFile = ({ file }) => async (dispatch) => {
     if (res.ok) {
         const data = await res.json();
         dispatch(newUpload(data));
-        // return data;
     }
 };
 

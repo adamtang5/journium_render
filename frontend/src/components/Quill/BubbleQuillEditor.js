@@ -4,6 +4,30 @@ import PropTypes from 'prop-types';
 import 'react-quill/dist/quill.bubble.css';
 import FileUpload from '../aws/FileUpload';
 
+const BlockEmbed = Quill.import('blots/block/embed');
+
+class ImageBlot extends BlockEmbed {
+
+    static create(value) {
+        const imgTag = super.create();
+        imgTag.setAttribute('src', value.src);
+        imgTag.setAttribute('alt', value.alt);
+        imgTag.setAttribute('class', 'story-media');
+        return imgTag;
+    }
+
+    static value(node) {
+        return {
+            src: node.getAttribute('src'),
+            alt: node.getAttribute('alt'),
+        };
+    }
+}
+
+ImageBlot.blotName = 'image';
+ImageBlot.tagName = 'img';
+Quill.register(ImageBlot);
+
 function undoChange() {
     this.quill.history.undo();
 }
@@ -19,8 +43,8 @@ function handleUploadUrl(file) {
     let range = quill.getSelection();
     let position = range ? range.index : 0;
 
-    // quill.insertEmbed(position, "image", { src: file.imageUrl, alt: file.originalName });
-    quill.insertEmbed(position, "image", file.imageUrl);
+    quill.insertEmbed(position, "image", { src: file.imageUrl, alt: file.originalName });
+    // quill.insertEmbed(position, "image", file.imageUrl);
     quill.setSelection(position + 1);
 
     this.props.handleInsertImage(file.imageUrl);
@@ -59,7 +83,6 @@ const BubbleToolbar = ({ toolbarId }) => {
                 />
             </span>
             <span className="ql-formats position-absolute invisible">
-                {/* <span className="ql-formats"> */}
                 <button className="ql-image" />
                 <button
                     id="bubble-hidden-video"
@@ -78,6 +101,7 @@ class BubbleQuillEditor extends React.Component {
         super(props);
         this.state = {
             editorHtml: this.props.initialHtml || '',
+            // files: this.props.initialFiles || [],
         }
         this.handleChange = this.handleChange.bind(this);
         this.undoChange = undoChange.bind(this);
@@ -98,6 +122,9 @@ class BubbleQuillEditor extends React.Component {
         console.log(this.state.editorHtml);
     }
 
+    // TODO: helper function to extract files array from html
+    // imagesFromHtml(html) {}
+
     render() {
         return (
             <div className="bubble-quill-editor">
@@ -115,13 +142,6 @@ class BubbleQuillEditor extends React.Component {
                     formats={this.formats}
                     placeholder={this.props.placeholder}
                 />
-                {/* <input
-                    id="bubble-hidden-image"
-                    type="file"
-                    accepts="image/*"
-                    onChange={this.handleImage}
-                    hidden
-                /> */}
                 <FileUpload
                     elementId="bubble-hidden-image"
                     handleUploadUrl={this.handleUploadUrl}
