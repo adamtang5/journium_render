@@ -2,7 +2,15 @@ import { createRef } from "react";
 import BubbleQuillEditor from "./BubbleQuillEditor";
 import SnowQuillEditor from "./SnowQuillEditor";
 
-const QuillEditor = ({ elementId, snowToolbarId, bubbleToolbarId, placeholder, setData, handleInsertImage, initialHtml }) => {
+const QuillEditor = ({
+    elementId,
+    snowToolbarId,
+    bubbleToolbarId,
+    placeholder,
+    setData,
+    handleInsertImage,
+    initialHtml
+}) => {
     const visibleQuillRef = createRef();
 
     const onEditorChange = value => {

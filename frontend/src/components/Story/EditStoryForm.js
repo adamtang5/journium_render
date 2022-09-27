@@ -4,12 +4,14 @@ import { NavLink, useHistory, useParams } from "react-router-dom";
 import * as sessionActions from '../../store/session';
 import * as userActions from '../../store/user';
 import * as storyActions from '../../store/story';
+import * as awsActions from '../../store/aws';
 import JourniumLogo from "../utils/JourniumLogo";
 import ProfileButton from "../ProfileButton";
 import EditStoryFormImageUrlError from './Errors/EditStoryFormImageUrlError';
 import RenderImage from "./RenderImage";
 import EditStoryFormVideoUrlError from './Errors/EditStoryFormVideoUrlError';
 import './EditStoryForm.css';
+import QuillEdit from "../Quill/QuillEdit";
 
 const EditStoryForm = () => {
     const { id } = useParams();
@@ -81,6 +83,10 @@ const EditStoryForm = () => {
         setVideoUrlInvalid(!urlRe.test(e.target.value) && !!e.target.value);
     };
 
+    const handleInsertImage = url => {
+        if (!imageUrl) setImageUrl(url);
+    };
+
     const handleUpdate = e => {
         e.preventDefault();
         setErrors([]);
@@ -93,6 +99,13 @@ const EditStoryForm = () => {
             videoUrl,
         }))
             .then(() => history.push(`/stories/${id}`));
+        dispatch(awsActions.clearFiles());
+    };
+
+    const handleCancel = e => {
+        e.preventDefault();
+        dispatch(awsActions.clearFiles());
+        history.push(`/stories/${story.id}`);
     };
 
     return (
@@ -111,6 +124,13 @@ const EditStoryForm = () => {
                         onClick={handleUpdate}
                     >
                         Update
+                    </button>
+                    <button
+                        className="cancel"
+                        // disabled={updateDisabled}
+                        onClick={handleCancel}
+                    >
+                        Cancel
                     </button>
                     {currentUser && (
                         <>
@@ -131,7 +151,7 @@ const EditStoryForm = () => {
                             required
                         />
                     </label>
-                    <label className="new-story-form-element">
+                    {/* <label className="new-story-form-element">
                         <input
                             id="imageUrl"
                             className={`${(showImageUrlInput) ? "" : "hidden"}`}
@@ -150,8 +170,8 @@ const EditStoryForm = () => {
                             imageUrl={imageUrl}
                             onClick={toggleRenderImage}
                         />
-                    </label>
-                    <label className="new-story-form-element">
+                    </label> */}
+                    {/* <label className="new-story-form-element">
                         <textarea
                             id="content"
                             value={content}
@@ -160,8 +180,19 @@ const EditStoryForm = () => {
                             rows="15"
                             required
                         />
-                    </label>
-                    <label className="new-story-form-element">
+                    </label> */}
+                    <div className="new-story-form-element">
+                        <QuillEdit
+                            placeholder={"Edit your story..."}
+                            setData={setContent}
+                            handleInsertImage={handleInsertImage}
+                            elementId={`story-${story?.id}-content-editor`}
+                            snowToolbarId={`story-${story?.id}-content-snow-toolbar`}
+                            bubbleToolbarId={`story-${story?.id}-content-bubble-tootlbar`}
+                            initialHtml={content}
+                        />
+                    </div>
+                    {/* <label className="new-story-form-element">
                         <input
                             id="videoUrl"
                             type="text"
@@ -173,7 +204,7 @@ const EditStoryForm = () => {
                         <EditStoryFormVideoUrlError
                             videoUrlInvalid={videoUrlInvalid}
                         />
-                    </label>
+                    </label> */}
                     {errors.length > 0 && (
                         <ul className='errors'>
                             {errors.map((error, i) => <li key={i} className="error-text">{error}</li>)}

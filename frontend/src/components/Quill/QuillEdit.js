@@ -1,19 +1,30 @@
 import React from 'react';
 import QuillEditor from './QuillEditor';
-import 'react-quill/dist/quill.snow.css';
 import './TextEditor.css';
 
-const QuillEdit = ({ placeholder, setBody, elementId, initialHtml }) => {
+const QuillEdit = ({
+    placeholder,
+    setData,
+    handleInsertImage,
+    elementId,
+    snowToolbarId,
+    bubbleToolbarId,
+    initialHtml
+}) => {
     const onEditorChange = value => {
-        setBody(value);
+        setData(value);
     };
 
     return (
         <div className="quill-edit">
             <QuillEditor
                 placeholder={placeholder}
-                onEditorChange={onEditorChange}
-                elementId={elementId}
+                setData={setData}
+                handleInsertImage={handleInsertImage}
+                // onEditorChange={onEditorChange}
+                editorId={elementId}
+                snowToolbarId={snowToolbarId}
+                bubbleToolbarId={bubbleToolbarId}
                 initialHtml={initialHtml}
             />
         </div>

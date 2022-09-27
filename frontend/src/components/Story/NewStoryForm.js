@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 import * as userActions from '../../store/user';
 import * as storyActions from '../../store/story';
+import * as awsActions from '../../store/aws';
 import JourniumLogo from "../utils/JourniumLogo";
 import ProfileButton from "../ProfileButton";
 import NewStoryFormImageUrlError from './Errors/NewStoryFormImageUrlError';
@@ -92,6 +93,13 @@ const NewStoryForm = () => {
             videoUrl,
         }))
             .then((data) => history.push(`/stories/${data.id}`));
+        dispatch(awsActions.clearFiles());
+    };
+
+    const handleCancel = e => {
+        e.preventDefault();
+        dispatch(awsActions.clearFiles());
+        history.push(`/`);
     };
 
     return (
@@ -110,6 +118,13 @@ const NewStoryForm = () => {
                         onClick={handlePublish}
                     >
                         Publish
+                    </button>
+                    <button
+                        className="cancel"
+                        // disabled={publishDisabled}
+                        onClick={handleCancel}
+                    >
+                        Cancel
                     </button>
                     {currentUser && (
                         <>

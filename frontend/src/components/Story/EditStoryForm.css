@@ -24,7 +24,8 @@
     gap: 10px;
 }
 
-#writer-top-right button.update {
+#writer-top-right button.update,
+#writer-top-right button.cancel {
     font-size: 14px;
     line-height: 16px;
     border-radius: 99em;
