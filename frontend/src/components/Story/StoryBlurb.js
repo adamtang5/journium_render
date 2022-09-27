@@ -1,6 +1,9 @@
+import { firstParagraph } from "../utils/JSSoup";
+
 const StoryBlurb = ({ story, cutoff }) => {
     cutoff = cutoff || 240;
-    let blurb = story.content.slice(0, cutoff + 1);
+    // let blurb = story.content.slice(0, cutoff + 1);
+    let blurb = firstParagraph(story.content).slice(0, cutoff + 1);
     if (blurb.length > cutoff) {
         // credits to Sam Kramer for his contribution with the RegExp
         blurb = blurb.replace(/\s\S*$/, "") + " ...";
