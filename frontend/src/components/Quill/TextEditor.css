@@ -16,3 +16,21 @@
     display: unset;
     visibility: hidden;
 }
+
+.ql-toolbar .ql-image-options {
+    top: 25px;
+    left: -13px;
+    transform: scale(0.75);
+    background-color: white;
+    border: 1px solid var(--color-border);
+    padding: 10px;
+    z-index: 10;
+    min-width: 80px;
+}
+
+iframe.ql-video {
+    width: 600px;
+    height: 300px;
+    display: block;
+    margin: 0 auto;
+}
