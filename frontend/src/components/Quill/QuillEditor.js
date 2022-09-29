@@ -27,9 +27,14 @@ const QuillEditor = ({
         hiddenRedoButton.click();
     };
 
-    const handleImage = () => {
+    const handleImageUpload = () => {
         const hiddenImageInput = document.getElementById('bubble-hidden-image');
         hiddenImageInput.click();
+    };
+
+    const handleImageUrl = () => {
+        const hiddenVideoButton = document.getElementById('bubble-hidden-link');
+        hiddenVideoButton.click();
     };
 
     const handleVideo = () => {
@@ -43,7 +48,8 @@ const QuillEditor = ({
                 toolbarId={snowToolbarId}
                 undoChange={undoChange}
                 redoChange={redoChange}
-                handleImage={handleImage}
+                handleImageUpload={handleImageUpload}
+                handleImageUrl={handleImageUrl}
                 handleVideo={handleVideo}
             />
             <BubbleQuillEditor

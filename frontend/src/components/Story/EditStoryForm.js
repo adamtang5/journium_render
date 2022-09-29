@@ -188,7 +188,7 @@ const EditStoryForm = () => {
                             handleInsertImage={handleInsertImage}
                             elementId={`story-${story?.id}-content-editor`}
                             snowToolbarId={`story-${story?.id}-content-snow-toolbar`}
-                            bubbleToolbarId={`story-${story?.id}-content-bubble-tootlbar`}
+                            bubbleToolbarId={`story-${story?.id}-content-bubble-toolbar`}
                             initialHtml={content}
                         />
                     </div>

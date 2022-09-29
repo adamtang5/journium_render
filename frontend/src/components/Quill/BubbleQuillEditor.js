@@ -85,6 +85,10 @@ const BubbleToolbar = ({ toolbarId }) => {
             <span className="ql-formats position-absolute invisible">
                 <button className="ql-image" />
                 <button
+                    id="bubble-hidden-link"
+                    className="ql-video"
+                />
+                <button
                     id="bubble-hidden-video"
                     className="ql-video"
                 />

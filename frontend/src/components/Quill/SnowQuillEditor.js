@@ -55,7 +55,11 @@ const CustomLink = () => {
 };
 
 // Quill Toolbar component
-const SnowQuillToolbar = ({ toolbarId }) => {
+const SnowQuillToolbar = ({
+    toolbarId,
+    handleImageUpload,
+    handleImageUrl,
+}) => {
     const [showImageOptions, setShowImageOptions] = useState(false);
 
     const toggleShowImageOptions = e => {
@@ -84,10 +88,16 @@ const SnowQuillToolbar = ({ toolbarId }) => {
                     className="ql-image-options position-absolute"
                     hidden={!showImageOptions}
                 >
-                    <button className="ql-image-upload cursor-pointer">
+                    <button
+                        className="ql-image-upload cursor-pointer"
+                        onClick={handleImageUpload}
+                    >
                         <CustomImageUpload />
                     </button>
-                    <button className="ql-image-url cursor-pointer">
+                    <button
+                        className="ql-image-url cursor-pointer"
+                        onClick={handleImageUrl}
+                    >
                         <CustomLink />
                     </button>
                 </div>
@@ -116,7 +126,11 @@ class SnowQuillEditor extends React.Component {
     render() {
         return (
             <div className="snow-quill-editor">
-                <SnowQuillToolbar toolbarId={this.props.toolbarId} />
+                <SnowQuillToolbar
+                    toolbarId={this.props.toolbarId}
+                    handleImageUpload={this.props.handleImageUpload}
+                    handleImageUrl={this.props.handleImageUrl}
+                />
                 <ReactQuill
                     theme="snow"
                     modules={this.modules}
