@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ReactQuill, { Quill } from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import QuillImageUrlForm from './QuillImageUrlForm';
 
 const CustomUndo = () => {
     return (
@@ -61,10 +62,21 @@ const SnowQuillToolbar = ({
     handleImageUrl,
 }) => {
     const [showImageOptions, setShowImageOptions] = useState(false);
+    const [showImageUrlForm, setShowImageUrlForm] = useState(false);
 
     const toggleShowImageOptions = e => {
         e.preventDefault();
         setShowImageOptions(!showImageOptions);
+    };
+
+    const toggleShowImageUrlForm = e => {
+        e.preventDefault();
+        setShowImageUrlForm(!showImageUrlForm);
+    };
+
+    const handleUploadClick = e => {
+        setShowImageOptions(false);
+        handleImageUpload();
     };
 
     return (
@@ -90,16 +102,25 @@ const SnowQuillToolbar = ({
                 >
                     <button
                         className="ql-image-upload cursor-pointer"
-                        onClick={handleImageUpload}
+                        onClick={handleUploadClick}
                     >
                         <CustomImageUpload />
                     </button>
                     <button
                         className="ql-image-url cursor-pointer"
-                        onClick={handleImageUrl}
+                        onClick={toggleShowImageUrlForm}
                     >
                         <CustomLink />
                     </button>
+                    <div
+                        className={`ql-image-url-form position-absolute flex-row${!showImageUrlForm ? ' invisible' : ''}`}
+                    >
+                        <QuillImageUrlForm
+                            setShowImageOptions={setShowImageOptions}
+                            setShowImageUrlForm={setShowImageUrlForm}
+                            handleImageUrl={handleImageUrl}
+                        />
+                    </div>
                 </div>
                 <button className="ql-video" />
             </span>

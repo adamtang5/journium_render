@@ -9,7 +9,7 @@ const SingleStoryMain = ({ story }) => {
             <StoryTitle story={story} />
             {/* <StoryImage imageUrl={story.imageUrl} alt={story.title} /> */}
             <StoryContent story={story} />
-            <StoryVideo videoUrl={story.videoUrl} />
+            {/* <StoryVideo videoUrl={story.videoUrl} /> */}
         </div>
     )
 };

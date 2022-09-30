@@ -11,6 +11,7 @@ import RenderImage from "./RenderImage";
 import NewStoryFormVideoUrlError from './Errors/NewStoryFormVideoUrlError';
 import './NewStoryForm.css';
 import QuillAdd from '../Quill/QuillAdd';
+import { hasNoText } from "../utils/JSSoup";
 
 const NewStoryForm = () => {
     const dispatch = useDispatch();
@@ -53,7 +54,7 @@ const NewStoryForm = () => {
         if (!imageUrlInvalid && !videoUrlInvalid) {
             setPublishDisabled(!(
                 title.length > 2 &&
-                content.length > 0
+                !hasNoText(content)
             ));
         } else {
             setPublishDisabled(true);

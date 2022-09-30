@@ -1,0 +1,36 @@
+.ql-image-url-form {
+    z-index: 11;
+    background-color: white;
+    border: 1px solid var(--color-border);
+    border-left: none;
+    top: -1px;
+    left: 75px;
+    padding: 10px;
+}
+
+.ql-image-url-form .image-url-label {
+    width: 120px;
+}
+
+.ql-image-url-form .image-url-label,
+.ql-image-url-form .image-url-submit {
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.ql-image-url-form .image-url-input {
+    font-size: 16px;
+    font-family: var(--font-family-sans-serif-tertiary);
+    color: var(--color-button-publish);
+    width: 300px;
+    border-bottom: 1px solid var(--color-border-lighter);
+}
+
+.ql-image-url-form .image-url-submit {
+    width: 135px;
+    padding: 0 10px;
+}
+
+.ql-image-url-form .image-url-submit:hover {
+    color: var(--color-button-publish-hover);
+}

@@ -11,3 +11,9 @@ export const firstParagraph = contentHtml => {
     const paragraphs = soup.findAll('p');
     return paragraphs.length ? paragraphs[0].text : '';
 };
+
+export const hasNoText = contentHtml => {
+    const soup = new JSSoup(contentHtml);
+    const el = soup.nextElement;
+    return el.text.trim() === '';
+};

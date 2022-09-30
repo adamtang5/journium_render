@@ -47,7 +47,18 @@ function handleUploadUrl(file) {
     // quill.insertEmbed(position, "image", file.imageUrl);
     quill.setSelection(position + 1);
 
-    this.props.handleInsertImage(file.imageUrl);
+    this.props.handleInsertImage(file.imageUrl);    // will deprecate
+}
+
+function handleExtImageUrl(url) {
+    const quill = this.quillRef.current.getEditor();
+    quill.focus();
+
+    let range = quill.getSelection();
+    let position = range ? range.index : 0;
+
+    quill.insertEmbed(position, "image", { src: url, alt: 'External Image' });
+    quill.setSelection(position + 1);
 }
 
 const BubbleToolbar = ({ toolbarId }) => {
@@ -85,10 +96,6 @@ const BubbleToolbar = ({ toolbarId }) => {
             <span className="ql-formats position-absolute invisible">
                 <button className="ql-image" />
                 <button
-                    id="bubble-hidden-link"
-                    className="ql-video"
-                />
-                <button
                     id="bubble-hidden-video"
                     className="ql-video"
                 />
@@ -105,12 +112,12 @@ class BubbleQuillEditor extends React.Component {
         super(props);
         this.state = {
             editorHtml: this.props.initialHtml || '',
-            // files: this.props.initialFiles || [],
         }
         this.handleChange = this.handleChange.bind(this);
         this.undoChange = undoChange.bind(this);
         this.redoChange = redoChange.bind(this);
         this.handleUploadUrl = handleUploadUrl.bind(this);
+        this.handleExtImageUrl = handleExtImageUrl.bind(this);
         this.quillRef = React.createRef();
     };
 
@@ -126,8 +133,12 @@ class BubbleQuillEditor extends React.Component {
         console.log(this.state.editorHtml);
     }
 
-    // TODO: helper function to extract files array from html
-    // imagesFromHtml(html) {}
+    handleHiddenExtUrlInsert(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const extImageUrlInput = document.getElementById('ext-image-url');
+        this.handleExtImageUrl(extImageUrlInput.value);
+    }
 
     render() {
         return (
@@ -149,6 +160,11 @@ class BubbleQuillEditor extends React.Component {
                 <FileUpload
                     elementId="bubble-hidden-image"
                     handleUploadUrl={this.handleUploadUrl}
+                />
+                <button
+                    id="bubble-hidden-link"
+                    onClick={e => this.handleHiddenExtUrlInsert(e)}
+                    hidden
                 />
             </div>
         );
