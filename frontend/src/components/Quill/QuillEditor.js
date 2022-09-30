@@ -8,7 +8,6 @@ const QuillEditor = ({
     bubbleToolbarId,
     placeholder,
     setData,
-    handleInsertImage,
     initialHtml
 }) => {
     const visibleQuillRef = createRef();
@@ -57,7 +56,6 @@ const QuillEditor = ({
                 visibleQuillRef={visibleQuillRef}
                 placeholder={placeholder}
                 onEditorChange={onEditorChange}
-                handleInsertImage={handleInsertImage}
                 initialHtml={initialHtml}
             />
         </div>

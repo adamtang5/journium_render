@@ -46,8 +46,6 @@ function handleUploadUrl(file) {
     quill.insertEmbed(position, "image", { src: file.imageUrl, alt: file.originalName });
     // quill.insertEmbed(position, "image", file.imageUrl);
     quill.setSelection(position + 1);
-
-    this.props.handleInsertImage(file.imageUrl);    // will deprecate
 }
 
 function handleExtImageUrl(url) {

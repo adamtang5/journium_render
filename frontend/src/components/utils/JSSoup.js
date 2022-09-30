@@ -1,5 +1,13 @@
 import JSSoup from "jssoup";
 
+const textElements = [
+    'p', 'h1', 'h2', 'pre', 'blockquote', 'ol', 'ul',
+];
+
+const stylingElements = [
+    'strong', 'em', 'u', 's',
+]
+
 export const firstImage = contentHtml => {
     const soup = new JSSoup(contentHtml);
     const imgs = soup.findAll('img');
@@ -14,6 +22,12 @@ export const firstParagraph = contentHtml => {
 
 export const hasNoText = contentHtml => {
     const soup = new JSSoup(contentHtml);
-    const el = soup.nextElement;
-    return el.text.trim() === '';
+    let el = soup;
+    while (el.nextElement) {
+        if (el.text && el.text.trim()) {
+            return false;
+        }
+        el = el.nextElement;
+    }
+    return true;
 };
