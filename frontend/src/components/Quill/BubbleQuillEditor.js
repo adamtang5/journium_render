@@ -122,14 +122,14 @@ class BubbleQuillEditor extends React.Component {
     handleChange(html) {
         this.setState({ editorHtml: html },
             () => this.props.onEditorChange(this.state.editorHtml));
-        console.log(this.state.editorHtml);
+        // console.log(this.state.editorHtml);
     };
 
-    setValue(html) {
-        console.log(`setting value of ${this}`);
-        this.setState({ editorHtml: html });
-        console.log(this.state.editorHtml);
-    }
+    // setValue(html) {
+    //     console.log(`setting value of ${this}`);
+    //     this.setState({ editorHtml: html });
+    //     console.log(this.state.editorHtml);
+    // }
 
     handleHiddenExtUrlInsert(e) {
         e.preventDefault();
