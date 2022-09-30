@@ -20,12 +20,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER,
       },
-      imageUrl: {
-        type: Sequelize.STRING,
-      },
-      videoUrl: {
-        type: Sequelize.STRING,
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
