@@ -140,7 +140,7 @@ const storyReducer = (state = initialState, action) => {
             newState[action.story.id] = {
                 ...action.story,
                 Likes: {
-                    userIds: action.story.Likes.map(like => like.userId),
+                    userIds: action.story.Likes?.map(like => like.userId),
                 },
             };
             return newState;

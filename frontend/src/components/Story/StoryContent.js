@@ -1,8 +1,12 @@
 const StoryContent = ({ story }) => {
     return (
-        <p className="story-content">
-            {story.content}
-        </p>
+        <div
+            className="story-content"
+            dangerouslySetInnerHTML={{ __html: story?.content }}
+        />
+        // <p className="story-content">
+        //     {story.content}
+        // </p>
     )
 };
 

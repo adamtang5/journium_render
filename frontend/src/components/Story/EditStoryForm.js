@@ -4,12 +4,12 @@ import { NavLink, useHistory, useParams } from "react-router-dom";
 import * as sessionActions from '../../store/session';
 import * as userActions from '../../store/user';
 import * as storyActions from '../../store/story';
+import * as awsActions from '../../store/aws';
 import JourniumLogo from "../utils/JourniumLogo";
 import ProfileButton from "../ProfileButton";
-import EditStoryFormImageUrlError from './Errors/EditStoryFormImageUrlError';
-import RenderImage from "./RenderImage";
-import EditStoryFormVideoUrlError from './Errors/EditStoryFormVideoUrlError';
 import './EditStoryForm.css';
+import QuillEdit from "../Quill/QuillEdit";
+import { hasNoText } from "../utils/JSSoup";
 
 const EditStoryForm = () => {
     const { id } = useParams();
@@ -24,22 +24,7 @@ const EditStoryForm = () => {
     // slice-of-state variables for controlled inputs
     const [title, setTitle] = useState(story.title);
     const [content, setContent] = useState(story.content);
-    const [imageUrl, setImageUrl] = useState(story.imageUrl);
-    const [videoUrl, setVideoUrl] = useState(story.videoUrl);
-
-    // slice of state for final validation when clicking update button
-    const [showImageUrlInput, setShowImageUrlInput] = useState(true);
-    const [showRenderImage, setShowRenderImage] = useState(false);
     const [errors, setErrors] = useState([]);
-
-
-    // onBlur error pre-validation
-    const [imageUrlInvalid, setImageUrlInvalid] = useState(false);
-    const [videoUrlInvalid, setVideoUrlInvalid] = useState(false);
-
-    const urlRe = new RegExp("((http|https)://)(www.)?" +
-        "[a-zA-Z0-9@:%._\\+~# ?&//=]{2,256}\\.[a-z]" +
-        "{2,6}\\b([-a-zA-Z0-9@:%._\\+~# ?&//=]*)");
 
     useEffect(() => {
         dispatch(sessionActions.restoreUser())
@@ -53,34 +38,13 @@ const EditStoryForm = () => {
 
     // update button is disabled until basic validation is done
     useEffect(() => {
-        if (!imageUrlInvalid && !videoUrlInvalid) {
-            setUpdateDisabled(!(
-                title.length > 0 &&
-                content.length > 0
-            ));
-        } else {
-            setUpdateDisabled(true);
-        }
-    }, [title, content, imageUrlInvalid, videoUrlInvalid]);
+        setUpdateDisabled(!(
+            title.trim().length > 2 &&
+            !hasNoText(content)
+        ));
+    }, [title, content]);
 
     // onBlur pre-validations
-    const validateImageUrl = e => {
-        setImageUrlInvalid(!urlRe.test(e.target.value) && !!e.target.value);
-        if (!imageUrlInvalid && !!e.target.value) {
-            setShowImageUrlInput(false);
-            setShowRenderImage(true);
-        }
-    };
-
-    const toggleRenderImage = e => {
-        setShowRenderImage(false);
-        setShowImageUrlInput(true);
-    };
-
-    const validateVideoUrl = e => {
-        setVideoUrlInvalid(!urlRe.test(e.target.value) && !!e.target.value);
-    };
-
     const handleUpdate = e => {
         e.preventDefault();
         setErrors([]);
@@ -89,10 +53,15 @@ const EditStoryForm = () => {
             userId: sessionUser.id,
             title,
             content,
-            imageUrl,
-            videoUrl,
         }))
             .then(() => history.push(`/stories/${id}`));
+        dispatch(awsActions.clearFiles());
+    };
+
+    const handleCancel = e => {
+        e.preventDefault();
+        dispatch(awsActions.clearFiles());
+        history.push(`/stories/${story.id}`);
     };
 
     return (
@@ -111,6 +80,12 @@ const EditStoryForm = () => {
                         onClick={handleUpdate}
                     >
                         Update
+                    </button>
+                    <button
+                        className="cancel"
+                        onClick={handleCancel}
+                    >
+                        Cancel
                     </button>
                     {currentUser && (
                         <>
@@ -131,49 +106,16 @@ const EditStoryForm = () => {
                             required
                         />
                     </label>
-                    <label className="new-story-form-element">
-                        <input
-                            id="imageUrl"
-                            className={`${(showImageUrlInput) ? "" : "hidden"}`}
-                            type="text"
-                            value={imageUrl}
-                            onChange={e => setImageUrl(e.target.value)}
-                            onBlur={validateImageUrl}
-                            placeholder="Insert image URL"
-                            title="Click away to preview image"
+                    <div className="new-story-form-element">
+                        <QuillEdit
+                            placeholder={"Edit your story..."}
+                            setData={setContent}
+                            elementId={`story-${story?.id}-content-editor`}
+                            snowToolbarId={`story-${story?.id}-content-snow-toolbar`}
+                            bubbleToolbarId={`story-${story?.id}-content-bubble-toolbar`}
+                            initialHtml={content}
                         />
-                        <EditStoryFormImageUrlError
-                            imageUrlInvalid={imageUrlInvalid}
-                        />
-                        <RenderImage
-                            visible={showRenderImage}
-                            imageUrl={imageUrl}
-                            onClick={toggleRenderImage}
-                        />
-                    </label>
-                    <label className="new-story-form-element">
-                        <textarea
-                            id="content"
-                            value={content}
-                            onChange={e => setContent(e.target.value)}
-                            placeholder="Tell your story..."
-                            rows="15"
-                            required
-                        />
-                    </label>
-                    <label className="new-story-form-element">
-                        <input
-                            id="videoUrl"
-                            type="text"
-                            value={videoUrl}
-                            onChange={e => setVideoUrl(e.target.value)}
-                            onBlur={validateVideoUrl}
-                            placeholder="Insert video URL"
-                        />
-                        <EditStoryFormVideoUrlError
-                            videoUrlInvalid={videoUrlInvalid}
-                        />
-                    </label>
+                    </div>
                     {errors.length > 0 && (
                         <ul className='errors'>
                             {errors.map((error, i) => <li key={i} className="error-text">{error}</li>)}

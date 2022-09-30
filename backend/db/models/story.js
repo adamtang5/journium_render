@@ -20,12 +20,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       references: { model: 'Users' },
     },
-    imageUrl: {
-      type: DataTypes.STRING,
-    },
-    videoUrl: {
-      type: DataTypes.STRING,
-    },
   }, {});
   Story.associate = function (models) {
     // many-to-1 relationship with User model

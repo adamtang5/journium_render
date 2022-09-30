@@ -1,11 +1,9 @@
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import * as commentActions from '../../store/comment';
 import './DeleteCommentForm.css';
 
 const DeleteCommentForm = ({ comment, setShowDeleteModal }) => {
     const dispatch = useDispatch();
-    const history = useHistory();
     const storyId = comment.storyId;
 
     const handleDelete = e => {
