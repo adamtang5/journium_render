@@ -47,7 +47,7 @@
 
 .story-card .story-text .story-blurb p {
     font-size: 16px;
-    font-family: var(--font-family-serif-secondary);
+    font-family: var(--font-family-serif-tertiary);
     margin: 0;
     color: var(--color-text-primary);
 }

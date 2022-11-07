@@ -114,10 +114,10 @@
     margin: 10px 0;
 }
 
-.single-story-main-area p.story-content {
+.single-story-main-area .story-content p {
     font-size: 20px;
     line-height: 32px;
-    font-family: var(--font-family-serif-secondary);
+    font-family: var(--font-family-serif-tertiary);
 }
 
 .single-story-main-area .story-options {

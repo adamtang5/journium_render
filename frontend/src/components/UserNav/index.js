@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import * as userActions from '../../store/user';
 import JourniumLogo from '../utils/JourniumLogo';
-// import HomeSolidIcon from '../utils/icons/HomeSolidIcon';
+import HomeSolidIcon from '../utils/icons/HomeSolidIcon';
+import HomeHollowIcon from '../utils/icons/HomeHollowIcon';
 // import BookmarksHollowIcon from '../utils/icons/BookmarksHollowIcon';
 import ReadHollowIcon from '../utils/icons/ReadHollowIcon';
 import WriteHollowIcon from '../utils/icons/WriteHollowIcon';
@@ -27,9 +28,14 @@ const UserNav = () => {
                 </NavLink>
             </div>
             <div className="user-nav-actives flex-column">
-                {/* <NavLink to="/">
-                    <HomeSolidIcon />
-                </NavLink> */}
+                {/* <NavLink
+                    to="/"
+                    children={({ isActive }) => isActive ? (
+                        <HomeSolidIcon />
+                    ) : (
+                        <HomeHollowIcon />
+                    )}
+                /> */}
                 {/* <NavLink to="/lists">
                     <BookmarksHollowIcon />
                 </NavLink> */}

@@ -7,13 +7,13 @@
     --color-border: #aaa;
     --color-border-lighter: #c4c4c4;
     --color-border-lightest: #e6e6e6;
+    --color-border-columns: rgba(200, 200, 200, 1);
     --color-bg-button: #191919;
     --color-button-cancel: #494949;
     --color-button-delete: #c94a4a;
     --color-button-delete-hover: #963636;
     --color-button-publish: #1a8917;
     --color-button-publish-hover: #239c1e;
-    /* #33a32f */
     --color-text-primary: #292929;
     --color-text-meta: #757575;
     --color-text-form-label: #333;
@@ -43,6 +43,12 @@
         "Open Sans",
         "Helvetica Neue",
         sans-serif;
+    --font-family-serif-tertiary: source-serif-pro,
+        Georgia,
+        Cambria,
+        "Times New Roman",
+        Times,
+        serif;
     font-family: var(--font-family-primary);
 }
 

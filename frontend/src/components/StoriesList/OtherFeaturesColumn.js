@@ -1,5 +1,7 @@
 const OtherFeaturesColumn = () => {
-    return null;
+    return (
+        <p>Other Features Column</p>
+    );
 };
 
 export default OtherFeaturesColumn;
