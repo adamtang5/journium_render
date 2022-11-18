@@ -2,7 +2,6 @@ import React from 'react';
 import UserNav from '../UserNav';
 import StoriesPageMainColumn from './StoriesPageMainColumn';
 import OtherFeaturesColumn from './OtherFeaturesColumn';
-import './Stories.css';
 
 const Stories = () => {
     return (
