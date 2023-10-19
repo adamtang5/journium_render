@@ -10,6 +10,8 @@ module.exports = {
         hashedPassword: bcrypt.hashSync('password'),
         avatarUrl: 'https://images.unsplash.com/photo-1502082553048-f009c37129b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjV8fG5hdHVyZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
         roleId: 2,
+        createdAt: '2022-04-04T21:58:00Z',
+        updatedAt: '2022-04-04T21:58:00Z',
       },
       {
         displayName: 'Coder Dad',
@@ -17,6 +19,8 @@ module.exports = {
         hashedPassword: bcrypt.hashSync('dadisawesome!'),
         avatarUrl: 'https://m.media-amazon.com/images/I/71SPIoQQxuL._AC_SX466_.jpg',
         roleId: 2,
+        createdAt: '2022-04-04T21:58:00Z',
+        updatedAt: '2022-04-04T21:58:00Z',
       },
       {
         displayName: 'Super Mom',
@@ -24,6 +28,8 @@ module.exports = {
         hashedPassword: bcrypt.hashSync('momissuper!'),
         avatarUrl: 'https://media.newyorker.com/photos/5b23e1b240328426ed9a8b49/2:2/w_378,h_378,c_limit/Lane-Incredibles-2.jpg',
         roleId: 3,
+        createdAt: '2022-04-04T21:58:00Z',
+        updatedAt: '2022-04-04T21:58:00Z',
       },
       {
         displayName: 'The Name is Dash',
@@ -31,6 +37,8 @@ module.exports = {
         hashedPassword: bcrypt.hashSync('imthefastest!'),
         avatarUrl: 'https://cdn.costumewall.com/wp-content/uploads/2018/09/dash.jpg',
         roleId: 5,
+        createdAt: '2022-04-04T21:58:00Z',
+        updatedAt: '2022-04-04T21:58:00Z',
       },
       {
         displayName: 'Monkey Boy',
@@ -38,6 +46,8 @@ module.exports = {
         hashedPassword: bcrypt.hashSync('immonkeyking!'),
         avatarUrl: 'https://img.freepik.com/free-vector/monkey-king-mascot-design_26838-117.jpg',
         roleId: 5,
+        createdAt: '2022-04-04T21:58:00Z',
+        updatedAt: '2022-04-04T21:58:00Z',
       },
     ], {});
   },
